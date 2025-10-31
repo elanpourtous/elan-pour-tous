@@ -1,0 +1,42 @@
+/* RGAA complémentaire */
+:root {
+  --focus:#94c5ff;
+}
+:where(a,button,input,textarea,select,[role="button"]):focus-visible {
+  outline:3px solid var(--focus);
+  outline-offset:2px;
+  border-radius:.25rem;
+}
+.skip-link {
+  position:absolute;
+  left:-9999px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+.skip-link:focus {
+  left:1rem;
+  top:1rem;
+  width:auto;
+  height:auto;
+  background:var(--bg);
+  border:2px solid var(--focus);
+  padding:.5rem .75rem;
+  border-radius:.5rem;
+  z-index:1000;
+}
+.visually-hidden {
+  position:absolute!important;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+.badge-req {
+  color:#c62828;
+  font-weight:700;
+}
