@@ -176,3 +176,52 @@ html[data-theme="light"] .theme-toggle::before {
 @media (prefers-reduced-motion: no-preference) {
   * { transition: background-color .25s, color .25s, border-color .25s; }
 }
+
+/* ============ Animations & transitions accessibles ============ */
+
+/* Animation du menu mobile */
+@media (max-width: 860px) {
+  .nav-links {
+    transition: max-height .35s ease, opacity .25s ease;
+    opacity: 0;
+  }
+  .nav-links.is-open {
+    opacity: 1;
+  }
+}
+
+/* Animation du bouton burger */
+.menu-toggle .burger,
+.menu-toggle .burger::before,
+.menu-toggle .burger::after {
+  transition: all .25s ease-in-out;
+}
+.menu-toggle[aria-expanded="true"] .burger {
+  background: transparent;
+}
+.menu-toggle[aria-expanded="true"] .burger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+.menu-toggle[aria-expanded="true"] .burger::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* Transition douce du changement de thème */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    transition: background-color .35s ease, color .35s ease;
+  }
+  body, header, nav, footer, input, textarea {
+    transition: background-color .35s ease, color .35s ease, border-color .35s ease;
+  }
+}
+
+/* Respecte la préférence utilisateur : réduire les animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
