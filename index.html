@@ -1,50 +1,57 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Élan pour tous - Accueil</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Élan pour tous - Accueil</title>
+  <meta name="description" content="Élan pour tous — formations et services inclusifs pour personnes en situation de handicap.">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
-<body>
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">Élan pour tous</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="about.html">À propos</a></li>
-                <li><a href="formations.html">Formations</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="rgaa.html">Accessibilité RGAA</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main class="container hero">
-        <h1>Élan pour tous</h1>
-        <p>Accompagner chacun·e dans son parcours d’apprentissage et d’épanouissement.</p>
-        <a href="formations.html" class="btn">Découvrir nos formations</a>
-    </main>
+<body>
+  <header role="banner">
+    <nav class="container" role="navigation" aria-label="Menu principal">
+      <a href="index.html" class="logo" aria-label="Retour à l'accueil">Élan pour tous</a>
+      <ul class="nav-links">
+        <li><a href="index.html" aria-current="page">Accueil</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="rgaa.html">Accessibilité RGAA</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container hero" role="main" id="contenu">
+    <h1>Élan pour tous</h1>
+    <p>Accompagner chacun·e dans son parcours d’apprentissage et d’épanouissement.</p>
+    <a href="formations.html" class="btn">Découvrir nos formations</a>
+  </main>
 
   <footer role="contentinfo">
-  <p>&copy; 2025 Élan pour tous. Tous droits réservés.</p>
+    <p>&copy; 2025 Élan pour tous. Tous droits réservés.</p>
 
-  <!-- 🌍 Bannière Accessibilité RGAA -->
-  <div class="rgaa-banner" role="complementary" aria-label="Certification d'accessibilité du site">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Accessibility.svg" 
-         alt="" class="rgaa-icon" width="24" height="24">
-    <p>
-      <strong>Accessibilité RGAA démontrée ✅</strong> — 
-      Site conçu pour être inclusif et utilisable par tous.
-      <a href="rgaa.html" aria-label="En savoir plus sur la conformité RGAA">En savoir plus</a>
-    </p>
-  </div>
-</footer>
+    <!-- 🌍 Bannière Accessibilité RGAA -->
+    <div class="rgaa-banner" role="complementary" aria-label="Certification d'accessibilité du site">
+      <img 
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Accessibility.svg"
+        alt=""
+        class="rgaa-icon"
+        width="24"
+        height="24">
+      <p>
+        <strong>Accessibilité RGAA démontrée ✅</strong> — 
+        Site conçu pour être inclusif et utilisable par tous. 
+        <a href="rgaa.html" aria-label="En savoir plus sur la conformité RGAA">En savoir plus</a>
+      </p>
+    </div>
+  </footer>
 
+  <!-- 🔗 Scripts JS (menu, thème, accessibilité visuelle) -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/accessibilite.js" defer></script>
 </body>
-</html>
-
 </html>
