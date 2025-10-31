@@ -225,3 +225,37 @@ html[data-theme="light"] .theme-toggle::before {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============ Animation d'apparition du contenu ============ */
+
+/* Animation "fade-in" progressive */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Application automatique sur les sections principales */
+main, section, .hero, .contact-form, .contact-info {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Décalage léger entre les blocs pour effet séquentiel */
+.hero { animation-delay: 0.2s; }
+.contact-form { animation-delay: 0.3s; }
+.contact-info { animation-delay: 0.4s; }
+
+/* Respect des préférences "réduire les animations" */
+@media (prefers-reduced-motion: reduce) {
+  main, section, .hero, .contact-form, .contact-info {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+}
