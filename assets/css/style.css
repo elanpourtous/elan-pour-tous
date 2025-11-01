@@ -419,3 +419,18 @@ a:focus-visible {
     transform: none !important;
   }
 }
+
+.rgaa-icon {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  color: #0b8457; /* ton vert principal */
+}
+.rgaa-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f3fef7;
+  border-top: 2px solid #0b8457;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+}
