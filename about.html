@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Élan pour tous — micro-entreprise fondée par Patrick Billy à Saumur, dédiée à la formation et à l’accessibilité pour tous publics.">
+  <meta name="description" content="Élan pour tous — micro-entreprise à Saumur, engagée pour la formation, l’accessibilité et l’égalité des chances.">
   <title>Élan pour tous - À propos</title>
   <meta name="theme-color" content="#0b8457">
   <link rel="icon" href="assets/ima/baa.png" type="image/png">
 
-  <!-- Styles -->
+  <!-- Feuilles de style -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
 
 <body>
-  <!-- Lien d’évitement -->
+  <!-- Lien d’évitement pour lecteurs d’écran -->
   <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-  <!-- HEADER dynamique -->
+  <!-- HEADER chargé automatiquement -->
   <div id="header-placeholder" role="banner"></div>
 
   <!-- Contenu principal -->
@@ -26,40 +26,29 @@
     <h1>À propos de nous</h1>
 
     <p>
-      <strong>Élan pour tous</strong> est une micro-entreprise basée à <strong>Saumur (49)</strong>,
-      engagée pour la formation, l’inclusion et l’égalité des chances.
-      Notre mission : accompagner chaque personne dans son parcours d’apprentissage et d’épanouissement.
+      <strong>Élan pour tous</strong> est une micro-entreprise basée à Saumur (49),
+      engagée pour l’accès à la connaissance, l’inclusion et l’égalité des chances.
+      Nous accompagnons chaque personne dans son parcours de formation, d’apprentissage et d’épanouissement.
     </p>
 
-    <!-- 👤 Encadré fondateur -->
-    <section class="founder-card" aria-labelledby="fondateur">
-      <h2 id="fondateur">Le fondateur</h2>
-      <img src="assets/ima/patrick-billy.jpg" alt="Portrait de Patrick Billy, fondateur d’Élan pour tous" class="founder-photo">
-      <p>
-        <strong>Patrick Billy</strong> est le fondateur d’<strong>Élan pour tous</strong>.
-        Formateur passionné, il met son expérience au service d’une éducation inclusive,
-        accessible à toutes et tous, quelles que soient les différences.
-      </p>
-      <p>
-        <em>« Apprendre, c’est reprendre confiance en soi. Ensemble, faisons de chaque pas un élan vers l’avenir. »</em>
-      </p>
-      <p>
-        🔗 <a href="https://www.linkedin.com/in/patrickbilly/" target="_blank" rel="noopener" aria-label="Profil LinkedIn de Patrick Billy">
-        Voir le profil LinkedIn de Patrick Billy</a>
-      </p>
-    </section>
+    <p>
+      Nos formateur·rice·s passionné·e·s s’adaptent à chaque besoin, convaincu·e·s que 
+      chaque parcours est unique et mérite d’être valorisé.
+      Notre mission : permettre à chacun·e de développer ses compétences et de construire un avenir serein.
+    </p>
 
     <p>
-      L’équipe d’Élan pour tous partage ces valeurs : bienveillance, accessibilité et réussite pour chacun·e.
-      Ensemble, nous œuvrons pour un monde où la diversité est une richesse et où la formation est un levier d’inclusion.
+      Nous œuvrons pour un monde où la diversité est une richesse, 
+      et où les apprentissages sont accessibles à tous, quelles que soient les différences.
     </p>
   </main>
 
-  <!-- FOOTER dynamique -->
+  <!-- FOOTER chargé automatiquement -->
   <div id="footer-placeholder" role="contentinfo"></div>
 
-  <!-- Script d’inclusion header/footer -->
+  <!-- Inclusion des fragments + scripts -->
   <script>
+    // Fonction pour insérer des fragments HTML (header/footer)
     function includeInto(id, url) {
       return fetch(url, { cache: "no-store" })
         .then(r => {
@@ -74,6 +63,7 @@
       includeInto("footer-placeholder", "assets/footer.html")
     ])
     .then(() => {
+      // Charge les scripts principaux après injection
       const s1 = document.createElement("script");
       s1.src = "assets/js/main.js"; s1.defer = true;
       document.body.appendChild(s1);
@@ -86,5 +76,3 @@
   </script>
 </body>
 </html>
-
-
