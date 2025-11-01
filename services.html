@@ -1,49 +1,258 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Élan pour tous - Services</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Élan pour tous - Services</title>
+  <meta name="description" content="Accompagnement, ateliers, audits RGAA et conseils inclusifs proposés par Élan pour tous. Programmes sur mesure pour associations, collectivités et entreprises.">
+  <meta name="theme-color" content="#0b8457">
+  <link rel="icon" href="assets/ima/baa.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
+
 <body>
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">Élan pour tous</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="about.html">À propos</a></li>
-                <li><a href="formations.html">Formations</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="rgaa.html">Accessibilité RGAA</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Lien d’évitement -->
+  <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-    <main class="container hero">
-        <h1>Nos services</h1>
-        <p>En complément de nos formations, nous proposons des services pour vous accompagner dans votre développement et votre engagement inclusif.</p>
+  <!-- HEADER dynamique -->
+  <div id="header-placeholder" role="banner"></div>
 
-        <section class="service">
-            <h2>Ateliers participatifs</h2>
-            <p>Des sessions pratiques pour renforcer vos compétences sur des thématiques précises : outils numériques, communication inclusive, collaboration en équipe, etc.</p>
-        </section>
+  <main class="container hero" id="contenu" role="main">
+    <h1>Nos services</h1>
+    <p>
+      En complément de nos formations, nous proposons des services pour ancrer vos pratiques inclusives
+      et rendre vos supports accessibles — du diagnostic à la mise en œuvre.
+    </p>
 
-        <section class="service">
-            <h2>Accompagnement individuel</h2>
-            <p>Un suivi personnalisé pour vous aider à atteindre vos objectifs : prise en main d’un logiciel, élaboration d’un projet, orientation professionnelle.</p>
-        </section>
+    <!-- Sommaire -->
+    <nav aria-label="Sommaire des services" class="toc">
+      <ul>
+        <li><a href="#ateliers">Ateliers participatifs</a></li>
+        <li><a href="#accompagnement">Accompagnement individuel</a></li>
+        <li><a href="#conseil">Conseils en communication inclusive</a></li>
+        <li><a href="#audit">Audit & amélioration RGAA</a></li>
+        <li><a href="#packs">Packs & tarifs indicatifs</a></li>
+        <li><a href="#process">Notre méthode en 4 étapes</a></li>
+        <li><a href="#faq">Questions fréquentes</a></li>
+      </ul>
+    </nav>
 
-        <section class="service">
-            <h2>Conseils en communication inclusive</h2>
-            <p>Des recommandations pour adopter des pratiques respectueuses et accessibles au sein de votre organisation : choix des mots, supports visuels, accessibilité numérique.</p>
-        </section>
-    </main>
+    <!-- 1. Ateliers -->
+    <section id="ateliers" aria-labelledby="h-ateliers">
+      <h2 id="h-ateliers">Ateliers participatifs</h2>
+      <p>
+        Des sessions pratiques et conviviales pour expérimenter les bons réflexes d’inclusion
+        et d’accessibilité numérique.
+      </p>
+      <dl>
+        <dt>Objectifs</dt>
+        <dd>Monter en compétence, partager des cas réels, repartir avec des outils clés en main.</dd>
 
-    <footer>
-        <p>&copy; 2025 Élan pour tous. Tous droits réservés.</p>
-    </footer>
+        <dt>Public</dt>
+        <dd>Équipes associatives, services publics, établissements scolaires, TPE/PME.</dd>
+
+        <dt>Formats possibles</dt>
+        <dd>2 h · 3 h · 1 journée — présentiel ou distanciel.</dd>
+
+        <dt>Exemples d’ateliers</dt>
+        <dd>
+          <ul>
+            <li>Rendre ses documents accessibles (Word, PDF, Canva)</li>
+            <li>Accessibilité web et bonnes pratiques RGAA</li>
+            <li>Communication inclusive (écrits, visuels, prise de parole)</li>
+          </ul>
+        </dd>
+
+        <dt>Livrables</dt>
+        <dd>Guide-mémo, checklists, modèles réutilisables, plan d’action court terme.</dd>
+      </dl>
+    </section>
+
+    <!-- 2. Accompagnement -->
+    <section id="accompagnement" aria-labelledby="h-accomp">
+      <h2 id="h-accomp">Accompagnement individuel</h2>
+      <p>Du sur-mesure pour sécuriser un projet, changer d’outils, ou évoluer professionnellement.</p>
+      <dl>
+        <dt>Objectifs</dt>
+        <dd>Clarifier vos besoins, définir un cap, poser des étapes mesurables.</dd>
+
+        <dt>Exemples d’accompagnement</dt>
+        <dd>
+          <ul>
+            <li>Prise en main d’un logiciel/accessoire d’accessibilité</li>
+            <li>Préparation à une certification ou à un concours</li>
+            <li>Structuration d’un projet associatif (outils, méthodes, gouvernance)</li>
+          </ul>
+        </dd>
+
+        <dt>Modalités</dt>
+        <dd>Entretiens de 1 h à 2 h — en visio ou sur site — avec compte-rendu et plan d’action.</dd>
+      </dl>
+    </section>
+
+    <!-- 3. Conseils -->
+    <section id="conseil" aria-labelledby="h-conseil">
+      <h2 id="h-conseil">Conseils en communication inclusive</h2>
+      <p>Rendre vos contenus lisibles, respectueux et accessibles — sans jargon superflu.</p>
+      <dl>
+        <dt>Périmètre</dt>
+        <dd>
+          <ul>
+            <li>Réécriture inclusive (titres, intertitres, visuels, alternatives textuelles)</li>
+            <li>Charte éditoriale & ton de voix</li>
+            <li>Parcours utilisateur (navigation clavier, repères visuels)</li>
+          </ul>
+        </dd>
+
+        <dt>Livrables</dt>
+        <dd>Recommandations priorisées, exemples réécrits, gabarits prêts à l’emploi.</dd>
+      </dl>
+    </section>
+
+    <!-- 4. Audit RGAA -->
+    <section id="audit" aria-labelledby="h-audit">
+      <h2 id="h-audit">Audit & amélioration RGAA</h2>
+      <p>Un diagnostic pragmatique de vos supports numériques avec une feuille de route activable.</p>
+      <dl>
+        <dt>Ce que nous auditons</dt>
+        <dd>
+          <ul>
+            <li>Pages web, gabarits, composants (navigation, formulaires…)</li>
+            <li>Documents (PDF, Word, PPT), médias (vidéo, audio, sous-titres)</li>
+          </ul>
+        </dd>
+
+        <dt>Restitution</dt>
+        <dd>
+          <ul>
+            <li>Rapport synthétique + tableau de conformité (RGAA / WCAG)</li>
+            <li>Actions « quick wins » + chantiers de fond, classés par priorité</li>
+            <li>Session de restitution et Q/R</li>
+          </ul>
+        </dd>
+      </dl>
+      <p class="note">
+        Besoin d’un <strong>échantillon gratuit</strong> (1 page test) ? 
+        <a href="contact.html">Contactez-nous</a>, on vous montre le format de nos retours.
+      </p>
+    </section>
+
+    <!-- 5. Packs / tarifs -->
+    <section id="packs" aria-labelledby="h-packs">
+      <h2 id="h-packs">Packs & tarifs indicatifs</h2>
+      <p>Pour donner un ordre d’idée — un devis sur-mesure est réalisé après échange.</p>
+      <div class="packs">
+        <article class="pack">
+          <h3>Pack Atelier</h3>
+          <ul>
+            <li>½ journée (3 h) – 8 à 12 personnes</li>
+            <li>Guide pratique + modèles</li>
+            <li>Support mail pendant 7 jours</li>
+          </ul>
+          <p class="price">À partir de 480 € HT</p>
+        </article>
+
+        <article class="pack">
+          <h3>Pack Audit Flash</h3>
+          <ul>
+            <li>3 pages web OU 1 PDF</li>
+            <li>Tableau de conformité + 10 quick wins</li>
+            <li>Visio de restitution (45 min)</li>
+          </ul>
+          <p class="price">À partir de 690 € HT</p>
+        </article>
+
+        <article class="pack">
+          <h3>Accompagnement Pro</h3>
+          <ul>
+            <li>6 séances de 1 h</li>
+            <li>Plan d’action + suivi</li>
+            <li>Priorisation & métriques</li>
+          </ul>
+          <p class="price">À partir de 780 € HT</p>
+        </article>
+      </div>
+      <p class="disclaimer">Tarifs indicatifs hors déplacement. Délais et périmètres adaptés à votre contexte.</p>
+    </section>
+
+    <!-- 6. Process -->
+    <section id="process" aria-labelledby="h-process">
+      <h2 id="h-process">Notre méthode en 4 étapes</h2>
+      <ol>
+        <li><strong>Diagnostic</strong> — on écoute vos enjeux et on cartographie vos supports.</li>
+        <li><strong>Plan d’action</strong> — priorisation réaliste (quick wins + chantiers).</li>
+        <li><strong>Mise en œuvre</strong> — ateliers, réécritures, corrections ou coaching.</li>
+        <li><strong>Mesure</strong> — indicateurs, bilan, recommandations de suite.</li>
+      </ol>
+      <p><a class="btn" href="contact.html">Demander un devis</a></p>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section id="faq" aria-labelledby="h-faq">
+      <h2 id="h-faq">Questions fréquentes</h2>
+      <details>
+        <summary>L’atelier peut-il être fait à distance ?</summary>
+        <p>Oui, tous nos formats existent en visio (Zoom, Meet, Teams). Supports fournis en amont.</p>
+      </details>
+      <details>
+        <summary>Pouvez-vous former une grande équipe ?</summary>
+        <p>Oui. On propose plusieurs créneaux + kit « relais » pour vos référent·e·s internes.</p>
+      </details>
+      <details>
+        <summary>Intervenez-vous hors Maine-et-Loire ?</summary>
+        <p>Oui, sur devis. Distanciel possible pour limiter les coûts de déplacement.</p>
+      </details>
+    </section>
+  </main>
+
+  <!-- FOOTER dynamique -->
+  <div id="footer-placeholder" role="contentinfo"></div>
+
+  <!-- Inclusion des fragments puis scripts -->
+  <script>
+    function includeInto(id, url) {
+      return fetch(url, { cache: "no-store" })
+        .then(r => { if (!r.ok) throw new Error(url + " introuvable"); return r.text(); })
+        .then(html => { document.getElementById(id).innerHTML = html; });
+    }
+
+    Promise.all([
+      includeInto("header-placeholder", "assets/header.html"),
+      includeInto("footer-placeholder", "assets/footer.html")
+    ])
+    .then(() => {
+      // Surligner l’onglet courant
+      (function () {
+        const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        document.querySelectorAll('.nav-links a').forEach(a => {
+          if ((a.getAttribute('href')||'').toLowerCase() === current) {
+            a.setAttribute('aria-current', 'page'); a.classList.add('active');
+          }
+        });
+      })();
+
+      const s1 = document.createElement('script'); s1.src = 'assets/js/main.js'; s1.defer = true; document.body.appendChild(s1);
+      const s2 = document.createElement('script'); s2.src = 'assets/js/accessibilite.js'; s2.defer = true; document.body.appendChild(s2);
+    })
+    .catch(err => console.error('Erreur d’inclusion :', err));
+  </script>
+
+  <style>
+    .toc { margin: 1rem 0 2rem; }
+    .toc ul { display:flex; flex-wrap:wrap; gap:.75rem 1rem; padding:0; list-style:none; }
+    .toc a { display:inline-block; padding:.4rem .7rem; border:1px solid var(--border); border-radius:.5rem; text-decoration:none; color:var(--fg); background:var(--card); }
+    .toc a:hover { filter: brightness(1.05); }
+
+    .packs { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin: 1rem 0; }
+    .pack { background:var(--card); border:1px solid var(--border); border-radius:.75rem; padding:1rem; }
+    .pack h3 { margin-top:.25rem; }
+    .price { font-weight:800; margin-top:.5rem; }
+    .disclaimer { font-size:.9rem; opacity:.8; }
+
+    details { background:var(--card); border:1px solid var(--border); border-radius:.5rem; padding:.75rem 1rem; margin:.5rem 0; }
+    details > summary { cursor:pointer; font-weight:700; }
+    .note { background: color-mix(in srgb, var(--brand) 8%, transparent); border-left: 4px solid var(--brand); padding: .75rem 1rem; border-radius: .5rem; }
+  </style>
 </body>
 </html>
