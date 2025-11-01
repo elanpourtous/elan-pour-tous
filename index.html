@@ -2,19 +2,62 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Élan pour tous - Accueil</title>
-  <meta name="description" content="Élan pour tous — formations et services inclusifs pour personnes en situation de handicap.">
-  
+  <meta name="description" content="Élan pour tous — micro-entreprise à Saumur (49). Formations et services accessibles (RGAA) pour tous.">
+  <meta name="theme-color" content="#0b8457">
+
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+
+  <!-- Données structurées (SEO local) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Élan pour tous",
+    "description":"Micro-entreprise à Saumur (49) – formations & services accessibles (RGAA).",
+    "image":"assets/img/LOGO.png",
+    "email":"contact@elanpourtous.org",
+    "telephone":"+33783336757",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"18 rue des Menhirs",
+      "postalCode":"49400",
+      "addressLocality":"Saumur",
+      "addressCountry":"FR"
+    },
+    "url":"https://elanpourtous.github.io/elan-pour-tous/index.html",
+    "sameAs":["https://www.linkedin.com/in/patrickbilly/"],
+    "areaServed":"FR"
+  }
+  </script>
 </head>
 
 <body>
+  <!-- Lien d'évitement -->
+  <a href="#contenu" class="skip-link">Aller au contenu</a>
+
   <header role="banner">
     <nav class="container" role="navigation" aria-label="Menu principal">
-      <a href="index.html" class="logo" aria-label="Retour à l'accueil">Élan pour tous</a>
-      <ul class="nav-links">
+      <!-- Logo (mets ton fichier en assets/img/LOGO.png) -->
+      <a href="index.html" class="logo" aria-label="Retour à l'accueil">
+        <img src="assets/img/LOGO.png" alt="Logo Élan pour tous" class="logo-img">
+      </a>
+
+      <!-- Actions (thème + menu mobile) -->
+      <div class="nav-actions">
+        <button type="button" class="btn-icon theme-toggle" aria-label="Basculer thème" title="Basculer thème" data-theme-toggle>
+          <span class="visually-hidden">Basculer le thème</span>
+        </button>
+        <button type="button" class="btn-icon menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
+          <span class="visually-hidden">Menu</span>
+          <span aria-hidden="true" class="burger"></span>
+        </button>
+      </div>
+
+      <!-- Liens -->
+      <ul id="primary-nav" class="nav-links" data-collapsible>
         <li><a href="index.html" aria-current="page">Accueil</a></li>
         <li><a href="about.html">À propos</a></li>
         <li><a href="formations.html">Formations</a></li>
@@ -25,7 +68,10 @@
     </nav>
   </header>
 
-  <main class="container hero" role="main" id="contenu">
+  <main id="contenu" class="container hero" role="main">
+    <!-- Logo en héro (optionnel) -->
+    <!-- <img src="assets/img/LOGO.png" alt="Logo Élan pour tous" class="hero-logo"> -->
+
     <h1>Élan pour tous</h1>
     <p class="tagline">Micro-entreprise basée à Saumur (49) — formations & services accessibles.</p>
     <p>Accompagner chacun·e dans son parcours d’apprentissage et d’épanouissement.</p>
@@ -33,27 +79,37 @@
   </main>
 
   <footer role="contentinfo">
-    <p>&copy; 2025 Élan pour tous. Tous droits réservés.</p>
+    <address class="site-address" translate="no">
+      Élan pour tous – Micro-entreprise • 18 rue des Menhirs, 49400 Saumur •
+      <a href="tel:+33783336757">07 83 33 67 57</a> •
+      <a href="mailto:contact@elanpourtous.org">contact@elanpourtous.org</a>
+    </address>
+    <p class="legal-small"><a href="mentions-legales.html">Mentions légales</a></p>
 
-    <!-- 🌍 Bannière Accessibilité RGAA -->
+    <!-- Bannière Accessibilité RGAA -->
     <div class="rgaa-banner" role="complementary" aria-label="Certification d'accessibilité du site">
-      <img 
-        src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Accessibility.svg"
-        alt=""
-        class="rgaa-icon"
-        width="24"
-        height="24">
+      <!-- Remplace l'img par un SVG inline si l’icône distante ne s’affiche pas -->
+      <img src="assets/img/accessibility.svg" alt="" class="rgaa-icon" width="24" height="24">
       <p>
         <strong>Accessibilité RGAA démontrée ✅</strong> — 
         Site conçu pour être inclusif et utilisable par tous. 
-        <a href="rgaa.html" aria-label="En savoir plus sur la conformité RGAA">En savoir plus</a>
+        <a href="rgaa.html">En savoir plus</a>
       </p>
     </div>
+    <p>&copy; 2025 Élan pour tous. Tous droits réservés.</p>
   </footer>
 
-  <!-- 🔗 Scripts JS (menu, thème, accessibilité visuelle) -->
+  <!-- Panneau d’accessibilité visuelle -->
+  <div class="accessibility-panel" aria-label="Options d’accessibilité visuelle">
+    <button class="access-btn" data-action="font+" aria-label="Augmenter la taille du texte">A+</button>
+    <button class="access-btn" data-action="font-" aria-label="Diminuer la taille du texte">A−</button>
+    <button class="access-btn" data-action="contrast" aria-label="Augmenter le contraste">⚫⬜</button>
+    <button class="access-btn" data-action="spacing" aria-label="Augmenter l’espacement des lignes">↕️</button>
+    <button class="access-btn" data-action="reset" aria-label="Réinitialiser les réglages">♻️</button>
+  </div>
+
+  <!-- Scripts -->
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/accessibilite.js" defer></script>
 </body>
 </html>
-
