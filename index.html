@@ -2,29 +2,25 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Élan pour tous — micro-entreprise à Saumur, formations et services inclusifs pour tous publics.">
   <title>Élan pour tous - Accueil</title>
+  <meta name="theme-color" content="#0b8457">
+  <link rel="icon" href="assets/ima/baa.png" type="image/png">
 
-  <!-- Feuilles de style -->
+  <!-- Styles -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
 
 <body>
+  <!-- Lien d’évitement -->
+  <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-  <!-- 🌟 HEADER chargé automatiquement -->
-  <div id="header-placeholder"></div>
-  <script>
-    fetch("assets/header.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("header-placeholder").innerHTML = data;
-      })
-      .catch(err => console.error("Erreur de chargement du header :", err));
-  </script>
+  <!-- HEADER (inclus dynamiquement) -->
+  <div id="header-placeholder" role="banner"></div>
 
-  <!-- 🧭 Contenu principal -->
+  <!-- Contenu principal -->
   <main class="container hero" role="main" id="contenu">
     <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo">
     <h1>Élan pour tous</h1>
@@ -33,19 +29,36 @@
     <a href="formations.html" class="btn">Découvrir nos formations</a>
   </main>
 
-  <!-- 🌍 FOOTER chargé automatiquement -->
-  <div id="footer-placeholder"></div>
-  <script>
-    fetch("assets/footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      })
-      .catch(err => console.error("Erreur de chargement du footer :", err));
-  </script>
+  <!-- FOOTER (inclus dynamiquement) -->
+  <div id="footer-placeholder" role="contentinfo"></div>
 
-  <!-- ⚙️ Scripts principaux -->
-  <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/accessibilite.js" defer></script>
+  <!-- Inclusion des fragments puis scripts, dans le bon ordre -->
+  <script>
+    function includeInto(id, url) {
+      return fetch(url, { cache: "no-store" })
+        .then(r => {
+          if (!r.ok) throw new Error(url + " introuvable");
+          return r.text();
+        })
+        .then(html => { document.getElementById(id).innerHTML = html; });
+    }
+
+    // On attend que header + footer soient injectés avant d'initialiser les JS
+    Promise.all([
+      includeInto("header-placeholder", "assets/header.html"),
+      includeInto("footer-placeholder", "assets/footer.html")
+    ])
+    .then(() => {
+      // Charge les scripts seulement après l'injection du header (menu, thème)
+      const s1 = document.createElement("script");
+      s1.src = "assets/js/main.js"; s1.defer = true;
+      document.body.appendChild(s1);
+
+      const s2 = document.createElement("script");
+      s2.src = "assets/js/accessibilite.js"; s2.defer = true;
+      document.body.appendChild(s2);
+    })
+    .catch(err => console.error("Erreur d’inclusion :", err));
+  </script>
 </body>
 </html>
