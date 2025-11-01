@@ -1,43 +1,120 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Élan pour tous - Accessibilité RGAA</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Déclaration d’accessibilité – Élan pour tous</title>
+  <meta name="description" content="Déclaration d’accessibilité RGAA du site Élan pour tous (micro-entreprise à Saumur).">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="icon" href="assets/ima/logo.png" type="image/png">
 </head>
+
 <body>
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">Élan pour tous</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="about.html">À propos</a></li>
-                <li><a href="formations.html">Formations</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="rgaa.html">Accessibilité RGAA</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-    <main class="container hero">
-        <h1>Accessibilité RGAA</h1>
-        <p>Le Référentiel Général d’Amélioration de l’Accessibilité (RGAA) est un ensemble de règles visant à garantir l’accès aux contenus et services numériques pour toutes et tous, y compris les personnes en situation de handicap.</p>
-        <p>Chez Élan pour tous, nous nous engageons à respecter ces recommandations :</p>
-        <ul>
-            <li>Conception de pages compatibles avec les lecteurs d’écran et navigateurs alternatifs.</li>
-            <li>Utilisation de contrastes suffisants et de textes lisibles pour les personnes malvoyantes ou daltoniennes.</li>
-            <li>Structure sémantique claire (titres, listes, balises ARIA) facilitant la navigation.</li>
-            <li>Éléments interactifs accessibles via le clavier et décrits par des étiquettes explicites.</li>
-            <li>Textes alternatifs pour les images et sous-titrage des contenus multimédias.</li>
-        </ul>
-        <p>Nous améliorons continuellement nos pratiques pour offrir une expérience inclusive et accessible à toutes et tous. Si vous rencontrez un problème d’accessibilité ou avez une suggestion, n’hésitez pas à nous contacter.</p>
-    </main>
+  <header role="banner">
+    <nav class="container" role="navigation" aria-label="Menu principal">
+      <a href="index.html" class="logo" aria-label="Retour à l'accueil">
+        <img src="assets/ima/logo.png" alt="Logo Élan pour tous" class="logo-img">
+      </a>
+      <div class="nav-actions">
+        <button type="button" class="btn-icon theme-toggle" aria-label="Basculer thème" title="Basculer thème" data-theme-toggle>
+          <span class="visually-hidden">Basculer le thème</span>
+        </button>
+        <button type="button" class="btn-icon menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
+          <span class="visually-hidden">Menu</span>
+          <span aria-hidden="true" class="burger"></span>
+        </button>
+      </div>
+      <ul id="primary-nav" class="nav-links" data-collapsible>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="rgaa.html" aria-current="page">Accessibilité RGAA</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <footer>
-        <p>&copy; 2025 Élan pour tous. Tous droits réservés.</p>
-    </footer>
+  <main id="contenu" class="container hero" role="main">
+    <h1>Déclaration d’accessibilité</h1>
+    <p>Élan pour tous s’engage à rendre ses contenus numériques accessibles, conformément au <strong>RGAA 4.1</strong> (Référentiel Général d’Amélioration de l’Accessibilité). Cette déclaration s’applique au site : <code>https://elanpourtous.github.io/elan-pour-tous/</code>.</p>
+
+    <h2>État de conformité</h2>
+    <p>
+      <strong>Conformité partielle</strong>.
+      Le site respecte une grande majorité des critères RGAA niveau AA. Quelques exceptions mineures sont encore en amélioration continue (voir ci-dessous).
+    </p>
+
+    <h2>Périmètre</h2>
+    <ul>
+      <li>Pages testées : <code>index.html</code>, <code>about.html</code>, <code>formations.html</code>, <code>services.html</code>, <code>rgaa.html</code>, <code>contact.html</code>.</li>
+      <li>Technologies utilisées : HTML5, CSS3, JavaScript (vanilla), GitHub Pages.</li>
+      <li>Agents utilisateurs et technologies d’assistance : tests sur NVDA/Windows, VoiceOver/iOS, clavier seul, contrastes simulés.</li>
+    </ul>
+
+    <h2>Résultats principaux (extraits RGAA 4.1)</h2>
+    <ul>
+      <li><strong>Couleurs & contrastes</strong> : palette respectant WCAG AA ; mode contraste renforcé disponible (<em>module accessibilité visuelle</em>).</li>
+      <li><strong>Navigation clavier</strong> : ordre logique, <em>skip-link</em> « Aller au contenu », <code>:focus-visible</code> très visibles.</li>
+      <li><strong>Alternatives</strong> : images décoratives masquées aux lecteurs d’écran ; logo avec <code>alt</code> pertinent.</li>
+      <li><strong>Structure</strong> : titres hiérarchisés, rôles ARIA (<code>banner</code>, <code>navigation</code>, <code>main</code>, <code>contentinfo</code>).</li>
+      <li><strong>Composants dynamiques</strong> : menu mobile et bascule de thème avec <code>aria-expanded</code>/<code>aria-pressed</code> et annonce via <code>aria-live</code>.</li>
+      <li><strong>Préférences utilisateur</strong> : respect de <code>prefers-reduced-motion</code>, persistance des réglages (taille texte, contraste, espacement, thème).</li>
+    </ul>
+
+    <h2>Contenus non accessibles (points restant à améliorer)</h2>
+    <ul>
+      <li>Documentation plus détaillée des raccourcis clavier.</li>
+      <li>Vérification de contraste sur certaines images/illustrations externes lorsqu’elles sont ajoutées.</li>
+      <li>Tests utilisateurs supplémentaires (lecteurs d’écran & mobilité réduite) pour valider les parcours complexes.</li>
+    </ul>
+
+    <h2>Méthode d’évaluation</h2>
+    <p>Auto-évaluation basée sur le RGAA 4.1 : grille de critères, relectures croisées, tests clavier, lecteurs d’écran (NVDA/Windows, VoiceOver/iOS), et simulateurs de contraste. Mise à jour prévue à chaque livraison majeure.</p>
+
+    <h2>Date de la déclaration</h2>
+    <p>Déclaration établie le <time datetime="2025-10-31">31/10/2025</time>, mise à jour en continu.</p>
+
+    <h2>Retour d’information et contact</h2>
+    <p>Si vous ne parvenez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable du site :</p>
+    <ul>
+      <li>📧 <a href="mailto:contact@elanpourtous.org">contact@elanpourtous.org</a></li>
+      <li>📞 <a href="tel:+33783336757">07 83 33 67 57</a></li>
+      <li>📍 Élan pour tous – 18 rue des Menhirs, 49400 Saumur</li>
+    </ul>
+    <p>Nous nous engageons à vous répondre dans les meilleurs délais et à proposer une alternative accessible au besoin.</p>
+
+    <h2>Voies de recours</h2>
+    <p>Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou un service et que vous ne parvenez pas à obtenir de réponse satisfaisante, vous pouvez :</p>
+    <ul>
+      <li>Écrire au <a href="https://formulaire.defenseurdesdroits.fr/">Défenseur des droits</a> ;</li>
+      <li>Contacter le <a href="https://www.defenseurdesdroits.fr/saisir/delegues">délégué du Défenseur des droits</a> dans votre région ;</li>
+      <li>Envoyer un courrier gratuit (sans timbre) au Défenseur des droits :  
+        <br><em>Libre réponse 71120 – 75342 Paris CEDEX 07</em>.</li>
+    </ul>
+
+    <h2>Engagement d’amélioration continue</h2>
+    <p>Élan pour tous est une micro-entreprise engagée à Saumur. Chaque nouvelle page et chaque nouveau contenu sont vérifiés avec une checklist RGAA, et les retours des utilisateurs sont intégrés rapidement.</p>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2025 Élan pour tous. Tous droits réservés.</p>
+  </footer>
+
+  <!-- Panneau d’accessibilité visuelle -->
+  <div class="accessibility-panel" aria-label="Options d’accessibilité visuelle">
+    <button class="access-btn" data-action="font+" aria-label="Augmenter la taille du texte">A+</button>
+    <button class="access-btn" data-action="font-" aria-label="Diminuer la taille du texte">A−</button>
+    <button class="access-btn" data-action="contrast" aria-label="Augmenter le contraste">⚫⬜</button>
+    <button class="access-btn" data-action="spacing" aria-label="Augmenter l’espacement des lignes">↕️</button>
+    <button class="access-btn" data-action="reset" aria-label="Réinitialiser les réglages">♻️</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/accessibilite.js" defer></script>
 </body>
 </html>
