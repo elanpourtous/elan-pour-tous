@@ -21,16 +21,22 @@
   <main id="contenu" class="container hero" role="main">
     <h1>Déclaration d’accessibilité</h1>
 
-    <!-- Petite bannière / badge -->
+    <!-- Bannière accessibilité -->
     <div class="rgaa-banner" role="complementary" aria-label="Engagement accessibilité du site">
       <img src="assets/ima/accessibility.svg" alt="" class="rgaa-icon" width="24" height="24" aria-hidden="true">
       <p><strong>Accessibilité RGAA</strong> — Élan pour tous s’engage à améliorer en continu l’accessibilité de ses contenus.</p>
     </div>
 
-    <p>Élan pour tous s’engage à rendre ses contenus numériques accessibles, conformément au <strong>RGAA 4.1</strong> (Référentiel Général d’Amélioration de l’Accessibilité). Cette déclaration s’applique au site : <code>https://elanpourtous.github.io/elan-pour-tous/</code>.</p>
+    <p>
+      Élan pour tous s’engage à rendre ses contenus numériques accessibles, conformément au
+      <strong>RGAA 4.1</strong> (Référentiel Général d’Amélioration de l’Accessibilité).
+      Cette déclaration s’applique au site :
+      <code>https://elanpourtous.github.io/elan-pour-tous/</code>.
+    </p>
 
     <h2>État de conformité</h2>
-    <p><strong>Conformité partielle</strong> : le site respecte la majorité des critères du RGAA (niveau AA). Des améliorations sont planifiées (voir ci-dessous).</p>
+    <p><strong>Conformité partielle</strong> : le site respecte la majorité des critères du RGAA (niveau AA).
+      Des améliorations sont planifiées (voir ci-dessous).</p>
 
     <h2>Périmètre</h2>
     <ul>
@@ -56,7 +62,8 @@
     </ul>
 
     <h2>Méthode d’évaluation</h2>
-    <p>Auto-évaluation basée sur le RGAA 4.1 avec tests clavier, lecteurs d’écran et simulateurs de contraste. Audit manuel/technique lors de chaque mise à jour majeure.</p>
+    <p>Auto-évaluation basée sur le RGAA 4.1 avec tests clavier, lecteurs d’écran et simulateurs de contraste.
+       Audit manuel/technique lors de chaque mise à jour majeure.</p>
 
     <h2>Date de la déclaration</h2>
     <p>Déclaration établie le <time datetime="2025-10-31">31 octobre 2025</time> et mise à jour régulièrement.</p>
@@ -79,7 +86,8 @@
     </ul>
 
     <h2>Engagement d’amélioration continue</h2>
-    <p>Micro-entreprise basée à Saumur, Élan pour tous intègre l’accessibilité à chaque évolution du site, avec suivi selon la grille RGAA et prise en compte des retours utilisateurs.</p>
+    <p>Micro-entreprise basée à Saumur, Élan pour tous intègre l’accessibilité à chaque évolution du site,
+       avec suivi selon la grille RGAA et prise en compte des retours utilisateurs.</p>
 
     <p>👉 Voir aussi la <a href="rgaa-checklist.html">checklist d’auto-évaluation RGAA</a>.</p>
   </main>
@@ -100,7 +108,7 @@
       includeInto("footer-placeholder", "assets/footer.html")
     ])
     .then(() => {
-      // surligner l’onglet courant automatiquement
+      // surligner l’onglet courant
       (function () {
         const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
         document.querySelectorAll('.nav-links a').forEach(a => {
@@ -112,7 +120,7 @@
 
       const s1 = document.createElement('script'); s1.src = 'assets/js/main.js'; s1.defer = true; document.body.appendChild(s1);
       const s2 = document.createElement('script'); s2.src = 'assets/js/accessibilite.js'; s2.defer = true; document.body.appendChild(s2);
-      // si tu as ajouté la checklist/plan interactif sur cette page :
+      // Si tu ajoutes le plan/checklist interactif :
       // const s3 = document.createElement('script'); s3.src = 'assets/js/rgaa-plan.js'; s3.defer = true; document.body.appendChild(s3);
     })
     .catch(err => console.error('Erreur d’inclusion :', err));
