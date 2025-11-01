@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="120" height="120" aria-hidden="true">
+  <title>Icône d’accessibilité</title>
+  <circle cx="12" cy="12" r="10" fill="#0b8457" opacity="0.1"></circle>
+  <path fill="#0b8457" d="M12 2a2 2 0 1 0 0 4a2 2 0 0 0 0-4zm0 4.75a.75.75 0 0 0-.75.75v2.56l-2.38-.74a.75.75 0 1 0-.44 1.44l2.82.88v3.37l-1.97 3.56a.75.75 0 0 0 1.3.73l1.87-3.38l1.88 3.38a.75.75 0 0 0 1.3-.73l-1.97-3.56V11.6l2.82-.88a.75.75 0 1 0-.44-1.44l-2.38.74V7.5a.75.75 0 0 0-.75-.75zM12 22a9.5 9.5 0 1 1 0-19a9.5 9.5 0 0 1 0 19z"></path>
+</svg>
