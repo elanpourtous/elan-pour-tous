@@ -2,103 +2,49 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Élan pour tous — micro-entreprise à Saumur, formations et services inclusifs pour tous publics.">
   <title>Élan pour tous - Accueil</title>
-  <meta name="description" content="Élan pour tous — micro-entreprise à Saumur (49). Formations et services accessibles (RGAA) pour tous.">
-  <meta name="theme-color" content="#0b8457">
 
-  <!-- Liens CSS -->
+  <!-- Feuilles de style -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-
-  <!-- Favicon -->
-  <link rel="icon" href="assets/ima/logo.png" type="image/png">
-
-  <!-- Données structurées (SEO local) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"Élan pour tous",
-    "description":"Micro-entreprise à Saumur (49) – formations & services accessibles (RGAA).",
-    "image":"assets/ima/logo.png",
-    "email":"contact@elanpourtous.org",
-    "telephone":"+33783336757",
-    "address":{
-      "@type":"PostalAddress",
-      "streetAddress":"18 rue des Menhirs",
-      "postalCode":"49400",
-      "addressLocality":"Saumur",
-      "addressCountry":"FR"
-    },
-    "url":"https://elanpourtous.github.io/elan-pour-tous/index.html",
-    "sameAs":["https://www.linkedin.com/in/patrickbilly/"],
-    "areaServed":"FR"
-  }
-  </script>
 </head>
 
 <body>
-  <!-- Lien d'évitement -->
-  <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-  <header role="banner">
-    <nav class="container" role="navigation" aria-label="Menu principal">
-      <!-- Logo -->
-      <a href="index.html" class="logo" aria-label="Retour à l'accueil">
-        <img src="assets/ima/logo.png" alt="Logo Élan pour tous" class="logo-img">
-      </a>
+  <!-- 🌟 HEADER chargé automatiquement -->
+  <div id="header-placeholder"></div>
+  <script>
+    fetch("assets/header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+      })
+      .catch(err => console.error("Erreur de chargement du header :", err));
+  </script>
 
-      <!-- Menu principal -->
-      <ul class="nav-links" id="primary-nav">
-        <li><a href="index.html" aria-current="page">Accueil</a></li>
-        <li><a href="about.html">À propos</a></li>
-        <li><a href="formations.html">Formations</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="rgaa.html">Accessibilité RGAA</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="contenu" class="container hero" role="main">
+  <!-- 🧭 Contenu principal -->
+  <main class="container hero" role="main" id="contenu">
+    <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo">
     <h1>Élan pour tous</h1>
-    <p class="tagline">Micro-entreprise basée à Saumur (49) — formations & services accessibles.</p>
-    <p>Accompagner chacun·e dans son parcours d’apprentissage et d’épanouissement.</p>
+    <p class="tagline">Micro-entreprise basée à Saumur (49) — formations & services accessibles à tous.</p>
+    <p>Accompagner chacun·e dans son parcours d’apprentissage, de reconversion et d’épanouissement personnel ou professionnel.</p>
     <a href="formations.html" class="btn">Découvrir nos formations</a>
   </main>
 
-  <footer role="contentinfo">
-    <address class="site-address" translate="no">
-      Élan pour tous – Micro-entreprise • 18 rue des Menhirs, 49400 Saumur •
-      <a href="tel:+33783336757">07 83 33 67 57</a> •
-      <a href="mailto:contact@elanpourtous.org">contact@elanpourtous.org</a>
-    </address>
-    <p class="legal-small"><a href="mentions-legales.html">Mentions légales</a></p>
+  <!-- 🌍 FOOTER chargé automatiquement -->
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch("assets/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      })
+      .catch(err => console.error("Erreur de chargement du footer :", err));
+  </script>
 
-    <!-- Bannière Accessibilité RGAA -->
-    <div class="rgaa-banner" role="complementary" aria-label="Certification d'accessibilité du site">
-      <img src="assets/img/accessibility.svg" alt="" class="rgaa-icon" width="24" height="24">
-      <p>
-        <strong>Accessibilité RGAA démontrée ✅</strong> — 
-        Site conçu pour être inclusif et utilisable par tous. 
-        <a href="rgaa.html">En savoir plus</a>
-      </p>
-    </div>
-
-    <p>&copy; 2025 Élan pour tous. Tous droits réservés.</p>
-  </footer>
-
-  <!-- Panneau d’accessibilité visuelle -->
-  <div class="accessibility-panel" aria-label="Options d’accessibilité visuelle">
-    <button class="access-btn" data-action="font+" aria-label="Augmenter la taille du texte">A+</button>
-    <button class="access-btn" data-action="font-" aria-label="Diminuer la taille du texte">A−</button>
-    <button class="access-btn" data-action="contrast" aria-label="Augmenter le contraste">⚫⬜</button>
-    <button class="access-btn" data-action="spacing" aria-label="Augmenter l’espacement des lignes">↕️</button>
-    <button class="access-btn" data-action="reset" aria-label="Réinitialiser les réglages">♻️</button>
-  </div>
-
-  <!-- Scripts JS -->
+  <!-- ⚙️ Scripts principaux -->
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/accessibilite.js" defer></script>
 </body>
