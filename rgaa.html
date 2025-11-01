@@ -5,65 +5,58 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Déclaration d’accessibilité – Élan pour tous</title>
   <meta name="description" content="Déclaration d’accessibilité RGAA du site Élan pour tous (micro-entreprise à Saumur).">
+  <meta name="theme-color" content="#0b8457">
+  <link rel="icon" href="assets/ima/baa.png" type="image/png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-  <link rel="icon" href="assets/ima/logo.png" type="image/png">
 </head>
 
 <body>
+  <!-- Lien d’évitement -->
   <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-  <header role="banner">
-    <nav class="container" role="navigation" aria-label="Menu principal">
-      <a href="index.html" class="logo" aria-label="Retour à l'accueil">
-        <img src="assets/ima/logo.png" alt="Logo Élan pour tous" class="logo-img">
-      </a>
-      <ul id="primary-nav" class="nav-links">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="about.html">À propos</a></li>
-        <li><a href="formations.html">Formations</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="rgaa.html" aria-current="page">Accessibilité RGAA</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- HEADER dynamique -->
+  <div id="header-placeholder" role="banner"></div>
 
   <main id="contenu" class="container hero" role="main">
     <h1>Déclaration d’accessibilité</h1>
+
+    <!-- Petite bannière / badge -->
+    <div class="rgaa-banner" role="complementary" aria-label="Engagement accessibilité du site">
+      <img src="assets/ima/accessibility.svg" alt="" class="rgaa-icon" width="24" height="24" aria-hidden="true">
+      <p><strong>Accessibilité RGAA</strong> — Élan pour tous s’engage à améliorer en continu l’accessibilité de ses contenus.</p>
+    </div>
+
     <p>Élan pour tous s’engage à rendre ses contenus numériques accessibles, conformément au <strong>RGAA 4.1</strong> (Référentiel Général d’Amélioration de l’Accessibilité). Cette déclaration s’applique au site : <code>https://elanpourtous.github.io/elan-pour-tous/</code>.</p>
 
     <h2>État de conformité</h2>
-    <p>
-      <strong>Conformité partielle</strong> :
-      le site respecte la majorité des critères du RGAA niveau AA. Quelques améliorations sont encore prévues (voir ci-dessous).
-    </p>
+    <p><strong>Conformité partielle</strong> : le site respecte la majorité des critères du RGAA (niveau AA). Des améliorations sont planifiées (voir ci-dessous).</p>
 
     <h2>Périmètre</h2>
     <ul>
       <li>Pages testées : <code>index.html</code>, <code>about.html</code>, <code>formations.html</code>, <code>services.html</code>, <code>rgaa.html</code>, <code>contact.html</code>.</li>
       <li>Technologies utilisées : HTML5, CSS3, JavaScript, GitHub Pages.</li>
-      <li>Agents utilisateurs testés : NVDA/Windows, VoiceOver/iOS, navigation clavier, contraste élevé.</li>
+      <li>Agents utilisateurs : NVDA/Windows, VoiceOver/iOS, navigation clavier, vérifications de contraste.</li>
     </ul>
 
     <h2>Principaux résultats</h2>
     <ul>
       <li>✅ Couleurs et contrastes conformes (WCAG AA).</li>
-      <li>✅ Navigation clavier fluide et repères ARIA clairs.</li>
-      <li>✅ Images et médias avec alternatives textuelles pertinentes.</li>
-      <li>✅ Structure hiérarchique des titres respectée.</li>
-      <li>✅ Mode contraste, agrandissement du texte et espacement gérés par le panneau d’accessibilité.</li>
+      <li>✅ Navigation clavier et focus visible ; repères ARIA cohérents.</li>
+      <li>✅ Alternatives textuelles pertinentes pour les images et médias.</li>
+      <li>✅ Structure de titres hiérarchisée.</li>
+      <li>✅ Panneau d’accessibilité (taille de texte, espacement, contraste).</li>
     </ul>
 
     <h2>Points restant à améliorer</h2>
     <ul>
       <li>Documentation des raccourcis clavier.</li>
-      <li>Contraste de certaines icônes externes (vérification périodique).</li>
-      <li>Évaluation complémentaire par utilisateurs à mobilité réduite.</li>
+      <li>Contraste de certaines icônes externes (surveillance périodique).</li>
+      <li>Évaluation complémentaire avec des utilisateurs à mobilité réduite.</li>
     </ul>
 
     <h2>Méthode d’évaluation</h2>
-    <p>Auto-évaluation basée sur le référentiel RGAA 4.1, à l’aide de tests clavier, lecteurs d’écran et simulateurs de contraste. Audit manuel et technique à chaque mise à jour majeure.</p>
+    <p>Auto-évaluation basée sur le RGAA 4.1 avec tests clavier, lecteurs d’écran et simulateurs de contraste. Audit manuel/technique lors de chaque mise à jour majeure.</p>
 
     <h2>Date de la déclaration</h2>
     <p>Déclaration établie le <time datetime="2025-10-31">31 octobre 2025</time> et mise à jour régulièrement.</p>
@@ -71,35 +64,59 @@
     <h2>Contact et assistance</h2>
     <p>Si vous rencontrez une difficulté d’accès, contactez-nous :</p>
     <ul>
-      <li>📧 <a href="mailto:contact@elanpourtous.org">contact@elanpourtous.org</a></li>
+      <li>📧 <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a></li>
       <li>📞 <a href="tel:+33783336757">07 83 33 67 57</a></li>
       <li>📍 Élan pour tous – 18 rue des Menhirs, 49400 Saumur</li>
     </ul>
-    <p>Nous vous proposerons une alternative accessible dès que possible.</p>
+    <p>Nous vous proposerons une alternative accessible dans les meilleurs délais.</p>
 
     <h2>Voies de recours</h2>
     <p>Si vous n’obtenez pas de réponse satisfaisante, vous pouvez :</p>
     <ul>
-      <li>Saisir le <a href="https://formulaire.defenseurdesdroits.fr/">Défenseur des droits</a>.</li>
-      <li>Contacter un <a href="https://www.defenseurdesdroits.fr/saisir/delegues">délégué du Défenseur des droits</a>.</li>
-      <li>Ou écrire à :  
-        <br><em>Libre réponse 71120 – 75342 Paris CEDEX 07.</em>
-      </li>
+      <li>Saisir le <a href="https://formulaire.defenseurdesdroits.fr/" target="_blank" rel="noopener">Défenseur des droits</a>.</li>
+      <li>Contacter un <a href="https://www.defenseurdesdroits.fr/saisir/delegues" target="_blank" rel="noopener">délégué du Défenseur des droits</a>.</li>
+      <li>Ou écrire à : <em>Libre réponse 71120 – 75342 Paris CEDEX 07.</em></li>
     </ul>
 
     <h2>Engagement d’amélioration continue</h2>
-    <p>Élan pour tous est une micro-entreprise engagée à Saumur. Chaque mise à jour du site s’accompagne d’une vérification selon la grille RGAA, avec intégration des retours utilisateurs.</p>
+    <p>Micro-entreprise basée à Saumur, Élan pour tous intègre l’accessibilité à chaque évolution du site, avec suivi selon la grille RGAA et prise en compte des retours utilisateurs.</p>
 
-    <!-- 👇 Lien vers ta checklist -->
-    <p>👉 Voir la <a href="rgaa-checklist.html">checklist d’auto-évaluation RGAA</a>.</p>
+    <p>👉 Voir aussi la <a href="rgaa-checklist.html">checklist d’auto-évaluation RGAA</a>.</p>
   </main>
 
-  <footer role="contentinfo">
-    <p>&copy; 2025 Élan pour tous. Tous droits réservés.</p>
-  </footer>
+  <!-- FOOTER dynamique -->
+  <div id="footer-placeholder" role="contentinfo"></div>
 
-  <!-- Scripts -->
-  <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/accessibilite.js" defer></script>
+  <!-- Inclusion des fragments + scripts après injection -->
+  <script>
+    function includeInto(id, url) {
+      return fetch(url, { cache: "no-store" })
+        .then(r => { if (!r.ok) throw new Error(url + " introuvable"); return r.text(); })
+        .then(html => { document.getElementById(id).innerHTML = html; });
+    }
+
+    Promise.all([
+      includeInto("header-placeholder", "assets/header.html"),
+      includeInto("footer-placeholder", "assets/footer.html")
+    ])
+    .then(() => {
+      // surligner l’onglet courant automatiquement
+      (function () {
+        const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        document.querySelectorAll('.nav-links a').forEach(a => {
+          if ((a.getAttribute('href')||'').toLowerCase() === current) {
+            a.setAttribute('aria-current', 'page'); a.classList.add('active');
+          }
+        });
+      })();
+
+      const s1 = document.createElement('script'); s1.src = 'assets/js/main.js'; s1.defer = true; document.body.appendChild(s1);
+      const s2 = document.createElement('script'); s2.src = 'assets/js/accessibilite.js'; s2.defer = true; document.body.appendChild(s2);
+      // si tu as ajouté la checklist/plan interactif sur cette page :
+      // const s3 = document.createElement('script'); s3.src = 'assets/js/rgaa-plan.js'; s3.defer = true; document.body.appendChild(s3);
+    })
+    .catch(err => console.error('Erreur d’inclusion :', err));
+  </script>
 </body>
 </html>
+
