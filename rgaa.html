@@ -18,16 +18,7 @@
       <a href="index.html" class="logo" aria-label="Retour à l'accueil">
         <img src="assets/ima/logo.png" alt="Logo Élan pour tous" class="logo-img">
       </a>
-      <div class="nav-actions">
-        <button type="button" class="btn-icon theme-toggle" aria-label="Basculer thème" title="Basculer thème" data-theme-toggle>
-          <span class="visually-hidden">Basculer le thème</span>
-        </button>
-        <button type="button" class="btn-icon menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
-          <span class="visually-hidden">Menu</span>
-          <span aria-hidden="true" class="burger"></span>
-        </button>
-      </div>
-      <ul id="primary-nav" class="nav-links" data-collapsible>
+      <ul id="primary-nav" class="nav-links">
         <li><a href="index.html">Accueil</a></li>
         <li><a href="about.html">À propos</a></li>
         <li><a href="formations.html">Formations</a></li>
@@ -44,76 +35,68 @@
 
     <h2>État de conformité</h2>
     <p>
-      <strong>Conformité partielle</strong>.
-      Le site respecte une grande majorité des critères RGAA niveau AA. Quelques exceptions mineures sont encore en amélioration continue (voir ci-dessous).
+      <strong>Conformité partielle</strong> :
+      le site respecte la majorité des critères du RGAA niveau AA. Quelques améliorations sont encore prévues (voir ci-dessous).
     </p>
 
     <h2>Périmètre</h2>
     <ul>
       <li>Pages testées : <code>index.html</code>, <code>about.html</code>, <code>formations.html</code>, <code>services.html</code>, <code>rgaa.html</code>, <code>contact.html</code>.</li>
-      <li>Technologies utilisées : HTML5, CSS3, JavaScript (vanilla), GitHub Pages.</li>
-      <li>Agents utilisateurs et technologies d’assistance : tests sur NVDA/Windows, VoiceOver/iOS, clavier seul, contrastes simulés.</li>
+      <li>Technologies utilisées : HTML5, CSS3, JavaScript, GitHub Pages.</li>
+      <li>Agents utilisateurs testés : NVDA/Windows, VoiceOver/iOS, navigation clavier, contraste élevé.</li>
     </ul>
 
-    <h2>Résultats principaux (extraits RGAA 4.1)</h2>
+    <h2>Principaux résultats</h2>
     <ul>
-      <li><strong>Couleurs & contrastes</strong> : palette respectant WCAG AA ; mode contraste renforcé disponible (<em>module accessibilité visuelle</em>).</li>
-      <li><strong>Navigation clavier</strong> : ordre logique, <em>skip-link</em> « Aller au contenu », <code>:focus-visible</code> très visibles.</li>
-      <li><strong>Alternatives</strong> : images décoratives masquées aux lecteurs d’écran ; logo avec <code>alt</code> pertinent.</li>
-      <li><strong>Structure</strong> : titres hiérarchisés, rôles ARIA (<code>banner</code>, <code>navigation</code>, <code>main</code>, <code>contentinfo</code>).</li>
-      <li><strong>Composants dynamiques</strong> : menu mobile et bascule de thème avec <code>aria-expanded</code>/<code>aria-pressed</code> et annonce via <code>aria-live</code>.</li>
-      <li><strong>Préférences utilisateur</strong> : respect de <code>prefers-reduced-motion</code>, persistance des réglages (taille texte, contraste, espacement, thème).</li>
+      <li>✅ Couleurs et contrastes conformes (WCAG AA).</li>
+      <li>✅ Navigation clavier fluide et repères ARIA clairs.</li>
+      <li>✅ Images et médias avec alternatives textuelles pertinentes.</li>
+      <li>✅ Structure hiérarchique des titres respectée.</li>
+      <li>✅ Mode contraste, agrandissement du texte et espacement gérés par le panneau d’accessibilité.</li>
     </ul>
 
-    <h2>Contenus non accessibles (points restant à améliorer)</h2>
+    <h2>Points restant à améliorer</h2>
     <ul>
-      <li>Documentation plus détaillée des raccourcis clavier.</li>
-      <li>Vérification de contraste sur certaines images/illustrations externes lorsqu’elles sont ajoutées.</li>
-      <li>Tests utilisateurs supplémentaires (lecteurs d’écran & mobilité réduite) pour valider les parcours complexes.</li>
+      <li>Documentation des raccourcis clavier.</li>
+      <li>Contraste de certaines icônes externes (vérification périodique).</li>
+      <li>Évaluation complémentaire par utilisateurs à mobilité réduite.</li>
     </ul>
 
     <h2>Méthode d’évaluation</h2>
-    <p>Auto-évaluation basée sur le RGAA 4.1 : grille de critères, relectures croisées, tests clavier, lecteurs d’écran (NVDA/Windows, VoiceOver/iOS), et simulateurs de contraste. Mise à jour prévue à chaque livraison majeure.</p>
+    <p>Auto-évaluation basée sur le référentiel RGAA 4.1, à l’aide de tests clavier, lecteurs d’écran et simulateurs de contraste. Audit manuel et technique à chaque mise à jour majeure.</p>
 
     <h2>Date de la déclaration</h2>
-    <p>Déclaration établie le <time datetime="2025-10-31">31/10/2025</time>, mise à jour en continu.</p>
+    <p>Déclaration établie le <time datetime="2025-10-31">31 octobre 2025</time> et mise à jour régulièrement.</p>
 
-    <h2>Retour d’information et contact</h2>
-    <p>Si vous ne parvenez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable du site :</p>
+    <h2>Contact et assistance</h2>
+    <p>Si vous rencontrez une difficulté d’accès, contactez-nous :</p>
     <ul>
       <li>📧 <a href="mailto:contact@elanpourtous.org">contact@elanpourtous.org</a></li>
       <li>📞 <a href="tel:+33783336757">07 83 33 67 57</a></li>
       <li>📍 Élan pour tous – 18 rue des Menhirs, 49400 Saumur</li>
     </ul>
-    <p>Nous nous engageons à vous répondre dans les meilleurs délais et à proposer une alternative accessible au besoin.</p>
+    <p>Nous vous proposerons une alternative accessible dès que possible.</p>
 
     <h2>Voies de recours</h2>
-    <p>Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou un service et que vous ne parvenez pas à obtenir de réponse satisfaisante, vous pouvez :</p>
+    <p>Si vous n’obtenez pas de réponse satisfaisante, vous pouvez :</p>
     <ul>
-      <li>Écrire au <a href="https://formulaire.defenseurdesdroits.fr/">Défenseur des droits</a> ;</li>
-      <li>Contacter le <a href="https://www.defenseurdesdroits.fr/saisir/delegues">délégué du Défenseur des droits</a> dans votre région ;</li>
-      <li>Envoyer un courrier gratuit (sans timbre) au Défenseur des droits :  
-        <br><em>Libre réponse 71120 – 75342 Paris CEDEX 07</em>.</li>
+      <li>Saisir le <a href="https://formulaire.defenseurdesdroits.fr/">Défenseur des droits</a>.</li>
+      <li>Contacter un <a href="https://www.defenseurdesdroits.fr/saisir/delegues">délégué du Défenseur des droits</a>.</li>
+      <li>Ou écrire à :  
+        <br><em>Libre réponse 71120 – 75342 Paris CEDEX 07.</em>
+      </li>
     </ul>
 
     <h2>Engagement d’amélioration continue</h2>
-    <p>Élan pour tous est une micro-entreprise engagée à Saumur. Chaque nouvelle page et chaque nouveau contenu sont vérifiés avec une checklist RGAA, et les retours des utilisateurs sont intégrés rapidement.</p>
-    <p>Voir la <a href="rgaa-checklist.html">checklist d’auto-évaluation RGAA</a>.</p>
+    <p>Élan pour tous est une micro-entreprise engagée à Saumur. Chaque mise à jour du site s’accompagne d’une vérification selon la grille RGAA, avec intégration des retours utilisateurs.</p>
 
+    <!-- 👇 Lien vers ta checklist -->
+    <p>👉 Voir la <a href="rgaa-checklist.html">checklist d’auto-évaluation RGAA</a>.</p>
   </main>
 
   <footer role="contentinfo">
     <p>&copy; 2025 Élan pour tous. Tous droits réservés.</p>
   </footer>
-
-  <!-- Panneau d’accessibilité visuelle -->
-  <div class="accessibility-panel" aria-label="Options d’accessibilité visuelle">
-    <button class="access-btn" data-action="font+" aria-label="Augmenter la taille du texte">A+</button>
-    <button class="access-btn" data-action="font-" aria-label="Diminuer la taille du texte">A−</button>
-    <button class="access-btn" data-action="contrast" aria-label="Augmenter le contraste">⚫⬜</button>
-    <button class="access-btn" data-action="spacing" aria-label="Augmenter l’espacement des lignes">↕️</button>
-    <button class="access-btn" data-action="reset" aria-label="Réinitialiser les réglages">♻️</button>
-  </div>
 
   <!-- Scripts -->
   <script src="assets/js/main.js" defer></script>
