@@ -7,8 +7,12 @@
   <meta name="description" content="Élan pour tous — micro-entreprise à Saumur (49). Formations et services accessibles (RGAA) pour tous.">
   <meta name="theme-color" content="#0b8457">
 
+  <!-- Liens CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/ima/logo.png" type="image/png">
 
   <!-- Données structurées (SEO local) -->
   <script type="application/ld+json">
@@ -17,7 +21,7 @@
     "@type":"LocalBusiness",
     "name":"Élan pour tous",
     "description":"Micro-entreprise à Saumur (49) – formations & services accessibles (RGAA).",
-    "image":"assets/img/LOGO.png",
+    "image":"assets/ima/logo.png",
     "email":"contact@elanpourtous.org",
     "telephone":"+33783336757",
     "address":{
@@ -40,24 +44,13 @@
 
   <header role="banner">
     <nav class="container" role="navigation" aria-label="Menu principal">
-      <!-- Logo (mets ton fichier en assets/img/LOGO.png) -->
+      <!-- Logo -->
       <a href="index.html" class="logo" aria-label="Retour à l'accueil">
-        <img src="assets/img/LOGO.png" alt="Logo Élan pour tous" class="logo-img">
+        <img src="assets/ima/logo.png" alt="Logo Élan pour tous" class="logo-img">
       </a>
 
-      <!-- Actions (thème + menu mobile) -->
-      <div class="nav-actions">
-        <button type="button" class="btn-icon theme-toggle" aria-label="Basculer thème" title="Basculer thème" data-theme-toggle>
-          <span class="visually-hidden">Basculer le thème</span>
-        </button>
-        <button type="button" class="btn-icon menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
-          <span class="visually-hidden">Menu</span>
-          <span aria-hidden="true" class="burger"></span>
-        </button>
-      </div>
-
-      <!-- Liens -->
-      <ul id="primary-nav" class="nav-links" data-collapsible>
+      <!-- Menu principal -->
+      <ul class="nav-links" id="primary-nav">
         <li><a href="index.html" aria-current="page">Accueil</a></li>
         <li><a href="about.html">À propos</a></li>
         <li><a href="formations.html">Formations</a></li>
@@ -69,9 +62,6 @@
   </header>
 
   <main id="contenu" class="container hero" role="main">
-    <!-- Logo en héro (optionnel) -->
-    <!-- <img src="assets/img/LOGO.png" alt="Logo Élan pour tous" class="hero-logo"> -->
-
     <h1>Élan pour tous</h1>
     <p class="tagline">Micro-entreprise basée à Saumur (49) — formations & services accessibles.</p>
     <p>Accompagner chacun·e dans son parcours d’apprentissage et d’épanouissement.</p>
@@ -88,7 +78,6 @@
 
     <!-- Bannière Accessibilité RGAA -->
     <div class="rgaa-banner" role="complementary" aria-label="Certification d'accessibilité du site">
-      <!-- Remplace l'img par un SVG inline si l’icône distante ne s’affiche pas -->
       <img src="assets/img/accessibility.svg" alt="" class="rgaa-icon" width="24" height="24">
       <p>
         <strong>Accessibilité RGAA démontrée ✅</strong> — 
@@ -96,6 +85,7 @@
         <a href="rgaa.html">En savoir plus</a>
       </p>
     </div>
+
     <p>&copy; 2025 Élan pour tous. Tous droits réservés.</p>
   </footer>
 
@@ -108,7 +98,7 @@
     <button class="access-btn" data-action="reset" aria-label="Réinitialiser les réglages">♻️</button>
   </div>
 
-  <!-- Scripts -->
+  <!-- Scripts JS -->
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/accessibilite.js" defer></script>
 </body>
