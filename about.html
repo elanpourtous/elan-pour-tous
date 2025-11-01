@@ -3,58 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Élan pour tous — micro-entreprise à Saumur, fondée par Patrick Billy, engagée pour la formation, l’accessibilité et l’égalité des chances.">
+  <meta name="description" content="Élan pour tous — micro-entreprise fondée par Patrick Billy à Saumur, dédiée à la formation et à l’accessibilité pour tous publics.">
   <title>Élan pour tous - À propos</title>
   <meta name="theme-color" content="#0b8457">
   <link rel="icon" href="assets/ima/baa.png" type="image/png">
 
-  <!-- Feuilles de style -->
+  <!-- Styles -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
 
 <body>
-  <!-- Lien d’évitement pour lecteurs d’écran -->
+  <!-- Lien d’évitement -->
   <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-  <!-- HEADER chargé automatiquement -->
+  <!-- HEADER dynamique -->
   <div id="header-placeholder" role="banner"></div>
 
   <!-- Contenu principal -->
   <main class="container hero" id="contenu" role="main">
     <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo">
-
     <h1>À propos de nous</h1>
 
     <p>
       <strong>Élan pour tous</strong> est une micro-entreprise basée à <strong>Saumur (49)</strong>,
-      engagée pour l’accès à la connaissance, l’inclusion et l’égalité des chances.
-      Nous accompagnons chaque personne dans son parcours de formation, d’apprentissage et d’épanouissement.
+      engagée pour la formation, l’inclusion et l’égalité des chances.
+      Notre mission : accompagner chaque personne dans son parcours d’apprentissage et d’épanouissement.
     </p>
 
-    <p>
-      L’entreprise a été fondée par <strong>Patrick Billy</strong>, formateur passionné et engagé,
-      convaincu que chaque individu possède un potentiel unique à révéler.
-      Patrick met son expérience et son énergie au service d’une éducation inclusive,
-      accessible à tous les publics, quel que soit le handicap ou le parcours de vie.
-    </p>
+    <!-- 👤 Encadré fondateur -->
+    <section class="founder-card" aria-labelledby="fondateur">
+      <h2 id="fondateur">Le fondateur</h2>
+      <img src="assets/ima/patrick-billy.jpg" alt="Portrait de Patrick Billy, fondateur d’Élan pour tous" class="founder-photo">
+      <p>
+        <strong>Patrick Billy</strong> est le fondateur d’<strong>Élan pour tous</strong>.
+        Formateur passionné, il met son expérience au service d’une éducation inclusive,
+        accessible à toutes et tous, quelles que soient les différences.
+      </p>
+      <p>
+        <em>« Apprendre, c’est reprendre confiance en soi. Ensemble, faisons de chaque pas un élan vers l’avenir. »</em>
+      </p>
+      <p>
+        🔗 <a href="https://www.linkedin.com/in/patrickbilly/" target="_blank" rel="noopener" aria-label="Profil LinkedIn de Patrick Billy">
+        Voir le profil LinkedIn de Patrick Billy</a>
+      </p>
+    </section>
 
     <p>
-      <em>« Apprendre, c’est reprendre confiance en soi. Ensemble, faisons de chaque pas un élan vers l’avenir. »</em>
-    </p>
-
-    <p>
-      Aujourd’hui, Élan pour tous s’appuie sur des formateur·rice·s à l’écoute,
-      partageant les mêmes valeurs : bienveillance, accessibilité et réussite pour chacun·e.
+      L’équipe d’Élan pour tous partage ces valeurs : bienveillance, accessibilité et réussite pour chacun·e.
+      Ensemble, nous œuvrons pour un monde où la diversité est une richesse et où la formation est un levier d’inclusion.
     </p>
   </main>
 
-  <!-- FOOTER chargé automatiquement -->
+  <!-- FOOTER dynamique -->
   <div id="footer-placeholder" role="contentinfo"></div>
 
-  <!-- Inclusion des fragments + scripts -->
+  <!-- Script d’inclusion header/footer -->
   <script>
-    // Fonction pour insérer des fragments HTML (header/footer)
     function includeInto(id, url) {
       return fetch(url, { cache: "no-store" })
         .then(r => {
@@ -69,7 +74,6 @@
       includeInto("footer-placeholder", "assets/footer.html")
     ])
     .then(() => {
-      // Charge les scripts principaux après injection
       const s1 = document.createElement("script");
       s1.src = "assets/js/main.js"; s1.defer = true;
       document.body.appendChild(s1);
@@ -82,5 +86,3 @@
   </script>
 </body>
 </html>
-
-
