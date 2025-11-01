@@ -14,22 +14,22 @@
 </head>
 
 <body>
-  <!-- Skip-link pour navigation clavier -->
-  <a href="#main" class="skip-link">Aller au contenu</a>
+  <!-- Lien d’évitement pour la navigation clavier -->
+  <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-  <!-- HEADER (inclus dynamiquement) -->
+  <!-- HEADER chargé dynamiquement -->
   <div id="header-placeholder" role="banner"></div>
 
-  <!-- Contenu principal -->
-  <main id="main" class="container hero" role="main">
+  <main id="contenu" class="container hero" role="main">
     <h1>Contactez-nous</h1>
     <p>Pour toute question, information ou demande d'inscription, n'hésitez pas à nous contacter. Nous sommes là pour vous répondre.</p>
 
-    <!-- Message d'état (utilisé si besoin) -->
+    <!-- Message d’état (après envoi du formulaire) -->
     <p class="form-status" role="status" aria-live="polite" hidden>
       Votre message a bien été envoyé. Merci !
     </p>
 
+    <!-- Formulaire -->
     <form action="#" method="post" class="contact-form" aria-label="Formulaire de contact" novalidate>
       <!-- Champ anti-spam (honeypot) -->
       <div class="visually-hidden" aria-hidden="true">
@@ -45,9 +45,7 @@
         required
         aria-required="true"
         autocomplete="name"
-        inputmode="text"
         aria-describedby="hint-name">
-
       <p id="hint-name" class="field-hint">Indiquez vos nom et prénom.</p>
 
       <label for="email">Email <span class="badge-req" aria-hidden="true">*</span></label>
@@ -58,9 +56,7 @@
         required
         aria-required="true"
         autocomplete="email"
-        inputmode="email"
         aria-describedby="hint-email">
-
       <p id="hint-email" class="field-hint">Nous ne partagerons pas votre adresse.</p>
 
       <label for="message">Message <span class="badge-req" aria-hidden="true">*</span></label>
@@ -71,31 +67,28 @@
         required
         aria-required="true"
         aria-describedby="hint-message"></textarea>
-
       <p id="hint-message" class="field-hint">Précisez votre demande (contexte, besoins, dates…)</p>
 
       <button type="submit" class="btn">Envoyer</button>
     </form>
 
+    <!-- Coordonnées -->
     <section class="contact-info" aria-labelledby="infos">
       <h2 id="infos">Nos coordonnées</h2>
       <p><strong>Email :</strong> <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a></p>
       <p><strong>Téléphone :</strong> <a href="tel:+33783336757">07 83 33 67 57</a></p>
-      <p><strong>Adresse :</strong> 18 rue des Menhirs — 49400 BAGNEUX — FRANCE</p>
+      <p><strong>Adresse :</strong> 18 rue des Menhirs - 49400 BAGNEUX - France</p>
     </section>
   </main>
 
-  <!-- FOOTER (inclus dynamiquement) -->
+  <!-- FOOTER chargé dynamiquement -->
   <div id="footer-placeholder" role="contentinfo"></div>
 
-  <!-- Inclusion des fragments puis scripts (après injection) -->
+  <!-- Scripts d’inclusion -->
   <script>
     function includeInto(id, url) {
       return fetch(url, { cache: "no-store" })
-        .then(r => {
-          if (!r.ok) throw new Error(url + " introuvable");
-          return r.text();
-        })
+        .then(r => { if (!r.ok) throw new Error(url + " introuvable"); return r.text(); })
         .then(html => { document.getElementById(id).innerHTML = html; });
     }
 
@@ -104,14 +97,10 @@
       includeInto("footer-placeholder", "assets/footer.html")
     ])
     .then(() => {
-      // Charge les JS une fois le header présent (menu/thème)
       const s1 = document.createElement("script");
-      s1.src = "assets/js/main.js"; s1.defer = true;
-      document.body.appendChild(s1);
-
+      s1.src = "assets/js/main.js"; s1.defer = true; document.body.appendChild(s1);
       const s2 = document.createElement("script");
-      s2.src = "assets/js/accessibilite.js"; s2.defer = true;
-      document.body.appendChild(s2);
+      s2.src = "assets/js/accessibilite.js"; s2.defer = true; document.body.appendChild(s2);
     })
     .catch(err => console.error("Erreur d’inclusion :", err));
   </script>
