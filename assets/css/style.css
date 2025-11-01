@@ -115,7 +115,7 @@ nav.container { display: flex; justify-content: space-between; align-items: cent
 }
 .btn:hover { filter: brightness(1.1); }
 
-/* Pied de page */
+/* Pied de page générique */
 footer {
   margin-top: 3rem;
   border-top: 1px solid var(--border);
@@ -177,8 +177,6 @@ html[data-theme="light"] .theme-toggle::before {
   * { transition: background-color .25s, color .25s, border-color .25s; }
 }
 
-/* ============ Animations & transitions accessibles ============ */
-
 /* Animation du menu mobile */
 @media (max-width: 860px) {
   .nav-links {
@@ -227,8 +225,6 @@ html[data-theme="light"] .theme-toggle::before {
 }
 
 /* ============ Animation d'apparition du contenu ============ */
-
-/* Animation "fade-in" progressive */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -239,19 +235,14 @@ html[data-theme="light"] .theme-toggle::before {
     transform: translateY(0);
   }
 }
-
-/* Application automatique sur les sections principales */
 main, section, .hero, .contact-form, .contact-info {
   opacity: 0;
   animation: fadeInUp 0.6s ease-out forwards;
 }
-
-/* Décalage léger entre les blocs pour effet séquentiel */
 .hero { animation-delay: 0.2s; }
 .contact-form { animation-delay: 0.3s; }
 .contact-info { animation-delay: 0.4s; }
 
-/* Respect des préférences "réduire les animations" */
 @media (prefers-reduced-motion: reduce) {
   main, section, .hero, .contact-form, .contact-info {
     opacity: 1;
@@ -260,17 +251,13 @@ main, section, .hero, .contact-form, .contact-info {
   }
 }
 
-/* ============ Effets de survol et d'interaction accessibles ============ */
-
-/* --- Liens --- */
+/* ============ Effets de survol et d’interaction ============ */
 a {
   position: relative;
   text-decoration: none;
   color: var(--link);
   transition: color .25s ease;
 }
-
-/* Soulignement doux au survol */
 a::after {
   content: "";
   position: absolute;
@@ -284,16 +271,9 @@ a::after {
   transition: transform .25s ease;
 }
 a:hover::after,
-a:focus-visible::after {
-  transform: scaleX(1);
-}
+a:focus-visible::after { transform: scaleX(1); }
+a:hover { color: color-mix(in srgb, var(--link) 80%, var(--fg)); }
 
-/* Changement subtil de couleur au survol */
-a:hover {
-  color: color-mix(in srgb, var(--link) 80%, var(--fg));
-}
-
-/* --- Boutons --- */
 .btn {
   background: var(--brand);
   color: #fff;
@@ -304,133 +284,88 @@ a:hover {
   font-weight: 700;
   transition: background-color .3s ease, transform .2s ease;
 }
-
-/* Effet de survol accessible (plus lumineux) */
 .btn:hover {
   background: color-mix(in srgb, var(--brand) 85%, white);
   transform: translateY(-1px);
 }
-
-/* Effet de clic (légère pression) */
-.btn:active {
-  transform: translateY(1px);
-}
-
-/* Focus visible renforcé */
-.btn:focus-visible,
-a:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-  border-radius: .25rem;
-}
-
-/* Désactivation propre */
-.btn[disabled],
-.btn[aria-disabled="true"] {
+.btn:active { transform: translateY(1px); }
+.btn[disabled], .btn[aria-disabled="true"] {
   opacity: .6;
   cursor: not-allowed;
   transform: none;
 }
 
-/* Respect des préférences "réduire les mouvements" */
-@media (prefers-reduced-motion: reduce) {
-  a::after, a:hover::after, .btn, .btn:hover {
-    transition: none !important;
-    transform: none !important;
-  }
+/* --- FOOTER UNIFIÉ (site-footer) --- */
+.site-footer {
+  background: #f9f9f9;
+  border-top: 2px solid var(--brand);
+  padding: 2rem 1rem;
+  text-align: center;
+  color: #222;
+  font-size: 0.95rem;
 }
 
-/* ============ Effets de survol et d'interaction accessibles ============ */
-
-/* --- Liens --- */
-a {
-  position: relative;
-  text-decoration: none;
-  color: var(--link);
-  transition: color .25s ease;
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-/* Soulignement doux au survol */
-a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 2px;
-  background-color: var(--link);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .25s ease;
-}
-a:hover::after,
-a:focus-visible::after {
-  transform: scaleX(1);
+.footer-logo { width: 80px; height: auto; margin-bottom: 0.25rem; }
+.footer-name { font-weight: 700; color: var(--brand); margin: 0; }
+
+.site-address {
+  font-style: normal;
+  margin: 0.5rem 0;
+  line-height: 1.4;
 }
 
-/* Changement subtil de couleur au survol */
-a:hover {
-  color: color-mix(in srgb, var(--link) 80%, var(--fg));
-}
+.legal-small a { color: var(--brand); text-decoration: underline; }
+.legal-small a:hover { text-decoration: none; }
 
-/* --- Boutons --- */
-.btn {
-  background: var(--brand);
-  color: #fff;
-  border: none;
-  padding: .75rem 1rem;
-  border-radius: .5rem;
-  cursor: pointer;
-  font-weight: 700;
-  transition: background-color .3s ease, transform .2s ease;
-}
-
-/* Effet de survol accessible (plus lumineux) */
-.btn:hover {
-  background: color-mix(in srgb, var(--brand) 85%, white);
-  transform: translateY(-1px);
-}
-
-/* Effet de clic (légère pression) */
-.btn:active {
-  transform: translateY(1px);
-}
-
-/* Focus visible renforcé */
-.btn:focus-visible,
-a:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-  border-radius: .25rem;
-}
-
-/* Désactivation propre */
-.btn[disabled],
-.btn[aria-disabled="true"] {
-  opacity: .6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Respect des préférences "réduire les mouvements" */
-@media (prefers-reduced-motion: reduce) {
-  a::after, a:hover::after, .btn, .btn:hover {
-    transition: none !important;
-    transform: none !important;
-  }
-}
-
-.rgaa-icon {
-  margin-right: 0.5rem;
-  vertical-align: middle;
-  color: #0b8457; /* ton vert principal */
-}
 .rgaa-banner {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   background: #f3fef7;
-  border-top: 2px solid #0b8457;
+  border: 1px solid #ccebdc;
+  border-radius: 0.5rem;
   padding: 0.5rem 1rem;
-  font-size: 0.95rem;
+  margin: 1rem auto;
+  max-width: 520px;
+  flex-wrap: wrap;
+}
+
+.rgaa-icon {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  margin-right: .25rem;
+}
+
+.rgaa-banner a {
+  color: var(--brand);
+  text-decoration: underline;
+}
+.rgaa-banner a:hover { text-decoration: none; }
+
+.copyright {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.logo-img { height: 60px; width: auto; vertical-align: middle; }
+.hero-logo { display:block; margin:2rem auto 1rem; max-width:220px; height:auto; filter:drop-shadow(0 2px 4px rgba(0,0,0,.3)); }
+
+html[data-theme="dark"] .site-footer {
+  background: var(--card);
+  color: var(--fg);
+  border-top-color: var(--border);
+}
+html[data-theme="dark"] .rgaa-banner {
+  background: color-mix(in srgb, var(--brand) 12%, var(--card));
+  border-color: var(--border);
 }
