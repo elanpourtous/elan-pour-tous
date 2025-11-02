@@ -369,3 +369,24 @@ html[data-theme="dark"] .rgaa-banner {
   background: color-mix(in srgb, var(--brand) 12%, var(--card));
   border-color: var(--border);
 }
+
+/* Tableau RGAA */
+.rgaa-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+.rgaa-table th, .rgaa-table td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.rgaa-table th {
+  background: var(--card);
+  font-weight: 700;
+}
+.rgaa-table tr:nth-child(even) {
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+}
