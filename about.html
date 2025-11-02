@@ -43,41 +43,10 @@
     </p>
   </main>
 
-  
   <!-- FOOTER chargé automatiquement -->
   <div id="footer-placeholder" role="contentinfo"></div>
 
-  <!-- Inclusion des fragments + scripts -->
-  <script>
-    // Fonction pour insérer des fragments HTML (header/footer)
-    function includeInto(id, url) {
-      return fetch(url, { cache: "no-store" })
-        .then(r => {
-          if (!r.ok) throw new Error(url + " introuvable");
-          return r.text();
-        })
-        .then(html => { document.getElementById(id).innerHTML = html; });
-    }
-
-    Promise.all([
-      includeInto("header-placeholder", "assets/header.html"),
-      includeInto("footer-placeholder", "assets/footer.html")
-    ])
-    .then(() => {
-      // Charge les scripts principaux après injection
-      const s1 = document.createElement("script");
-      s1.src = "assets/js/main.js"; s1.defer = true;
-      document.body.appendChild(s1);
-
-      const s2 = document.createElement("script");
-      s2.src = "assets/js/accessibilite.js"; s2.defer = true;
-      document.body.appendChild(s2);
-    })
-    .catch(err => console.error("Erreur d’inclusion :", err));
-  </script>
-
-  <!-- Injecte header + footer et charge les JS -->
-<script src="assets/js/include.js" defer></script>
-
+  <!-- ✅ Inclusion du header, footer et des scripts (main, accessibilité, TTS) -->
+  <script src="assets/js/include.js" defer></script>
 </body>
 </html>
