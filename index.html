@@ -62,3 +62,27 @@
   </script>
 </body>
 </html>
+  <!-- Pied de page chargé dynamiquement -->
+  <div id="footer-placeholder" role="contentinfo"></div>
+
+  <!-- ============================= -->
+  <!-- 🔗 INJECTION HEADER + FOOTER + JS -->
+  <!-- ============================= -->
+  <script>
+    function includeInto(id, url) {
+      return fetch(url, { cache: "no-store" })
+        .then(r => { if (!r.ok) throw new Error(url + " introuvable"); return r.text(); })
+        .then(html => { document.getElementById(id).innerHTML = html; });
+    }
+
+    Promise.all([
+      includeInto("header-placeholder", "assets/header.html"),
+      includeInto("footer-placeholder", "assets/footer.html")
+    ]).then(() => {
+      const s1 = document.createElement('script'); s1.src = 'assets/js/main.js'; s1.defer = true; document.body.appendChild(s1);
+      const s2 = document.createElement('script'); s2.src = 'assets/js/accessibilite.js'; s2.defer = true; document.body.appendChild(s2);
+      const s3 = document.createElement('script'); s3.src = 'assets/js/tts.js'; s3.defer = true; document.body.appendChild(s3); // 🔊 Lecture vocale
+    }).catch(err => console.error('Erreur d’inclusion :', err));
+  </script>
+</body>
+</html>
