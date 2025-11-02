@@ -1,34 +1,40 @@
-<footer role="contentinfo" class="site-footer">
+<!-- 🔝 HEADER ACCESSIBLE - Élan pour tous -->
+<header role="banner">
+  <nav class="container" role="navigation" aria-label="Menu principal">
+    <!-- Logo -->
+    <a href="index.html" class="logo" aria-label="Accueil Élan pour tous">
+      <img src="assets/ima/logo.png" alt="Logo Élan pour tous" class="logo-img" width="50" height="50">
+      <span class="sr-only">Retour à l'accueil</span>
+    </a>
 
-  <!-- Logo Élan pour tous -->
-  <div class="footer-brand">
-    <img src="assets/ima/logo.png" alt="Logo Élan pour tous" class="footer-logo">
-    <p class="footer-name">Élan pour tous</p>
-  </div>
+    <!-- Actions (menu / thème / lecture) -->
+    <div class="nav-actions">
+      <!-- Menu mobile -->
+      <button class="menu-toggle btn-icon" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="burger" aria-hidden="true"></span>
+      </button>
 
-  <!-- Coordonnées -->
-  <address class="site-address" translate="no">
-    Micro-entreprise – 18 rue des Menhirs, 49400 Saumur<br>
-    <a href="tel:+33783336757">07 83 33 67 57</a> • 
-    <a href="mailto:contact@elanpourtous.org">contact@elanpourtous.org</a>
-  </address>
+      <!-- Thème clair/sombre -->
+      <button class="theme-toggle btn-icon" data-theme-toggle aria-pressed="false"
+              aria-label="Activer le mode sombre" title="Activer le mode sombre">
+        <span aria-hidden="true">🌓</span>
+      </button>
 
-  <!-- Mentions légales -->
-  <p class="legal-small"><a href="mentions-legales.html">Mentions légales</a></p>
+      <!-- Lecture à voix haute (toggle barre TTS) -->
+      <button class="btn-icon" id="tts-toggle" aria-pressed="false"
+              aria-label="Lire la page à voix haute" title="Lire la page">
+        🔊
+      </button>
+    </div>
 
-  <!-- Bannière Accessibilité RGAA -->
-  <div class="rgaa-banner" role="complementary" aria-label="Certification d'accessibilité du site">
-    <img src="assets/ima/accessibility.svg" 
-         alt="Icône d’accessibilité RGAA" 
-         class="rgaa-icon" 
-         width="24" 
-         height="24">
-    <p>
-      <strong>Accessibilité RGAA démontrée ✅</strong> — 
-      Site conçu pour être inclusif et utilisable par tous. 
-      <a href="rgaa.html" aria-label="En savoir plus sur la conformité RGAA">En savoir plus</a>
-    </p>
-  </div>
-
-  <p class="copyright">&copy; 2025 Élan pour tous. Tous droits réservés.</p>
-</footer>
+    <!-- Menu principal -->
+    <ul id="primary-nav" class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="formations.html">Formations</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="rgaa.html">Accessibilité RGAA</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
