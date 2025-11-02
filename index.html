@@ -2,71 +2,38 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Élan pour tous — micro-entreprise à Saumur, formations et services inclusifs pour tous publics.">
-  <title>Élan pour tous - Accueil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Élan pour tous — micro-entreprise à Saumur (49) proposant des formations et services accessibles à tous publics.">
   <meta name="theme-color" content="#0b8457">
-  <link rel="icon" href="assets/ima/baa.png" type="image/png">
+  <title>Élan pour tous - Accueil</title>
 
-  <!-- Styles -->
+  <!-- Feuilles de style -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="icon" href="assets/ima/logo.png" type="image/png">
 </head>
 
 <body>
-  <!-- Lien d’évitement -->
-  <a href="#contenu" class="skip-link">Aller au contenu</a>
+  <!-- Lien d’évitement pour navigation clavier -->
+  <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
-  <!-- HEADER (inclus dynamiquement) -->
-  <div id="header-placeholder" role="banner"></div>
+  <!-- HEADER chargé dynamiquement -->
+  <div id="header-placeholder"></div>
 
-  <!-- Contenu principal -->
-  <main class="container hero" role="main" id="contenu">
+  <!-- 🌟 Contenu principal -->
+  <main id="contenu" class="container hero" role="main">
     <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo">
     <h1>Élan pour tous</h1>
-    <p class="tagline">Micro-entreprise basée à Saumur (49) — formations & services accessibles à tous.</p>
+    <p class="tagline">Micro-entreprise basée à Saumur (49) — formations et services inclusifs pour tous publics.</p>
     <p>Accompagner chacun·e dans son parcours d’apprentissage, de reconversion et d’épanouissement personnel ou professionnel.</p>
     <a href="formations.html" class="btn">Découvrir nos formations</a>
   </main>
 
-  <!-- FOOTER (inclus dynamiquement) -->
-  <div id="footer-placeholder" role="contentinfo"></div>
-
-  <!-- Inclusion des fragments puis scripts, dans le bon ordre -->
-  <script>
-    function includeInto(id, url) {
-      return fetch(url, { cache: "no-store" })
-        .then(r => {
-          if (!r.ok) throw new Error(url + " introuvable");
-          return r.text();
-        })
-        .then(html => { document.getElementById(id).innerHTML = html; });
-    }
-
-    // On attend que header + footer soient injectés avant d'initialiser les JS
-    Promise.all([
-      includeInto("header-placeholder", "assets/header.html"),
-      includeInto("footer-placeholder", "assets/footer.html")
-    ])
-    .then(() => {
-      // Charge les scripts seulement après l'injection du header (menu, thème)
-      const s1 = document.createElement("script");
-      s1.src = "assets/js/main.js"; s1.defer = true;
-      document.body.appendChild(s1);
-
-      const s2 = document.createElement("script");
-      s2.src = "assets/js/accessibilite.js"; s2.defer = true;
-      document.body.appendChild(s2);
-    })
-    .catch(err => console.error("Erreur d’inclusion :", err));
-  </script>
-</body>
-</html>
-  <!-- Pied de page chargé dynamiquement -->
-  <div id="footer-placeholder" role="contentinfo"></div>
+  <!-- FOOTER chargé dynamiquement -->
+  <div id="footer-placeholder"></div>
 
   <!-- ============================= -->
-  <!-- 🔗 INJECTION HEADER + FOOTER + JS -->
+  <!-- 🔗 INJECTION HEADER + FOOTER + SCRIPTS -->
   <!-- ============================= -->
   <script>
     function includeInto(id, url) {
@@ -78,11 +45,22 @@
     Promise.all([
       includeInto("header-placeholder", "assets/header.html"),
       includeInto("footer-placeholder", "assets/footer.html")
-    ]).then(() => {
-      const s1 = document.createElement('script'); s1.src = 'assets/js/main.js'; s1.defer = true; document.body.appendChild(s1);
-      const s2 = document.createElement('script'); s2.src = 'assets/js/accessibilite.js'; s2.defer = true; document.body.appendChild(s2);
-      const s3 = document.createElement('script'); s3.src = 'assets/js/tts.js'; s3.defer = true; document.body.appendChild(s3); // 🔊 Lecture vocale
-    }).catch(err => console.error('Erreur d’inclusion :', err));
+    ])
+    .then(() => {
+      // Charger les scripts JS une fois les fragments insérés
+      const scripts = [
+        "assets/js/main.js",
+        "assets/js/accessibilite.js",
+        "assets/js/tts.js" // 🔊 Lecture vocale
+      ];
+      scripts.forEach(src => {
+        const s = document.createElement("script");
+        s.src = src;
+        s.defer = true;
+        document.body.appendChild(s);
+      });
+    })
+    .catch(err => console.error("Erreur d’inclusion :", err));
   </script>
 </body>
 </html>
