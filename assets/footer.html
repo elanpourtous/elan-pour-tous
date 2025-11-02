@@ -25,7 +25,7 @@
     <p class="copyright">© 2025 Élan pour tous — Tous droits réservés.</p>
   </div>
 
-  <!-- 🎧 Barre TTS (lecture à voix haute) -->
+  <!-- 🎧 Barre TTS (lecture à voix haute) — UNE SEULE FOIS -->
   <div class="tts-bar" role="region" aria-label="Lecture à voix haute" hidden>
     <div class="tts-row">
       <button class="btn" id="tts-play">Lire</button>
@@ -45,47 +45,23 @@
       <select id="tts-voice" aria-label="Choisir la voix de synthèse"></select>
     </div>
 
-    <!-- Région live si absente -->
+    <!-- Aide / raccourcis -->
+    <details class="tts-help">
+      <summary aria-label="Afficher l’aide sur la lecture à voix haute">❓ Aide</summary>
+      <div class="tts-help-content">
+        <p><strong>Lecture à voix haute</strong> : sélectionnez un texte puis cliquez sur <em>Lire</em>, ou laissez vide pour lire tout le contenu de la page.</p>
+        <ul>
+          <li><kbd>Alt</kbd> + <kbd>L</kbd> : Lire</li>
+          <li><kbd>Alt</kbd> + <kbd>P</kbd> : Pause</li>
+          <li><kbd>Alt</kbd> + <kbd>R</kbd> : Reprendre</li>
+          <li><kbd>Alt</kbd> + <kbd>S</kbd> : Stop</li>
+        </ul>
+        <p>Vous pouvez ajuster la <strong>vitesse</strong> et choisir une <strong>voix</strong> (français prioritaire si disponible).</p>
+        <p>Astuce : la lecture commence par la <strong>sélection</strong> si vous avez surligné un passage, sinon par le contenu principal de la page.</p>
+      </div>
+    </details>
+
+    <!-- Région live (annonces lecteurs d’écran) -->
     <p id="tts-live" class="visually-hidden" role="status" aria-live="polite"></p>
   </div>
-  <!-- 🎧 Barre TTS (lecture à voix haute) -->
-<div class="tts-bar" role="region" aria-label="Lecture à voix haute" hidden>
-  <div class="tts-row">
-    <button class="btn" id="tts-play">Lire</button>
-    <button class="btn" id="tts-pause" disabled>Pause</button>
-    <button class="btn" id="tts-resume" disabled>Reprendre</button>
-    <button class="btn" id="tts-stop" disabled>Stop</button>
-  </div>
-
-    <!-- Aide / raccourcis -->
-  <details class="tts-help">
-    <summary aria-label="Afficher l’aide sur la lecture à voix haute">❓ Aide</summary>
-    <div class="tts-help-content">
-      <p><strong>Lecture à voix haute</strong> : sélectionnez un texte puis cliquez sur <em>Lire</em>, ou laissez vide pour lire tout le contenu de la page.</p>
-      <ul>
-        <li><kbd>Alt</kbd> + <kbd>L</kbd> : Lire</li>
-        <li><kbd>Alt</kbd> + <kbd>P</kbd> : Pause</li>
-        <li><kbd>Alt</kbd> + <kbd>R</kbd> : Reprendre</li>
-        <li><kbd>Alt</kbd> + <kbd>S</kbd> : Stop</li>
-      </ul>
-      <p>Vous pouvez ajuster la <strong>vitesse</strong> et choisir une <strong>voix</strong> (français prioritaire si disponible).</p>
-      <p>Astuce : la lecture commence par la <strong>sélection</strong> si vous avez surligné un passage, sinon par le contenu principal de la page.</p>
-    </div>
-  </details>
-
-  <div class="tts-row">
-    <label for="tts-rate">Vitesse :</label>
-    <input id="tts-rate" type="range" min="0.7" max="1.6" step="0.1" value="1.0" />
-    <span id="tts-rate-val" aria-live="polite">1.0×</span>
-  </div>
-
-  <div class="tts-row">
-    <label for="tts-voice">Voix :</label>
-    <select id="tts-voice" aria-label="Choisir la voix de synthèse"></select>
-  </div>
-
-  <!-- Région live (annonces lecteurs d’écran) -->
-  <p id="tts-live" class="visually-hidden" role="status" aria-live="polite"></p>
-</div>
-
 </footer>
