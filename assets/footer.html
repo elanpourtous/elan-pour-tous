@@ -57,6 +57,22 @@
     <button class="btn" id="tts-stop" disabled>Stop</button>
   </div>
 
+    <!-- Aide / raccourcis -->
+  <details class="tts-help">
+    <summary aria-label="Afficher l’aide sur la lecture à voix haute">❓ Aide</summary>
+    <div class="tts-help-content">
+      <p><strong>Lecture à voix haute</strong> : sélectionnez un texte puis cliquez sur <em>Lire</em>, ou laissez vide pour lire tout le contenu de la page.</p>
+      <ul>
+        <li><kbd>Alt</kbd> + <kbd>L</kbd> : Lire</li>
+        <li><kbd>Alt</kbd> + <kbd>P</kbd> : Pause</li>
+        <li><kbd>Alt</kbd> + <kbd>R</kbd> : Reprendre</li>
+        <li><kbd>Alt</kbd> + <kbd>S</kbd> : Stop</li>
+      </ul>
+      <p>Vous pouvez ajuster la <strong>vitesse</strong> et choisir une <strong>voix</strong> (français prioritaire si disponible).</p>
+      <p>Astuce : la lecture commence par la <strong>sélection</strong> si vous avez surligné un passage, sinon par le contenu principal de la page.</p>
+    </div>
+  </details>
+
   <div class="tts-row">
     <label for="tts-rate">Vitesse :</label>
     <input id="tts-rate" type="range" min="0.7" max="1.6" step="0.1" value="1.0" />
