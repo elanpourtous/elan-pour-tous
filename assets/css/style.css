@@ -390,3 +390,66 @@ html[data-theme="dark"] .rgaa-banner {
 .rgaa-table tr:nth-child(even) {
   background: color-mix(in srgb, var(--card) 90%, transparent);
 }
+
+/* --- Skip-link bien visible (clavier) --- */
+.skip-link {
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip-link:focus {
+  position:fixed; left:1rem; top:1rem; z-index:1000;
+  width:auto; height:auto; padding:.5rem .75rem;
+  background:#0b8457; color:#fff; border-radius:.5rem;
+  outline:3px solid var(--focus); outline-offset:2px;
+}
+
+/* --- Focus renforcé partout (déjà présent, on sécurise) --- */
+:where(a,button,input,select,textarea,[role="button"]):focus-visible {
+  outline:3px solid var(--focus);
+  outline-offset:3px;          /* + lisible */
+  border-radius:.25rem;
+}
+
+/* --- Cibles tactiles minimales --- */
+a, button { min-width:44px; min-height:44px; }
+
+/* --- Liens : soulignement par défaut dans le corps de page (meilleure lisibilité) --- */
+main :where(p, li) a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+/* Garder le style "sans soulignement" uniquement pour la nav */
+.nav-links a { text-decoration: none; }
+/* Et limiter l’effet de soulignement animé à la nav si tu veux le conserver */
+.nav-links a::after { display:none; }
+
+/* --- Logo carré 50x50 propre (si tu en as besoin en header) --- */
+.logo-img {
+  width:50px; height:50px; object-fit:contain;
+  vertical-align: middle;
+  border-radius:.35rem;       /* doux, optionnel */
+}
+
+/* --- Boutons icône : focus clair (utile pour .menu-toggle / .theme-toggle) --- */
+.btn-icon:focus-visible {
+  outline:3px solid var(--focus);
+  outline-offset:3px;
+}
+
+/* --- Windows High Contrast Mode (forced colors) --- */
+@media (forced-colors: active) {
+  :where(a,button,input,select,textarea,[role="button"]):focus-visible {
+    outline: 2px solid CanvasText;
+  }
+  .btn, .btn-icon { forced-color-adjust: none; border: 1px solid CanvasText; }
+  .nav-links a.active, [aria-current="page"] { outline: 1px dotted CanvasText; }
+}
+
+/* --- Impression propre (utile pour la checkliste et la déclaration) --- */
+@media print {
+  header, nav, .nav-actions, .rgaa-banner, .btn, .site-footer { display:none !important; }
+  main { padding:0 !important; }
+  a::after { content: " (" attr(href) ")"; font-size: .9em; }
+  body { color: #000; background: #fff; }
+  .rgaa-table th, .rgaa-table td { border-color: #000; }
+}
