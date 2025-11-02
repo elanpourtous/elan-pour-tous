@@ -1,40 +1,51 @@
-<!-- 🔝 HEADER ACCESSIBLE - Élan pour tous -->
-<header role="banner">
-  <nav class="container" role="navigation" aria-label="Menu principal">
-    <!-- Logo -->
-    <a href="index.html" class="logo" aria-label="Accueil Élan pour tous">
-      <img src="assets/ima/logo.png" alt="Logo Élan pour tous" class="logo-img" width="50" height="50">
-      <span class="sr-only">Retour à l'accueil</span>
-    </a>
-
-    <!-- Actions (menu / thème / lecture) -->
-    <div class="nav-actions">
-      <!-- Menu mobile -->
-      <button class="menu-toggle btn-icon" aria-label="Ouvrir le menu" aria-expanded="false">
-        <span class="burger" aria-hidden="true"></span>
-      </button>
-
-      <!-- Thème clair/sombre -->
-      <button class="theme-toggle btn-icon" data-theme-toggle aria-pressed="false"
-              aria-label="Activer le mode sombre" title="Activer le mode sombre">
-        <span aria-hidden="true">🌓</span>
-      </button>
-
-      <!-- Lecture à voix haute (toggle barre TTS) -->
-      <button class="btn-icon" id="tts-toggle" aria-pressed="false"
-              aria-label="Lire la page à voix haute" title="Lire la page">
-        🔊
-      </button>
+<!-- 🔚 FOOTER ACCESSIBLE - Élan pour tous -->
+<footer role="contentinfo" class="site-footer">
+  <div class="container">
+    <div class="footer-brand">
+      <img src="assets/ima/logo.png" alt="" class="footer-logo" width="80" height="80" role="presentation">
+      <p class="footer-name">Élan pour tous</p>
+      <address class="site-address">
+        18 rue des Menhirs – 49400 Saumur (FR) ·
+        <a href="tel:+33783336757">07 83 33 67 57</a> ·
+        <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a>
+      </address>
     </div>
 
-    <!-- Menu principal -->
-    <ul id="primary-nav" class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="about.html">À propos</a></li>
-      <li><a href="formations.html">Formations</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="rgaa.html">Accessibilité RGAA</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+    <div class="rgaa-banner" role="complementary" aria-label="Engagement accessibilité du site">
+      <img src="assets/ima/accessibility.svg" alt="" class="rgaa-icon" width="24" height="24" aria-hidden="true">
+      <p>
+        <strong>Accessibilité RGAA</strong> — Site inclusif et utilisable par tous.
+        <a href="declaration-accessibilite.html">Déclaration</a> ·
+        <a href="rgaa.html">Notre démarche</a> ·
+        <a href="rgaa-checklist.html">Auto-évaluation</a> ·
+        <a href="mentions-legales.html">Mentions légales</a>
+      </p>
+    </div>
+
+    <p class="copyright">© 2025 Élan pour tous — Tous droits réservés.</p>
+  </div>
+
+  <!-- 🎧 Barre TTS (lecture à voix haute) -->
+  <div class="tts-bar" role="region" aria-label="Lecture à voix haute" hidden>
+    <div class="tts-row">
+      <button class="btn" id="tts-play">Lire</button>
+      <button class="btn" id="tts-pause" disabled>Pause</button>
+      <button class="btn" id="tts-resume" disabled>Reprendre</button>
+      <button class="btn" id="tts-stop" disabled>Stop</button>
+    </div>
+
+    <div class="tts-row">
+      <label for="tts-rate">Vitesse :</label>
+      <input id="tts-rate" type="range" min="0.7" max="1.6" step="0.1" value="1.0">
+      <span id="tts-rate-val" aria-live="polite">1.0×</span>
+    </div>
+
+    <div class="tts-row">
+      <label for="tts-voice">Voix :</label>
+      <select id="tts-voice" aria-label="Choisir la voix de synthèse"></select>
+    </div>
+
+    <!-- Région live si absente -->
+    <p id="tts-live" class="visually-hidden" role="status" aria-live="polite"></p>
+  </div>
+</footer>
