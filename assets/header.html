@@ -1,10 +1,35 @@
+<!-- 🔝 HEADER ACCESSIBLE - Élan pour tous -->
 <header role="banner">
   <nav class="container" role="navigation" aria-label="Menu principal">
-    <a href="index.html" class="logo" aria-label="Retour à l'accueil">
-      <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="logo-img" width="50" height="50">
+    <!-- Logo -->
+    <a href="index.html" class="logo" aria-label="Accueil Élan pour tous">
+      <img src="assets/ima/logo.png" alt="Logo Élan pour tous" class="logo-img" width="50" height="50">
+      <span class="sr-only">Retour à l'accueil</span>
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html" aria-current="page">Accueil</a></li>
+
+    <!-- Actions (menu / thème / lecture) -->
+    <div class="nav-actions">
+      <!-- Menu mobile -->
+      <button class="menu-toggle btn-icon" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="burger" aria-hidden="true"></span>
+      </button>
+
+      <!-- Thème clair/sombre -->
+      <button class="theme-toggle btn-icon" data-theme-toggle aria-pressed="false"
+              aria-label="Activer le mode sombre" title="Activer le mode sombre">
+        <span aria-hidden="true">🌓</span>
+      </button>
+
+      <!-- Lecture à voix haute (toggle barre TTS) -->
+      <button class="btn-icon" id="tts-toggle" aria-pressed="false"
+              aria-label="Lire la page à voix haute" title="Lire la page">
+        🔊
+      </button>
+    </div>
+
+    <!-- Menu principal -->
+    <ul id="primary-nav" class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
       <li><a href="about.html">À propos</a></li>
       <li><a href="formations.html">Formations</a></li>
       <li><a href="services.html">Services</a></li>
