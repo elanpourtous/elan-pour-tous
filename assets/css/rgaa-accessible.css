@@ -112,3 +112,45 @@
 .tts-bar input[type="range"] {
   width: 80px;
 }
+
+/* --- Barre TTS fixée en bas de page --- */
+.tts-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--card, #f8f8f8);
+  border-top: 2px solid var(--border, #ccc);
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.tts-bar .tts-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tts-bar .btn {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--border, #999);
+  background: var(--brand, #0b8457);
+  color: #fff;
+  cursor: pointer;
+}
+
+.tts-bar .btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tts-bar input[type="range"] {
+  width: 80px;
+}
