@@ -8,18 +8,10 @@
   <link rel="icon" href="assets/ima/logo.png" type="image/png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-  <style>
-    /* Caption sobre pour les tableaux */
-    .rgaa-table caption{
-      text-align:left;font-weight:700;margin-bottom:.35rem;color:var(--fg);opacity:.9;
-    }
-  </style>
 </head>
 
 <body>
   <a href="#contenu" class="skip-link">Aller au contenu</a>
-
-  <!-- HEADER injecté -->
   <div id="header-placeholder" role="banner"></div>
 
   <main id="contenu" class="container hero" role="main">
@@ -29,186 +21,83 @@
       <strong>Micro-entreprise :</strong> Élan pour tous — Saumur (49)
     </p>
 
-    <!-- 1 -->
     <section>
       <h2>1. Structure et navigation</h2>
       <table class="rgaa-table">
-        <caption>Contrôles de structure et de navigation (RGAA 4.1)</caption>
         <thead>
-          <tr>
-            <th scope="col">Critère</th>
-            <th scope="col">Description</th>
-            <th scope="col">État</th>
-          </tr>
+          <tr><th>Critère</th><th>Description</th><th>État</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1.1</th>
-            <td>Titre de page pertinent et unique</td>
-            <td><span aria-label="Conforme">✔</span> Conforme</td>
-          </tr>
-          <tr>
-            <th scope="row">1.2</th>
-            <td>Structure des titres (h1 à h6) hiérarchisée</td>
-            <td><span aria-label="Conforme">✔</span> Conforme</td>
-          </tr>
-          <tr>
-            <th scope="row">1.3</th>
-            <td>Lien d’évitement vers le contenu principal</td>
-            <td><span aria-label="Conforme">✔</span> Conforme</td>
-          </tr>
-          <tr>
-            <th scope="row">1.4</th>
-            <td>Navigation clavier complète et focus bien visible</td>
-            <td><span aria-label="Conforme">✔</span> Conforme</td>
-          </tr>
-          <tr>
-            <th scope="row">1.5</th>
-            <td>Menu accessible (rôles ARIA, aria-expanded…)</td>
-            <td><span aria-label="Partiel">◐</span> Partiel</td>
-          </tr>
+          <tr><td>1.1</td><td>Titre de page pertinent et unique</td><td>✔ Conforme</td></tr>
+          <tr><td>1.2</td><td>Structure des titres (h1 à h6) hiérarchisée</td><td>✔ Conforme</td></tr>
+          <tr><td>1.3</td><td>Lien d’évitement vers le contenu principal</td><td>✔ Conforme</td></tr>
+          <tr><td>1.4</td><td>Navigation clavier complète et visible</td><td>✔ Conforme</td></tr>
+          <tr><td>1.5</td><td>Menu de navigation accessible (ARIA roles...)</td><td>◐ Partiel</td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- 2 -->
     <section>
       <h2>2. Contenus et médias</h2>
       <table class="rgaa-table">
-        <caption>Vérifications des contenus et médias</caption>
         <thead>
-          <tr>
-            <th scope="col">Critère</th>
-            <th scope="col">Description</th>
-            <th scope="col">État</th>
-          </tr>
+          <tr><th>Critère</th><th>Description</th><th>État</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">2.1</th>
-            <td>Images porteuses d’information avec texte alternatif</td>
-            <td><span aria-label="Conforme">✔</span> Conforme</td>
-          </tr>
-          <tr>
-            <th scope="row">2.2</th>
-            <td>Images décoratives ignorées (alt="" / role="presentation")</td>
-            <td><span aria-label="Conforme">✔</span> Conforme</td>
-          </tr>
-          <tr>
-            <th scope="row">2.3</th>
-            <td>Contrastes couleur (≥ 4.5:1)</td>
-            <td><span aria-label="Conforme">✔</span> Conforme</td>
-          </tr>
-          <tr>
-            <th scope="row">2.4</th>
-            <td>Contraste des images de fond</td>
-            <td><span aria-label="À vérifier">◐</span> À vérifier</td>
-          </tr>
+          <tr><td>2.1</td><td>Images porteuses d’information avec alt</td><td>✔ Conforme</td></tr>
+          <tr><td>2.2</td><td>Images décoratives ignorées (alt vide)</td><td>✔ Conforme</td></tr>
+          <tr><td>2.3</td><td>Contrastes couleur (≥ 4.5:1)</td><td>✔ Conforme</td></tr>
+          <tr><td>2.4</td><td>Contraste images de fond</td><td>◐ À vérifier</td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- 3 -->
     <section>
       <h2>3. Interaction et formulaires</h2>
       <table class="rgaa-table">
-        <caption>Accessibilité des formulaires et interactions</caption>
         <thead>
-          <tr>
-            <th scope="col">Critère</th>
-            <th scope="col">Description</th>
-            <th scope="col">État</th>
-          </tr>
+          <tr><th>Critère</th><th>Description</th><th>État</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">3.1</th>
-            <td>Labels associés, focus visible, messages d’erreur</td>
-            <td><span aria-label="Conforme">✔</span> Conforme</td>
-          </tr>
-          <tr>
-            <th scope="row">3.2</th>
-            <td>Validation non bloquante pour la navigation clavier</td>
-            <td><span aria-label="Conforme">✔</span> Conforme</td>
-          </tr>
+          <tr><td>3.1</td><td>Labels associés, focus visible, messages d’erreur</td><td>✔ Conforme</td></tr>
+          <tr><td>3.2</td><td>Validation non bloquante pour le clavier</td><td>✔ Conforme</td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- 4 -->
     <section>
       <h2>4. Composants dynamiques</h2>
       <table class="rgaa-table">
-        <caption>Fonctionnalités d’accessibilité dynamiques</caption>
         <thead>
-          <tr>
-            <th scope="col">Critère</th>
-            <th scope="col">Description</th>
-            <th scope="col">État</th>
-          </tr>
+          <tr><th>Critère</th><th>Description</th><th>État</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">4.1</th>
-            <td>Thème sombre/clair via <code>prefers-color-scheme</code></td>
-            <td><span aria-label="Conforme">✔</span> Conforme</td>
-          </tr>
-          <tr>
-            <th scope="row">4.2</th>
-            <td>Boutons d’accessibilité (taille police, contraste, espacement)</td>
-            <td><span aria-label="Conforme">✔</span> Conforme</td>
-          </tr>
-          <tr>
-            <th scope="row">4.3</th>
-            <td>Persistance des préférences utilisateur</td>
-            <td><span aria-label="En test">◐</span> En test</td>
-          </tr>
+          <tr><td>4.1</td><td>Thème sombre/clair via prefers-color-scheme</td><td>✔ Conforme</td></tr>
+          <tr><td>4.2</td><td>Boutons d’accessibilité (taille police, contraste, espacement)</td><td>✔ Conforme</td></tr>
+          <tr><td>4.3</td><td>Persistance des préférences utilisateur</td><td>◐ En test</td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- 5 -->
     <section>
       <h2>5. Tests utilisateurs</h2>
       <table class="rgaa-table">
-        <caption>Résultats des tests utilisateurs</caption>
         <thead>
-          <tr>
-            <th scope="col">Scénario</th>
-            <th scope="col">Résultat</th>
-            <th scope="col">État</th>
-          </tr>
+          <tr><th>Scénario</th><th>Résultat</th><th>État</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">Navigation clavier seule</th>
-            <td>OK – tous les liens atteignables</td>
-            <td><span aria-label="Conforme">✔</span></td>
-          </tr>
-          <tr>
-            <th scope="row">Lecteur d’écran (NVDA)</th>
-            <td>Lecture fluide des titres et des liens</td>
-            <td><span aria-label="Conforme">✔</span></td>
-          </tr>
-          <tr>
-            <th scope="row">Contraste élevé</th>
-            <td>Lisibilité maintenue</td>
-            <td><span aria-label="Conforme">✔</span></td>
-          </tr>
-          <tr>
-            <th scope="row">Zoom 200 %</th>
-            <td>Aucun chevauchement</td>
-            <td><span aria-label="Conforme">✔</span></td>
-          </tr>
+          <tr><td>Navigation clavier seule</td><td>OK – tous les liens atteignables</td><td>✔</td></tr>
+          <tr><td>Lecteur d’écran (NVDA)</td><td>Lecture fluide des titres et des liens</td><td>✔</td></tr>
+          <tr><td>Contraste élevé</td><td>Lisibilité maintenue</td><td>✔</td></tr>
+          <tr><td>Zoom 200 %</td><td>Aucun chevauchement</td><td>✔</td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- 6 -->
     <section>
       <h2>6. Conclusion</h2>
       <p>
-        Site évalué comme <strong>partiellement conforme au RGAA 4.1 (niveau AA)</strong>,
+        Site évalué comme <strong>partiellement conforme au RGAA 4.1 (niveau AA)</strong>, 
         avec un haut niveau d’accessibilité générale.
       </p>
       <p>
@@ -216,38 +105,109 @@
         © 2025 <strong>Élan pour tous</strong> — Auto-évaluation RGAA réalisée par Patrick Billy, micro-entreprise à Saumur (49).
       </p>
     </section>
+
+    <!-- 🗣️ Contrôles de lecture (TTS) -->
+    <div class="reader-controls" role="region" aria-label="Lecture à voix haute">
+      <button id="readStart" class="btn">🔊 Lire</button>
+      <button id="readPause" class="btn">⏸️ Pause</button>
+      <button id="readResume" class="btn">▶️ Reprendre</button>
+      <button id="readStop" class="btn">⏹️ Stop</button>
+
+      <label for="readRate">Vitesse :</label>
+      <input id="readRate" type="range" min="0.5" max="2" step="0.1" value="1">
+      <span id="rateVal" aria-live="polite">1.0×</span>
+    </div>
   </main>
 
-  <!-- FOOTER injecté -->
   <div id="footer-placeholder" role="contentinfo"></div>
 
-  <!-- Inclusion robuste + surlignage de l’onglet + chargement des scripts -->
+  <!-- Injection header/footer + scripts -->
   <script>
     function includeInto(id, url) {
       return fetch(url, { cache: "no-store" })
         .then(r => { if(!r.ok) throw new Error(url+" introuvable"); return r.text(); })
-        .then(html => { document.getElementById(id).innerHTML = html; });
-    }
-    function loadScript(src){
-      const s = document.createElement('script');
-      s.src = src; s.defer = true;
-      document.body.appendChild(s);
+        .then(h => { document.getElementById(id).innerHTML = h; });
     }
     Promise.all([
       includeInto("header-placeholder", "assets/header.html"),
       includeInto("footer-placeholder", "assets/footer.html")
     ]).then(() => {
-      // Surligner l’onglet courant
+      // met en surbrillance l'onglet courant
       const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
       document.querySelectorAll('.nav-links a').forEach(a => {
         if ((a.getAttribute('href')||'').toLowerCase() === current) {
-          a.setAttribute('aria-current', 'page');
-          a.classList.add('active');
+          a.setAttribute('aria-current','page'); a.classList.add('active');
         }
       });
-      loadScript('assets/js/main.js');
-      loadScript('assets/js/accessibilite.js');
-    }).catch(err => console.error('Erreur d’inclusion :', err));
+      const s1=document.createElement('script'); s1.src='assets/js/main.js'; s1.defer=true; document.body.appendChild(s1);
+      const s2=document.createElement('script'); s2.src='assets/js/accessibilite.js'; s2.defer=true; document.body.appendChild(s2);
+    }).catch(err=>console.error('Erreur d’inclusion :', err));
   </script>
+
+  <!-- 🔊 Lecture vocale accessible (native SpeechSynthesis) -->
+  <script>
+    (function(){
+      const synth = window.speechSynthesis;
+      const area  = document.querySelector('main'); // on lit tout le contenu principal
+      const el = {
+        start:  document.getElementById('readStart'),
+        pause:  document.getElementById('readPause'),
+        resume: document.getElementById('readResume'),
+        stop:   document.getElementById('readStop'),
+        rate:   document.getElementById('readRate'),
+        rateVal:document.getElementById('rateVal')
+      };
+      let utt = null;
+
+      function speak(){
+        try {
+          if (synth.speaking) synth.cancel();
+          const text = area.innerText.trim();
+          if (!text) return;
+
+          utt = new SpeechSynthesisUtterance(text);
+          utt.lang = 'fr-FR';
+          utt.rate = parseFloat(el.rate.value || '1');
+          synth.speak(utt);
+        } catch(e) {
+          console.error(e);
+        }
+      }
+      function pause(){ if (synth.speaking && !synth.paused) synth.pause(); }
+      function resume(){ if (synth.paused) synth.resume(); }
+      function stop(){ synth.cancel(); }
+
+      el.start.addEventListener('click', speak);
+      el.pause.addEventListener('click', pause);
+      el.resume.addEventListener('click', resume);
+      el.stop.addEventListener('click', stop);
+      el.rate.addEventListener('input', e => { el.rateVal.textContent = (+e.target.value).toFixed(1) + '×'; });
+
+      // Raccourci clavier : Ctrl + Espace => pause/reprise
+      document.addEventListener('keydown', e => {
+        if (e.code === 'Space' && (e.ctrlKey || e.metaKey)) {
+          e.preventDefault();
+          if (synth.paused) resume(); else pause();
+        }
+      });
+
+      // Nettoyage quand on change de page
+      window.addEventListener('beforeunload', stop);
+    })();
+  </script>
+
+  <!-- Petit style local si pas déjà présent dans rgaa-accessible.css -->
+  <style>
+    .reader-controls{
+      display:flex; align-items:center; gap:.5rem; flex-wrap:wrap;
+      border-top:1px solid var(--border); margin-top:2rem; padding-top:.75rem;
+    }
+    .reader-controls .btn{
+      background:var(--brand); color:#fff; border:none; border-radius:.5rem;
+      padding:.4rem .8rem; cursor:pointer; font-weight:700;
+    }
+    .reader-controls .btn:hover{ filter:brightness(1.1); }
+    .reader-controls input[type="range"]{ accent-color:var(--brand); }
+  </style>
 </body>
 </html>
