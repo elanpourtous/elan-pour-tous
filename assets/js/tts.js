@@ -1,147 +1,121 @@
-/*
-  Élan pour tous — Lecture vocale (TTS)
-  Compatible RGAA 4.1 / WCAG 2.2 AA
-  Utilise l’API SpeechSynthesis du navigateur
-*/
-
-(function () {
-  if (!("speechSynthesis" in window)) {
-    console.warn("Synthèse vocale non supportée sur ce navigateur.");
-    return;
-  }
-
+/* Élan pour tous – TTS (Lecture à voix haute) */
+(function(){
   const synth = window.speechSynthesis;
-  const ttsBar = document.querySelector(".tts-bar");
-  const toggleBtn = document.getElementById("tts-toggle");
-  const playBtn = document.getElementById("tts-play");
-  const pauseBtn = document.getElementById("tts-pause");
-  const resumeBtn = document.getElementById("tts-resume");
-  const stopBtn = document.getElementById("tts-stop");
-  const rateInput = document.getElementById("tts-rate");
-  const rateVal = document.getElementById("tts-rate-val");
-  const voiceSelect = document.getElementById("tts-voice");
-  const live = document.getElementById("tts-live");
+  if (!synth) return;
 
-  let currentUtterance = null;
+  const els = {
+    play:   document.getElementById('tts-play'),
+    pause:  document.getElementById('tts-pause'),
+    resume: document.getElementById('tts-resume'),
+    stop:   document.getElementById('tts-stop'),
+    rate:   document.getElementById('tts-rate'),
+    rateVal:document.getElementById('tts-rate-val'),
+    voice:  document.getElementById('tts-voice'),
+    live:   document.getElementById('tts-live'),
+    main:   document.querySelector('main')
+  };
+
+  let utter = null;
   let voices = [];
 
-  function loadVoices() {
-    voices = synth.getVoices();
-    if (!voiceSelect) return;
-    voiceSelect.innerHTML = "";
-
-    voices.forEach((v, i) => {
-      const opt = document.createElement("option");
-      opt.value = i;
-      opt.textContent = `${v.name} (${v.lang})`;
-      if (v.lang.startsWith("fr")) opt.selected = true;
-      voiceSelect.appendChild(opt);
-    });
+  function say(msg){
+    if (els.live){ els.live.textContent = ''; setTimeout(()=> els.live.textContent = msg, 30); }
   }
 
-  synth.onvoiceschanged = loadVoices;
+  function getTextToRead(){
+    const sel = window.getSelection && window.getSelection().toString().trim();
+    if (sel) return sel;
+    return (els.main ? els.main.innerText : document.body.innerText || '').trim();
+  }
+
+  function loadVoices(){
+    voices = synth.getVoices().sort((a,b) => a.name.localeCompare(b.name));
+    els.voice.innerHTML = '';
+    const pref = ['fr-FR','fr-CA','fr-BE','fr-CH'];
+    voices.forEach((v,i) => {
+      const opt = document.createElement('option');
+      opt.value = String(i);
+      opt.textContent = `${v.name} — ${v.lang}`;
+      if (pref.some(p => v.lang.startsWith(p))) opt.selected = true;
+      els.voice.appendChild(opt);
+    });
+  }
   loadVoices();
-
-  if (toggleBtn && ttsBar) {
-    toggleBtn.addEventListener("click", () => {
-      const isVisible = !ttsBar.hasAttribute("hidden");
-      if (isVisible) {
-        ttsBar.setAttribute("hidden", "");
-        toggleBtn.setAttribute("aria-pressed", "false");
-        speakAnnounce("Lecture vocale fermée.");
-      } else {
-        ttsBar.removeAttribute("hidden");
-        toggleBtn.setAttribute("aria-pressed", "true");
-        speakAnnounce("Lecture vocale activée.");
-      }
-    });
+  if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined){
+    speechSynthesis.onvoiceschanged = loadVoices;
   }
 
-  function playText() {
+  function setButtons(state){
+    // state: idle | speaking | paused
+    if (state === 'speaking'){
+      els.play.disabled = true;
+      els.pause.disabled = false;
+      els.resume.disabled = true;
+      els.stop.disabled = false;
+    } else if (state === 'paused'){
+      els.play.disabled = true;
+      els.pause.disabled = true;
+      els.resume.disabled = false;
+      els.stop.disabled = false;
+    } else {
+      els.play.disabled = false;
+      els.pause.disabled = true;
+      els.resume.disabled = true;
+      els.stop.disabled = true;
+    }
+  }
+  setButtons('idle');
+
+  function play(){
+    const text = getTextToRead();
+    if (!text) return;
     if (synth.speaking) synth.cancel();
 
-    const main = document.querySelector("main");
-    if (!main) return alert("Aucun contenu principal trouvé à lire.");
+    utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'fr-FR';
+    const rate = parseFloat(els.rate.value || '1');
+    utter.rate = rate;
 
-    const text = main.innerText.trim();
-    if (!text) return alert("Le contenu est vide.");
+    const v = voices[parseInt(els.voice.value,10)];
+    if (v) utter.voice = v;
 
-    currentUtterance = new SpeechSynthesisUtterance(text);
-    const selectedVoice = voices[voiceSelect.value] || voices.find(v => v.lang.startsWith("fr"));
-    if (selectedVoice) currentUtterance.voice = selectedVoice;
+    utter.onstart  = () => { setButtons('speaking'); say('Lecture démarrée'); };
+    utter.onpause  = () => { setButtons('paused');   say('Lecture en pause'); };
+    utter.onresume = () => { setButtons('speaking'); say('Reprise de la lecture'); };
+    utter.onend    = () => { setButtons('idle');     say('Lecture terminée'); };
+    utter.onerror  = () => { setButtons('idle');     say('Erreur de lecture'); };
 
-    currentUtterance.rate = parseFloat(rateInput.value);
-    currentUtterance.pitch = 1;
-    currentUtterance.lang = currentUtterance.voice?.lang || "fr-FR";
-
-    currentUtterance.onstart = () => updateStatus("Lecture en cours…");
-    currentUtterance.onend = () => {
-      updateStatus("Lecture terminée.");
-      disableButtons(true, false, true, true);
-    };
-
-    synth.speak(currentUtterance);
-    disableButtons(false, false, false, false);
+    synth.speak(utter);
   }
+  function pause(){ if (synth.speaking && !synth.paused){ synth.pause(); } }
+  function resume(){ if (synth.paused){ synth.resume(); } }
+  function stop(){ synth.cancel(); setButtons('idle'); say('Lecture arrêtée'); }
 
-  function pauseText() {
-    if (synth.speaking && !synth.paused) {
-      synth.pause();
-      updateStatus("Lecture mise en pause.");
-      disableButtons(true, true, false, false);
+  // Événements UI
+  els.play.addEventListener('click', play);
+  els.pause.addEventListener('click', pause);
+  els.resume.addEventListener('click', resume);
+  els.stop.addEventListener('click', stop);
+
+  els.rate.addEventListener('input', e => {
+    const v = parseFloat(e.target.value||'1').toFixed(1);
+    els.rateVal.textContent = `${v}×`;
+    if (utter && synth.speaking && !synth.paused){
+      // on coupe et relance à la nouvelle vitesse
+      const wasSel = window.getSelection && window.getSelection().toString();
+      stop(); setTimeout(play, 30);
     }
-  }
-
-  function resumeText() {
-    if (synth.paused) {
-      synth.resume();
-      updateStatus("Lecture reprise.");
-      disableButtons(false, false, false, false);
-    }
-  }
-
-  function stopText() {
-    synth.cancel();
-    updateStatus("Lecture arrêtée.");
-    disableButtons(true, false, true, true);
-  }
-
-  function updateStatus(msg) {
-    if (live) live.textContent = msg;
-    else console.log("TTS:", msg);
-  }
-
-  function speakAnnounce(msg) {
-    const u = new SpeechSynthesisUtterance(msg);
-    u.lang = "fr-FR";
-    u.rate = 1.1;
-    u.volume = 0.8;
-    synth.speak(u);
-  }
-
-  if (rateInput) {
-    rateInput.addEventListener("input", e => {
-      rateVal.textContent = e.target.value + "×";
-    });
-  }
-
-  function disableButtons(play, pause, resume, stop) {
-    if (playBtn) playBtn.disabled = play;
-    if (pauseBtn) pauseBtn.disabled = pause;
-    if (resumeBtn) resumeBtn.disabled = resume;
-    if (stopBtn) stopBtn.disabled = stop;
-  }
-
-  if (playBtn) playBtn.addEventListener("click", playText);
-  if (pauseBtn) pauseBtn.addEventListener("click", pauseText);
-  if (resumeBtn) resumeBtn.addEventListener("click", resumeText);
-  if (stopBtn) stopBtn.addEventListener("click", stopText);
-
-  document.addEventListener("keydown", e => {
-    if (!ttsBar || ttsBar.hasAttribute("hidden")) return;
-    if (e.altKey && e.code === "KeyL") playText();
-    if (e.altKey && e.code === "KeyP") pauseText();
-    if (e.altKey && e.code === "KeyR") resumeText();
-    if (e.altKey && e.code === "KeyS") stopText();
   });
+
+  // Raccourcis : Alt+L / Alt+P / Alt+R / Alt+S
+  document.addEventListener('keydown', e => {
+    if (!e.altKey) return;
+    const k = e.key.toLowerCase();
+    if (k === 'l'){ e.preventDefault(); play(); }
+    if (k === 'p'){ e.preventDefault(); pause(); }
+    if (k === 'r'){ e.preventDefault(); resume(); }
+    if (k === 's'){ e.preventDefault(); stop(); }
+  });
+
+  window.addEventListener('beforeunload', stop);
 })();
