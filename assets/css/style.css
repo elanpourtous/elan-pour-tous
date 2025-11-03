@@ -500,3 +500,16 @@ html[data-theme="dark"] .tts-bar{
   .tts-row .btn{ padding:.6rem .75rem; }
   #tts-rate{ width: 140px; }
 }
+
+/* Par défaut (mobile) : libellés cachés, icônes seules */
+.a11y-toolbar .btn-label { display: none; }
+
+/* Desktop ≥ 960px : on affiche les libellés à côté des icônes */
+@media (min-width: 960px) {
+  .a11y-toolbar .access-btn { gap: .5rem; padding: .4rem .7rem; }
+  .a11y-toolbar .btn-label {
+    display: inline;
+    font-size: .9rem;
+    line-height: 1;
+  }
+}
