@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Élan pour tous - Formations</title>
-  <meta name="description" content="Découvrez les formations inclusives proposées par Élan pour tous : numérique, compétences digitales, communication inclusive et engagements pédagogiques.">
+  <meta name="description" content="Formations inclusives proposées par Élan pour tous : initiation au numérique, compétences digitales avancées, communication inclusive et accessibilité.">
   <meta name="theme-color" content="#0b8457">
   <link rel="icon" href="assets/ima/baa.png" type="image/png">
+
+  <!-- Styles globaux -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
@@ -15,101 +17,128 @@
   <!-- Lien d’évitement -->
   <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-  <!-- HEADER dynamique -->
-  <div id="header-placeholder" role="banner"></div>
+  <!-- HEADER inséré dynamiquement -->
+  <div id="header-placeholder"></div>
 
-  <main class="container hero" id="contenu" role="main">
+  <!-- Contenu principal -->
+  <main class="container hero" id="contenu">
     <h1>Nos formations</h1>
-    <p>Nous croyons que chacun·e a le droit d’apprendre et de progresser. Découvrez nos programmes conçus pour être pratiques, inclusifs et adaptés à différents niveaux.</p>
+    <p class="tagline">Des programmes concrets, inclusifs et adaptés à tous niveaux — en présentiel ou à distance.</p>
 
-    <!-- Sommaire cliquable -->
+    <!-- Sommaire interne -->
     <nav aria-label="Sommaire des formations" class="toc">
       <ul>
-        <li><a href="#initiation-numerique">Initiation au numérique</a></li>
-        <li><a href="#competences-digitales">Compétences digitales avancées</a></li>
-        <li><a href="#communication-inclusive">Communication inclusive</a></li>
-        <li><a href="#engagements-pedago">Nos engagements pédagogiques</a></li>
+        <li><a href="#initiation">Initiation au numérique</a></li>
+        <li><a href="#competences">Compétences digitales avancées</a></li>
+        <li><a href="#inclusive">Communication inclusive</a></li>
+        <li><a href="#engagements">Nos engagements pédagogiques</a></li>
+        <li><a href="#modalites">Modalités & accessibilité</a></li>
+        <li><a href="#contact">Demander un devis</a></li>
       </ul>
     </nav>
 
-    <section id="initiation-numerique" aria-labelledby="h-init">
-      <h2 id="h-init">Initiation au numérique</h2>
-      <p><strong>Objectif :</strong> découvrir les bases de l’informatique et d’internet.</p>
-      <p><strong>Public :</strong> débutant·e·s, toutes générations confondues.</p>
-      <p><strong>Durée :</strong> 6 heures (2 séances de 3 h)</p>
-      <p><strong>Modalité :</strong> en présentiel ou en ligne.</p>
+    <!-- Formation 1 -->
+    <section id="initiation" aria-labelledby="h-initiation">
+      <h2 id="h-initiation">Initiation au numérique</h2>
+      <p>Découvrir les bases et devenir autonome sur ordinateur et smartphone.</p>
+      <dl>
+        <dt>Objectifs</dt>
+        <dd>S’orienter dans un système (Windows/Android), naviguer sur le Web, gérer un e-mail, sécurité de base.</dd>
+
+        <dt>Public</dt>
+        <dd>Débutant·e·s, personnes éloignées du numérique, seniors.</dd>
+
+        <dt>Durée</dt>
+        <dd>6 heures (2 séances de 3 h).</dd>
+
+        <dt>Modalité</dt>
+        <dd>Présentiel à Saumur (49) ou distanciel.</dd>
+      </dl>
+      <figure>
+        <img src="assets/ima/formation-initiation.webp" alt="Atelier d’initiation : accompagnement pas à pas sur ordinateur" loading="lazy" width="800" height="500">
+        <figcaption>Atelier d’initiation — exercices guidés et supports clairs.</figcaption>
+      </figure>
     </section>
 
-    <section id="competences-digitales" aria-labelledby="h-dig">
-      <h2 id="h-dig">Compétences digitales avancées</h2>
-      <p><strong>Objectif :</strong> utiliser efficacement les outils numériques (bureautique, réseaux sociaux, cloud).</p>
-      <p><strong>Public :</strong> personnes souhaitant développer leurs compétences professionnelles.</p>
-      <p><strong>Durée :</strong> 12 heures (4 séances de 3 h)</p>
-      <p><strong>Modalité :</strong> hybride présentiel/distanciel.</p>
-    </section>
+    <!-- Formation 2 -->
+    <section id="competences" aria-labelledby="h-competences">
+      <h2 id="h-competences">Compétences digitales avancées</h2>
+      <p>Utiliser efficacement les outils numériques pour gagner en productivité.</p>
+      <dl>
+        <dt>Objectifs</dt>
+        <dd>Bureautique (Docs/Sheets/Office), organisation (Drive/Cloud), collaboration (Mail/Agenda/Visio), bases de l’IA assistive.</dd>
 
-    <section id="communication-inclusive" aria-labelledby="h-comm">
-      <h2 id="h-comm">Communication inclusive</h2>
-      <p><strong>Objectif :</strong> adopter des pratiques respectueuses, inclusives et accessibles.</p>
-      <p><strong>Public :</strong> associations, entreprises, établissements scolaires.</p>
-      <p><strong>Durée :</strong> 1 journée (7 heures)</p>
-      <p><strong>Modalité :</strong> en présentiel.</p>
-    </section>
+        <dt>Public</dt>
+        <dd>Porteurs de projets, associations, TPE/PME.</dd>
 
-    <section id="engagements-pedago" aria-labelledby="h-eng">
-      <h2 id="h-eng">Nos engagements pédagogiques</h2>
+        <dt>Durée</dt>
+        <dd>12 heures (4 séances de 3 h) — adaptable.</dd>
+
+        <dt>Modalité</dt>
+        <dd>Hybride présentiel/distanciel.</dd>
+      </dl>
       <ul>
-        <li>Supports pédagogiques clairs et adaptés.</li>
-        <li>Accessibilité numérique conforme aux critères RGAA.</li>
-        <li>Approche bienveillante et centrée sur les besoins des apprenant·e·s.</li>
+        <li>Ateliers pas à pas avec cas concrets.</li>
+        <li>Modèles réutilisables (tableaux, trames de mails, checklists).</li>
+        <li>Support après formation (Q/R par e-mail pendant 7 jours).</li>
       </ul>
+    </section>
+
+    <!-- Formation 3 -->
+    <section id="inclusive" aria-labelledby="h-inclusive">
+      <h2 id="h-inclusive">Communication inclusive</h2>
+      <p>Adopter des pratiques d’expression respectueuses et accessibles.</p>
+      <dl>
+        <dt>Objectifs</dt>
+        <dd>Écrire simplement et clairement, intégrer l’accessibilité (alt, contrastes, hiérarchie), travailler l’inclusivité du langage et des visuels.</dd>
+
+        <dt>Public</dt>
+        <dd>Associations, collectivités, établissements scolaires, structures d’insertion, petites entreprises.</dd>
+
+        <dt>Durée</dt>
+        <dd>1 journée (7 h).</dd>
+
+        <dt>Modalité</dt>
+        <dd>En présentiel — possible en distanciel sur demande.</dd>
+      </dl>
+      <p class="note">Inclut un mini-audit de 1 à 2 contenus existants (post, affiche, page Web) avec recommandations immédiates.</p>
+    </section>
+
+    <!-- Engagements pédagogiques -->
+    <section id="engagements" aria-labelledby="h-engagements">
+      <h2 id="h-engagements">Nos engagements pédagogiques</h2>
+      <ul>
+        <li>Supports clairs, lisibles et remis en fin de séance (PDF accessibles).</li>
+        <li>Progression par objectifs, avec exercices concrets.</li>
+        <li>Accessibilité numérique (RGAA) prise en compte dès la conception.</li>
+        <li>Posture bienveillante et adaptation aux besoins réels.</li>
+      </ul>
+    </section>
+
+    <!-- Modalités et accessibilité -->
+    <section id="modalites" aria-labelledby="h-modalites">
+      <h2 id="h-modalites">Modalités & accessibilité</h2>
+      <ul>
+        <li>Groupes de 8 à 12 personnes recommandés (selon niveaux).</li>
+        <li>Matériel : salle équipée ou visio (Zoom/Meet/Teams) — tests techniques possibles.</li>
+        <li>Accessibilité : prise en compte des besoins spécifiques (lecteur d’écran, police adaptée, contrastes, rythme).</li>
+        <li>Lieu : Saumur (49) et alentours — distanciel sur toute la France.</li>
+      </ul>
+      <p>Besoin d’un **programme sur mesure** (public, durée, objectifs) ? Nous adaptons le contenu à votre contexte.</p>
+    </section>
+
+    <!-- Contact / Devis -->
+    <section id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact">Demander un devis</h2>
+      <p>Expliquez vos besoins (public, objectifs, calendrier) : nous vous proposons un format adapté.</p>
+      <p><a class="btn" href="contact.html">Contactez-nous</a></p>
     </section>
   </main>
 
-  <!-- FOOTER dynamique -->
-  <div id="footer-placeholder" role="contentinfo"></div>
+  <!-- FOOTER inséré dynamiquement -->
+  <div id="footer-placeholder"></div>
 
-  <!-- Inclusion des fragments + scripts (après injection) -->
-  <script>
-    function includeInto(id, url) {
-      return fetch(url, { cache: "no-store" })
-        .then(r => { if (!r.ok) throw new Error(url + " introuvable"); return r.text(); })
-        .then(html => { document.getElementById(id).innerHTML = html; });
-    }
-
-    Promise.all([
-      includeInto("header-placeholder", "assets/header.html"),
-      includeInto("footer-placeholder", "assets/footer.html")
-    ])
-    .then(() => {
-      // Met en évidence l’onglet courant
-      (function markActiveNav(){
-        const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-        document.querySelectorAll('.nav-links a').forEach(a => {
-          if ((a.getAttribute('href')||'').toLowerCase() === current) {
-            a.setAttribute('aria-current', 'page');
-            a.classList.add('active');
-          }
-        });
-      })();
-
-      const s1 = document.createElement('script');
-      s1.src = 'assets/js/main.js'; s1.defer = true; document.body.appendChild(s1);
-      const s2 = document.createElement('script');
-      s2.src = 'assets/js/accessibilite.js'; s2.defer = true; document.body.appendChild(s2);
-    })
-    .catch(err => console.error('Erreur d’inclusion :', err));
-  </script>
-
-  <style>
-    /* petit style pour le sommaire (facultatif) */
-    .toc { margin: 1rem 0 2rem; }
-    .toc ul { display:flex; flex-wrap:wrap; gap:.75rem 1rem; padding:0; list-style:none; }
-    .toc a {
-      display:inline-block; padding:.4rem .7rem; border:1px solid var(--border);
-      border-radius:.5rem; text-decoration:none; color:var(--fg); background:var(--card);
-    }
-    .toc a:hover { filter: brightness(1.05); }
-  </style>
+  <!-- Injection header/footer + scripts (main, accessibilite, tts) -->
+  <script src="assets/js/include.js" defer></script>
 </body>
 </html>
