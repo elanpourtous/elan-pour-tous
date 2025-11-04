@@ -8,7 +8,6 @@
   <meta name="theme-color" content="#0b8457">
   <link rel="icon" href="assets/ima/baa.png" type="image/png">
 
-  <!-- Styles projet -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 
@@ -16,53 +15,37 @@
     :root { --brand:#0b8457; --border:#dcdcdc; }
     .field { margin-bottom: 1rem; }
     .badge-req { color:#b00020; font-weight:700; }
-    .summary {
-      border:1px solid #f2c4c4; background:#fff8f8; color:#7a0015;
-      padding:.75rem; border-radius:10px; margin:.5rem 0 1rem; display:none;
-    }
+    .summary { border:1px solid #f2c4c4; background:#fff8f8; color:#7a0015; padding:.75rem; border-radius:10px; margin:.5rem 0 1rem; display:none; }
     .summary[aria-hidden="false"] { display:block; }
     .error { font-size:.9rem; color:#b00020; margin-top:.25rem; display:none; }
     .error[aria-hidden="false"] { display:block; }
     .form-status { margin:.75rem 0; }
-    input[aria-invalid="true"], textarea[aria-invalid="true"] {
-      border-color:#b00020; box-shadow:0 0 0 3px rgba(176,0,32,.12);
-    }
-    .btn {
-      border: none; border-radius: .75rem; padding: .8rem 1.1rem; font-weight: 700; cursor: pointer;
-      background: var(--brand); color: #fff; box-shadow: 0 8px 16px rgba(11,132,87,.25);
-    }
-    .btn:focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
-    /* + petit espace sous les actions pour ne pas coller la barre TTS globale */
+    input[aria-invalid="true"], textarea[aria-invalid="true"] { border-color:#b00020; box-shadow:0 0 0 3px rgba(176,0,32,.12); }
+    .btn { border: none; border-radius: .75rem; padding: .8rem 1.1rem; font-weight: 700; cursor: pointer; background: var(--brand); color: #fff; box-shadow: 0 8px 16px rgba(11,132,87,.25); }
+    .btn:focus-visible, :focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
     .actions { margin-bottom: 1rem; }
-    /* Focus visible global (au cas où) */
-    :focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
   </style>
 </head>
 
 <body class="page-contact">
-  <!-- Skip-link -->
   <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-  <!-- HEADER dynamique -->
   <div id="header-placeholder" role="banner"></div>
 
   <main id="contenu" class="container hero" role="main" tabindex="-1">
     <h1>Contactez-nous</h1>
     <p>Pour toute question, information ou demande d'inscription, n'hésitez pas à nous écrire. Réponse rapide garantie.</p>
 
-    <!-- Résumé d’erreurs global -->
     <div id="error-summary" class="summary" role="alert" aria-live="assertive" aria-hidden="true"></div>
-
-    <!-- Message d’état -->
     <p class="form-status" role="status" aria-live="polite" hidden></p>
 
-    <!-- Formulaire (Formspree) -->
-    <form id="contact-form"
-          action="https://formspree.io/f/VOTRE_ID_FORM"  <!-- ⇦ remplace ici -->
-          method="POST"
-          class="contact-form"
-          aria-label="Formulaire de contact"
-          novalidate>
+    <form
+      id="contact-form"
+      action="https://formspree.io/f/mzbldqre"
+      method="POST"
+      class="contact-form"
+      aria-label="Formulaire de contact"
+      novalidate>
 
       <!-- Honeypot anti-spam -->
       <div class="visually-hidden" aria-hidden="true">
@@ -70,7 +53,6 @@
         <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
       </div>
 
-      <!-- Options Formspree -->
       <input type="hidden" name="_subject"  value="Nouveau message – Élan pour tous">
       <input type="hidden" name="_language" value="fr">
 
@@ -83,7 +65,7 @@
 
       <div class="field">
         <label for="email">Email <span class="badge-req" aria-hidden="true">*</span></label>
-        <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" aria-describedby="hint-email">
+        <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" inputmode="email" aria-describedby="hint-email">
         <p id="hint-email" class="field-hint">Nous ne partagerons pas votre adresse.</p>
         <p id="err-email" class="error" aria-hidden="true">Renseignez une adresse email valide.</p>
       </div>
@@ -110,13 +92,9 @@
     <noscript><p role="alert">Le JavaScript est désactivé : l’envoi asynchrone ne fonctionnera pas.</p></noscript>
   </main>
 
-  <!-- FOOTER dynamique -->
   <div id="footer-placeholder" role="contentinfo"></div>
-
-  <!-- Injecte head + header + footer + JS globaux -->
   <script src="assets/js/include.js" defer></script>
 
-  <!-- Validation + envoi AJAX Formspree (accessible) -->
   <script>
     (function(){
       document.addEventListener('DOMContentLoaded', function(){
@@ -146,7 +124,6 @@
           showError(input, input.validationMessage || 'Champ invalide.'); return false;
         }
 
-        // Live validation
         fields.forEach(({id}) => {
           const el = document.getElementById(id);
           if (!el) return;
@@ -158,14 +135,11 @@
           e.preventDefault();
           const data = new FormData(form);
 
-          // Honeypot
           if ((data.get('company')||'').trim() !== '') return;
 
-          // Reset résumé
           summary.setAttribute('aria-hidden','true');
           summary.textContent = '';
 
-          // Validation client
           let ok = true, firstInvalid = null, problems = [];
           for (const {id, err} of fields){
             const el = document.getElementById(id);
@@ -179,7 +153,6 @@
             return;
           }
 
-          // Envoi Formspree
           status.hidden = false;
           status.textContent = 'Envoi en cours…';
 
