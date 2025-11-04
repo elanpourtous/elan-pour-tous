@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 
   <style>
-    /* Compléments d’accessibilité (tu peux déplacer dans ton CSS) */
     :root { --brand:#0b8457; --border:#dcdcdc; }
     .field { margin-bottom: 1rem; }
     .badge-req { color:#b00020; font-weight:700; }
@@ -33,10 +32,14 @@
       background: var(--brand); color: #fff; box-shadow: 0 8px 16px rgba(11,132,87,.25);
     }
     .btn:focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
+    /* + petit espace sous les actions pour ne pas coller la barre TTS globale */
+    .actions { margin-bottom: 1rem; }
+    /* Focus visible global (au cas où) */
+    :focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
   </style>
 </head>
 
-<body>
+<body class="page-contact">
   <!-- Skip-link -->
   <a href="#contenu" class="skip-link">Aller au contenu</a>
 
@@ -92,7 +95,9 @@
         <p id="err-message" class="error" aria-hidden="true">Votre message est requis.</p>
       </div>
 
-      <button type="submit" class="btn">Envoyer</button>
+      <div class="actions">
+        <button type="submit" class="btn">Envoyer</button>
+      </div>
     </form>
 
     <section class="contact-info" aria-labelledby="infos">
@@ -115,8 +120,8 @@
   <script>
     (function(){
       document.addEventListener('DOMContentLoaded', function(){
-        const form   = document.getElementById('contact-form');
-        const status = document.querySelector('.form-status');
+        const form    = document.getElementById('contact-form');
+        const status  = document.querySelector('.form-status');
         const summary = document.getElementById('error-summary');
         if(!form || !status || !summary) return;
 
@@ -184,7 +189,6 @@
               status.textContent = 'Votre message a bien été envoyé. Merci !';
               form.reset();
             } else {
-              // Essayer d’extraire l’erreur Formspree
               let msg = 'Oups, un souci est survenu. Réessayez ou écrivez à elanpourtous49@gmail.com';
               try { const j = await res.json(); if (j && j.errors && j.errors.length) msg = j.errors.map(e=>e.message).join(', '); } catch {}
               status.textContent = msg;
