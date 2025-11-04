@@ -1,161 +1,166 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact — Version corrigée et accessible</title>
-  <meta name="description" content="Formulaire de contact conforme accessibilité, responsive et validé côté client." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact — Élan pour tous : formation, accessibilité et égalité des chances.">
+  <title>Élan pour tous – Contact</title>
+  <meta name="theme-color" content="#0b8457">
+  <link rel="icon" href="assets/ima/baa.png" type="image/png">
+
+  <!-- Feuilles de style projet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+
   <style>
-    :root {
-      --gap: 1rem;
-      --radius: 14px;
-      --font: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-    }
-    html { box-sizing: border-box; font-family: var(--font); }
-    *, *::before, *::after { box-sizing: inherit; }
-    body { margin: 0; padding: 0; line-height: 1.5; background: #f7f7fb; }
-
-    header { padding: 2rem 1rem 0; text-align: center; }
-    header h1 { margin: 0; font-size: clamp(1.4rem, 2vw + 1rem, 2.2rem); }
-    header p { margin: .25rem 0 2rem; color: #333; }
-
-    main { display: grid; place-items: start center; padding: 0 1rem 3rem; }
-
-    form {
-      width: min(900px, 100%);
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,.06);
-    }
-
+    /* ===== Base formulaire (peut être déplacé dans assets/css/style.css) ===== */
+    :root { --gap: 1rem; --radius: 14px; --brand: #0b8457; --border: #dcdcdc; }
+    .contact-card { width: min(900px, 100%); background: #fff; border-radius: var(--radius); padding: 1.25rem; box-shadow: 0 10px 30px rgba(0,0,0,.06); }
     .grid { display: grid; gap: var(--gap); }
-    @media (min-width: 680px) {
-      .grid-2 { grid-template-columns: 1fr 1fr; }
-    }
-
+    @media (min-width: 680px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
     label { display: inline-block; font-weight: 600; margin-bottom: .25rem; }
     .required::after { content: " *"; color: #b00020; }
-
-    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
-      width: 100%; padding: .75rem .85rem; border: 1px solid #d7d7df; border-radius: 10px;
-      background: #fff; font-size: 1rem; outline: none;
-    }
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea { width: 100%; padding: .75rem .85rem; border: 1px solid #d7d7df; border-radius: 10px; background: #fff; font-size: 1rem; outline: none; }
     textarea { min-height: 140px; resize: vertical; }
-
-    input:focus, select:focus, textarea:focus { border-color: #5a67d8; box-shadow: 0 0 0 3px rgba(90,103,216,.2); }
+    input:focus, select:focus, textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(11,132,87,.2); }
     [aria-invalid="true"] { border-color: #b00020; box-shadow: 0 0 0 3px rgba(176,0,32,.15); }
-
     .field { position: relative; }
     .hint { font-size: .9rem; color: #555; margin-top: .25rem; }
-
     .error { font-size: .9rem; color: #b00020; margin-top: .25rem; display: none; }
     .error[aria-hidden="false"] { display: block; }
-
-    .actions { display: flex; gap: .75rem; align-items: center; justify-content: flex-start; margin-top: .5rem; }
-    button[type="submit"] {
-      border: none; border-radius: 999px; padding: .9rem 1.1rem; font-weight: 700; cursor: pointer;
-      background: #5a67d8; color: #fff; transition: transform .04s ease, box-shadow .2s;
-      box-shadow: 0 8px 16px rgba(90,103,216,.25);
-    }
-    button[type="submit"]:active { transform: translateY(1px); box-shadow: 0 2px 6px rgba(0,0,0,.2); }
-
-    .consent { display: grid; grid-template-columns: auto 1fr; gap: .6rem; align-items: start; }
-    .visually-hidden {
-      position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
-      white-space: nowrap; border: 0;
-    }
-
-    .summary {
-      border: 1px solid #f2c4c4; background: #fff8f8; color: #7a0015; padding: .75rem; border-radius: 10px; margin-bottom: 1rem;
-      display: none;
-    }
+    .summary { border: 1px solid #f2c4c4; background: #fff8f8; color: #7a0015; padding: .75rem; border-radius: 10px; margin-bottom: 1rem; display: none; }
     .summary[aria-hidden="false"] { display: block; }
+    .actions { display: flex; gap: .75rem; align-items: center; justify-content: flex-start; margin-top: .5rem; }
+    .btn-primary { border: none; border-radius: 999px; padding: .9rem 1.1rem; font-weight: 700; cursor: pointer; background: var(--brand); color: #fff; transition: transform .04s ease, box-shadow .2s; box-shadow: 0 8px 16px rgba(11,132,87,.25); }
+    .btn-primary:active { transform: translateY(1px); box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+    .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* ===== Contrôles de lecture / TTS ===== */
+    .reader-controls { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; border-top: 1px solid var(--border); margin-top: 2rem; padding-top: .5rem; }
+    .reader-controls .btn { background: var(--brand); color: #fff; border: none; border-radius: .5rem; padding: .4rem .8rem; cursor: pointer; font-size: .95rem; }
+    .reader-controls .btn:hover { filter: brightness(1.1); }
+    .reader-controls input[type=range] { accent-color: var(--brand); }
+    .reader-controls .btn:focus-visible, .btn-primary:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+    @media (prefers-reduced-motion: no-preference) { .reader-controls .btn { transition: filter .2s, transform .1s; } .reader-controls .btn:active { transform: scale(.97); } }
   </style>
 </head>
+
 <body>
-  <a class="visually-hidden" href="#contact">Aller au contenu</a>
+  <!-- Lien d’évitement -->
+  <a href="#contenu" class="skip-link">Aller au contenu</a>
 
-  <header>
+  <!-- HEADER chargé automatiquement -->
+  <div id="header-placeholder" role="banner"></div>
+
+  <!-- Contenu principal -->
+  <main class="container" id="contenu" role="main" tabindex="-1">
     <h1>Contact</h1>
-    <p>Une version soignée, accessible et prête à intégrer.</p>
-  </header>
+    <p class="hint">Une version accessible, conforme et prête à l’emploi.</p>
 
-  <main>
-    <form id="contact" aria-describedby="form-hint" novalidate>
+    <section class="contact-card" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="visually-hidden">Formulaire de contact</h2>
+
       <p id="form-hint" class="hint">Les champs marqués d’un astérisque (*) sont obligatoires.</p>
-
       <div id="error-summary" class="summary" role="alert" aria-live="assertive" aria-hidden="true"></div>
 
-      <div class="grid grid-2">
-        <div class="field">
-          <label for="firstname" class="required">Prénom</label>
-          <input id="firstname" name="firstname" type="text" autocomplete="given-name" required />
-          <p id="err-firstname" class="error" aria-hidden="true">Merci d’indiquer votre prénom.</p>
+      <form id="contact" aria-describedby="form-hint" novalidate>
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="firstname" class="required">Prénom</label>
+            <input id="firstname" name="firstname" type="text" autocomplete="given-name" required />
+            <p id="err-firstname" class="error" aria-hidden="true">Merci d’indiquer votre prénom.</p>
+          </div>
+          <div class="field">
+            <label for="lastname" class="required">Nom</label>
+            <input id="lastname" name="lastname" type="text" autocomplete="family-name" required />
+            <p id="err-lastname" class="error" aria-hidden="true">Merci d’indiquer votre nom.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="email" class="required">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required />
+            <p id="err-email" class="error" aria-hidden="true">Renseignez une adresse email valide.</p>
+          </div>
+          <div class="field">
+            <label for="phone">Téléphone (optionnel)</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="^\+?[0-9 .-]{7,}$" />
+            <p class="hint">Format libre : 06 12 34 56 78, +33 6 12 34 56 78…</p>
+            <p id="err-phone" class="error" aria-hidden="true">Numéro invalide.</p>
+          </div>
         </div>
 
         <div class="field">
-          <label for="lastname" class="required">Nom</label>
-          <input id="lastname" name="lastname" type="text" autocomplete="family-name" required />
-          <p id="err-lastname" class="error" aria-hidden="true">Merci d’indiquer votre nom.</p>
+          <label for="subject" class="required">Sujet</label>
+          <select id="subject" name="subject" required>
+            <option value="" selected>— Sélectionnez —</option>
+            <option>Demande d’information</option>
+            <option>Support</option>
+            <option>Devis</option>
+            <option>Autre</option>
+          </select>
+          <p id="err-subject" class="error" aria-hidden="true">Choisissez un sujet.</p>
         </div>
-      </div>
 
-      <div class="grid grid-2">
         <div class="field">
-          <label for="email" class="required">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required />
-          <p id="err-email" class="error" aria-hidden="true">Renseignez une adresse email valide.</p>
+          <label for="message" class="required">Message</label>
+          <textarea id="message" name="message" required maxlength="2000" aria-describedby="message-hint"></textarea>
+          <p id="message-hint" class="hint">2000 caractères max.</p>
+          <p id="err-message" class="error" aria-hidden="true">Votre message est requis.</p>
         </div>
+
+        <!-- Consentement RGPD -->
         <div class="field">
-          <label for="phone">Téléphone (optionnel)</label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="^\+?[0-9 .-]{7,}$" />
-          <p class="hint">Format libre : 06 12 34 56 78, +33 6 12 34 56 78…</p>
-          <p id="err-phone" class="error" aria-hidden="true">Numéro invalide.</p>
+          <div class="consent">
+            <input id="consent" name="consent" type="checkbox" required />
+            <label for="consent" class="required">J’autorise le traitement de mes données pour répondre à ma demande.</label>
+          </div>
+          <p id="err-consent" class="error" aria-hidden="true">Cochez cette case pour continuer.</p>
         </div>
-      </div>
 
-      <div class="field">
-        <label for="subject" class="required">Sujet</label>
-        <select id="subject" name="subject" required>
-          <option value="" selected>— Sélectionnez —</option>
-          <option>Demande d’information</option>
-          <option>Support</option>
-          <option>Devis</option>
-          <option>Autre</option>
-        </select>
-        <p id="err-subject" class="error" aria-hidden="true">Choisissez un sujet.</p>
-      </div>
-
-      <div class="field">
-        <label for="message" class="required">Message</label>
-        <textarea id="message" name="message" required maxlength="2000" aria-describedby="message-hint"></textarea>
-        <p id="message-hint" class="hint">2000 caractères max.</p>
-        <p id="err-message" class="error" aria-hidden="true">Votre message est requis.</p>
-      </div>
-
-      <!-- Consentement RGPD -->
-      <div class="field">
-        <div class="consent">
-          <input id="consent" name="consent" type="checkbox" required />
-          <label for="consent" class="required">J’autorise le traitement de mes données pour répondre à ma demande.</label>
+        <!-- Anti-spam (honeypot) -->
+        <div class="visually-hidden" aria-hidden="true">
+          <label for="company">Société</label>
+          <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
         </div>
-        <p id="err-consent" class="error" aria-hidden="true">Cochez cette case pour continuer.</p>
-      </div>
 
-      <!-- Anti-spam simple (honeypot) -->
-      <div class="visually-hidden" aria-hidden="true">
-        <label for="company">Société</label>
-        <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
-      </div>
+        <div class="actions">
+          <button type="submit" class="btn-primary">Envoyer</button>
+          <span aria-live="polite" id="status" class="hint"></span>
+        </div>
+      </form>
 
-      <div class="actions">
-        <button type="submit">Envoyer</button>
-        <span aria-live="polite" id="status" class="hint"></span>
-      </div>
-    </form>
+      <!-- ===== Contrôles de lecture (TTS) ===== -->
+      <section class="reader-controls" aria-label="Contrôles de lecture du contenu">
+        <button type="button" class="btn" id="read-page">Lire la page</button>
+        <button type="button" class="btn" id="pause">Pause</button>
+        <button type="button" class="btn" id="resume">Reprendre</button>
+        <button type="button" class="btn" id="stop">Stop</button>
+
+        <label for="rate">Vitesse</label>
+        <input type="range" id="rate" min="0.5" max="2" value="1" step="0.1" aria-label="Vitesse de lecture">
+
+        <label for="pitch">Hauteur</label>
+        <input type="range" id="pitch" min="0" max="2" value="1" step="0.1" aria-label="Hauteur de la voix">
+
+        <label for="volume">Volume</label>
+        <input type="range" id="volume" min="0" max="1" value="1" step="0.1" aria-label="Volume de la voix">
+      </section>
+    </section>
+
+    <noscript>
+      <p role="alert">Le JavaScript est désactivé : l’envoi du formulaire et la lecture vocale ne fonctionneront pas.</p>
+    </noscript>
   </main>
 
+  <!-- FOOTER chargé automatiquement -->
+  <div id="footer-placeholder" role="contentinfo"></div>
+
+  <!-- Inclusion du header/footer -->
+  <script src="assets/js/include.js" defer></script>
+
+  <!-- Validation + envoi AJAX + TTS -->
   <script>
     (function () {
       const form = document.getElementById('contact');
@@ -172,99 +177,88 @@
 
       function showError(input, msg) {
         input.setAttribute('aria-invalid', 'true');
-        const err = document.getElementById('err-' + input.id) || null;
+        const err = document.getElementById('err-' + input.id);
         if (err) { err.textContent = msg; err.setAttribute('aria-hidden', 'false'); }
       }
       function clearError(input) {
         input.removeAttribute('aria-invalid');
-        const err = document.getElementById('err-' + input.id) || null;
+        const err = document.getElementById('err-' + input.id);
         if (err) { err.setAttribute('aria-hidden', 'true'); }
       }
-
       function validateField(input) {
-        // Select elements return "" when unselected
-        if (input.type === 'checkbox') {
-          if (!input.checked) { showError(input, 'Cochez cette case pour continuer.'); return false; }
-          clearError(input); return true;
-        }
-        if (input.id === 'subject') {
-          if (!input.value) { showError(input, 'Choisissez un sujet.'); return false; }
-          clearError(input); return true;
-        }
+        if (input.type === 'checkbox') { if (!input.checked) { showError(input, 'Cochez cette case pour continuer.'); return false; } clearError(input); return true; }
+        if (input.id === 'subject') { if (!input.value) { showError(input, 'Choisissez un sujet.'); return false; } clearError(input); return true; }
         if (input.validity.valid) { clearError(input); return true; }
-        showError(input, input.validationMessage || 'Champ invalide.');
-        return false;
+        showError(input, input.validationMessage || 'Champ invalide.'); return false;
       }
-
       fields.forEach(({ id }) => {
-        const el = document.getElementById(id);
-        if (!el) return;
+        const el = document.getElementById(id); if (!el) return;
         el.addEventListener('input', () => validateField(el));
-        el.addEventListener('blur', () => validateField(el));
+        el.addEventListener('blur',  () => validateField(el));
         if (el.tagName === 'SELECT') { el.addEventListener('change', () => validateField(el)); }
       });
 
       form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        status.textContent = '';
-        summary.setAttribute('aria-hidden', 'true');
-        summary.textContent = '';
-
-        // Honeypot: if filled, silently succeed to avoid hinting bots
-        if (document.getElementById('company').value) {
-          status.textContent = 'Merci, votre message a été envoyé.';
-          form.reset();
-          return;
-        }
-
+        e.preventDefault(); status.textContent = ''; summary.setAttribute('aria-hidden', 'true'); summary.textContent = '';
+        if (document.getElementById('company').value) { status.textContent = 'Merci, votre message a été envoyé.'; form.reset(); return; }
         let ok = true; let firstInvalid = null; const problems = [];
-        for (const { id, message } of fields) {
-          const el = document.getElementById(id);
-          const valid = validateField(el);
-          if (!valid) { ok = false; if (!firstInvalid) firstInvalid = el; problems.push(message); }
-        }
+        for (const { id, message } of fields) { const el = document.getElementById(id); const valid = validateField(el); if (!valid) { ok = false; if (!firstInvalid) firstInvalid = el; problems.push(message); } }
+        if (!ok) { summary.innerHTML = '<strong>Veuillez corriger les éléments suivants :</strong><ul>' + problems.map(p => `<li>${p}</li>`).join('') + '</ul>'; summary.setAttribute('aria-hidden', 'false'); if (firstInvalid) firstInvalid.focus(); return; }
 
-        if (!ok) {
-          summary.innerHTML = '<strong>Veuillez corriger les éléments suivants :</strong><ul>' + problems.map(p => `<li>${p}</li>`).join('') + '</ul>';
-          summary.setAttribute('aria-hidden', 'false');
-          if (firstInvalid) firstInvalid.focus();
-          return;
-        }        // Envoi AJAX réel (remplacez l'URL par celle de votre API)
-        const payload = {
-          firstname: document.getElementById('firstname').value.trim(),
-          lastname:  document.getElementById('lastname').value.trim(),
-          email:     document.getElementById('email').value.trim(),
-          phone:     document.getElementById('phone').value.trim(),
-          subject:   document.getElementById('subject').value,
-          message:   document.getElementById('message').value.trim(),
-          company:   document.getElementById('company').value // honeypot
-        };
-
-        const submitBtn = form.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.setAttribute('aria-busy', 'true');
-        status.textContent = 'Envoi en cours…';
-
-        fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(payload)
-        })
-        .then(async (res) => {
-          const data = await res.json().catch(() => ({}));
-          if (!res.ok) { throw new Error(data.error || 'Échec de l\'envoi.'); }
-          status.textContent = data.message || 'Merci, votre message a été envoyé.';
-          form.reset();
-        })
-        .catch((err) => {
-          status.textContent = err.message || 'Une erreur est survenue.';
-        })
-        .finally(() => {
-          submitBtn.disabled = false;
-          submitBtn.removeAttribute('aria-busy');
-        });
+        const payload = { firstname: firstname.value.trim(), lastname: lastname.value.trim(), email: email.value.trim(), phone: phone.value.trim(), subject: subject.value, message: message.value.trim(), company: company.value };
+        const submitBtn = form.querySelector('button[type="submit"]'); submitBtn.disabled = true; submitBtn.setAttribute('aria-busy', 'true'); status.textContent = 'Envoi en cours…';
+        fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) })
+        .then(async (res) => { const data = await res.json().catch(() => ({})); if (!res.ok) { throw new Error(data.error || 'Échec de l\'envoi.'); } status.textContent = data.message || 'Merci, votre message a été envoyé.'; form.reset(); })
+        .catch((err) => { status.textContent = err.message || 'Une erreur est survenue.'; })
+        .finally(() => { submitBtn.disabled = false; submitBtn.removeAttribute('aria-busy'); });
       });
+
+      /* ===== TTS / Lecture vocale ===== */
+      const supportsTTS = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+      const readBtn = document.getElementById('read-page');
+      const pauseBtn = document.getElementById('pause');
+      const resumeBtn = document.getElementById('resume');
+      const stopBtn = document.getElementById('stop');
+      const rate = document.getElementById('rate');
+      const pitch = document.getElementById('pitch');
+      const volume = document.getElementById('volume');
+
+      function pageText() {
+        const main = document.getElementById('contenu');
+        // Exclure les zones de contrôle et scripts
+        const clone = main.cloneNode(true);
+        clone.querySelectorAll('script, .reader-controls').forEach(n => n.remove());
+        return clone.innerText.replace(/\s+/g, ' ').trim();
+      }
+
+      let currentUtterance = null;
+      function speak(text) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'fr-FR';
+        u.rate = parseFloat(rate.value || '1');
+        u.pitch = parseFloat(pitch.value || '1');
+        u.volume = parseFloat(volume.value || '1');
+        currentUtterance = u; window.speechSynthesis.speak(u);
+      }
+
+      function toggleButtons(playing) {
+        readBtn.disabled = playing; pauseBtn.disabled = !playing; resumeBtn.disabled = !playing; stopBtn.disabled = !playing;
+      }
+
+      if (!supportsTTS) {
+        document.querySelector('.reader-controls').insertAdjacentHTML('beforeend', '<span role="status" class="hint">La lecture vocale n\'est pas disponible sur ce navigateur.</span>');
+        [readBtn, pauseBtn, resumeBtn, stopBtn, rate, pitch, volume].forEach(el => el && (el.disabled = true));
+      } else {
+        toggleButtons(false);
+        readBtn.addEventListener('click', () => { speak(pageText()); toggleButtons(true); });
+        pauseBtn.addEventListener('click', () => window.speechSynthesis.pause());
+        resumeBtn.addEventListener('click', () => window.speechSynthesis.resume());
+        stopBtn.addEventListener('click', () => { window.speechSynthesis.cancel(); toggleButtons(false); });
+        ['end', 'error'].forEach(evt => window.speechSynthesis.addEventListener(evt, () => toggleButtons(false)));
+      }
     })();
   </script>
 </body>
 </html>
+
