@@ -1,47 +1,60 @@
 /* RGAA complémentaire */
 :root {
-  --focus:#94c5ff;
+  --focus: #94c5ff;
+  --bg: #fff;            /* fallback si --bg n'est pas défini ailleurs */
+  --border: #ccc;        /* fallback */
+  --brand: #0b8457;      /* fallback */
 }
+
+/* Focus visible universel */
 :where(a,button,input,textarea,select,[role="button"]):focus-visible {
-  outline:3px solid var(--focus);
-  outline-offset:2px;
-  border-radius:.25rem;
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: .25rem;
 }
+
+/* Skip-link accessible */
 .skip-link {
-  position:absolute;
-  left:-9999px;
-  width:1px;
-  height:1px;
-  overflow:hidden;
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 .skip-link:focus {
-  left:1rem;
-  top:1rem;
-  width:auto;
-  height:auto;
-  background:var(--bg);
-  border:2px solid var(--focus);
-  padding:.5rem .75rem;
-  border-radius:.5rem;
-  z-index:1000;
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  background: var(--bg, #fff);
+  border: 2px solid var(--focus);
+  padding: .5rem .75rem;
+  border-radius: .5rem;
+  z-index: 1000;
 }
-.visually-hidden {
-  position:absolute!important;
-  width:1px;
-  height:1px;
-  padding:0;
-  margin:-1px;
-  overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-  border:0;
+
+/* Visually hidden (pour lecteurs d'écran) */
+.visually-hidden,
+.sr-only { /* alias pour éviter les doublons de texte dans les boutons */
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
 }
+
 .badge-req {
-  color:#c62828;
-  font-weight:700;
+  color: #c62828;
+  font-weight: 700;
 }
+
+/* Impression propre */
 @media print {
-  header, nav, #header-placeholder, #footer-placeholder, .skip-link {
+  header, nav, #header-placeholder, #footer-placeholder, .skip-link, .tts-bar {
     display: none !important;
   }
   body {
@@ -49,108 +62,45 @@
     color: #000 !important;
     font-size: 12pt;
   }
-  main {
-    padding: 0;
-    margin: 0;
-  }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    page-break-inside: avoid;
-  }
-  th, td {
-    border: 1px solid #555;
-    padding: .4rem .6rem;
-  }
-  h1, h2 {
-    color: #000 !important;
-    page-break-after: avoid;
-  }
-  a::after {
-    content: " (" attr(href) ")";
-    font-size: 0.8em;
-  }
+  main { padding: 0; margin: 0; }
+  table { border-collapse: collapse; width: 100%; page-break-inside: avoid; }
+  th, td { border: 1px solid #555; padding: .4rem .6rem; }
+  h1, h2 { color: #000 !important; page-break-after: avoid; }
+  a::after { content: " (" attr(href) ")"; font-size: .8em; }
 }
-/* --- Barre TTS fixée en bas de page --- */
+
+/* --- Barre TTS fixée en bas de page (unique) --- */
 .tts-bar {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0; left: 0; right: 0;
   background: var(--card, #f8f8f8);
   border-top: 2px solid var(--border, #ccc);
-  padding: 0.5rem 1rem;
+  padding: .5rem 1rem;
   z-index: 1000;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem;
+  gap: .5rem;
   justify-content: center;
 }
-
 .tts-bar .tts-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: .5rem;
 }
-
 .tts-bar .btn {
-  font-size: 0.9rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.4rem;
+  font-size: .9rem;
+  padding: .4rem .8rem;
+  border-radius: .4rem;
   border: 1px solid var(--border, #999);
   background: var(--brand, #0b8457);
   color: #fff;
   cursor: pointer;
 }
-
 .tts-bar .btn[disabled] {
-  opacity: 0.5;
+  opacity: .5;
   cursor: not-allowed;
 }
-
-.tts-bar input[type="range"] {
-  width: 80px;
-}
-
-/* --- Barre TTS fixée en bas de page --- */
-.tts-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--card, #f8f8f8);
-  border-top: 2px solid var(--border, #ccc);
-  padding: 0.5rem 1rem;
-  z-index: 1000;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.tts-bar .tts-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.tts-bar .btn {
-  font-size: 0.9rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.4rem;
-  border: 1px solid var(--border, #999);
-  background: var(--brand, #0b8457);
-  color: #fff;
-  cursor: pointer;
-}
-
-.tts-bar .btn[disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .tts-bar input[type="range"] {
   width: 80px;
 }
