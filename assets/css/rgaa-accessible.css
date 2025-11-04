@@ -1,10 +1,6 @@
+
 /* RGAA complémentaire */
-:root {
-  --focus: #94c5ff;
-  --bg: #fff;            /* fallback si --bg n'est pas défini ailleurs */
-  --border: #ccc;        /* fallback */
-  --brand: #0b8457;      /* fallback */
-}
+:root { --focus:#94c5ff; --bg:#fff; --border:#ccc; --brand:#0b8457; }
 
 /* Focus visible universel */
 :where(a,button,input,textarea,select,[role="button"]):focus-visible {
