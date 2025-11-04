@@ -100,3 +100,35 @@
 .tts-bar input[type="range"] {
   width: 80px;
 }
+/* ===== Apparition/Disparition fluide de la barre TTS ===== */
+/* état caché par défaut */
+.tts-bar {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    opacity .22s ease,
+    transform .22s ease,
+    visibility 0s linear .22s; /* décale la visibilité après la fin */
+}
+
+/* état visible */
+.tts-bar.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+  transition:
+    opacity .22s ease,
+    transform .22s ease;
+}
+
+/* respect des utilisateurs sensibles au mouvement */
+@media (prefers-reduced-motion: reduce) {
+  .tts-bar,
+  .tts-bar.is-visible {
+    transition: none !important;
+    transform: none !important;
+  }
+}
