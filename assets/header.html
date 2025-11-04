@@ -1,64 +1,69 @@
 <!-- 🔝 HEADER ACCESSIBLE - Élan pour tous -->
 <header role="banner">
-  <nav class="container" role="navigation" aria-label="Menu principal">
+  <nav class="container" aria-label="Menu principal">
     <!-- Logo -->
     <a href="index.html" class="logo" aria-label="Accueil Élan pour tous">
-      <img src="assets/ima/logo.png" alt="Logo Élan pour tous" class="logo-img" width="50" height="50">
+      <img src="assets/ima/logo.png" alt="Élan pour tous" class="logo-img" width="50" height="50">
       <span class="sr-only">Retour à l'accueil</span>
     </a>
 
-    <!-- Actions (menu / thème / lecture) -->
+    <!-- Actions (menu / thème / accessibilité / lecture) -->
     <div class="nav-actions">
       <!-- Menu mobile -->
-      <button class="menu-toggle btn-icon" aria-label="Ouvrir le menu" aria-expanded="false">
+      <button class="menu-toggle btn-icon"
+              id="menu-toggle"
+              aria-label="Ouvrir le menu"
+              aria-controls="primary-nav"
+              aria-expanded="false">
         <span class="burger" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
       </button>
 
       <!-- Thème clair/sombre -->
-      <button class="theme-toggle btn-icon" data-theme-toggle aria-pressed="false"
-              aria-label="Activer le mode sombre" title="Activer le mode sombre">
+      <button class="theme-toggle btn-icon"
+              id="theme-toggle"
+              aria-pressed="false"
+              aria-label="Activer le mode sombre"
+              title="Activer le mode sombre">
         <span aria-hidden="true">🌓</span>
       </button>
 
+      <!-- Accessibilité (taille/contraste/espacement/réinit) -->
       <button class="access-btn" data-action="font-" aria-label="Réduire la taille du texte" title="Réduire la taille du texte (Alt + -)">
-  <!-- SVG A− ici -->
-  <span class="sr-only">A moins</span>
-  <span class="btn-label">A−</span>
-</button>
+        <span class="sr-only">Réduire la taille du texte</span>
+        <span class="btn-label">A−</span>
+      </button>
 
-<button class="access-btn" data-action="font+" aria-label="Augmenter la taille du texte" title="Augmenter la taille du texte (Alt + =)">
-  <!-- SVG A+ ici -->
-  <span class="sr-only">A plus</span>
-  <span class="btn-label">A+</span>
-</button>
+      <button class="access-btn" data-action="font+" aria-label="Augmenter la taille du texte" title="Augmenter la taille du texte (Alt + =)">
+        <span class="sr-only">Augmenter la taille du texte</span>
+        <span class="btn-label">A+</span>
+      </button>
 
-<button class="access-btn" data-action="contrast" aria-label="Activer ou désactiver le contraste élevé" title="Contraste élevé (Alt + C)">
-  <!-- SVG contraste ici -->
-  <span class="sr-only">Contraste</span>
-  <span class="btn-label">Contraste</span>
-</button>
+      <button class="access-btn" data-action="contrast" aria-label="Activer ou désactiver le contraste élevé" title="Contraste élevé (Alt + C)">
+        <span class="sr-only">Contraste élevé</span>
+        <span class="btn-label">Contraste</span>
+      </button>
 
-<button class="access-btn" data-action="spacing" aria-label="Activer ou désactiver l’espacement augmenté" title="Espacement (Alt + S)">
-  <!-- SVG espacement ici -->
-  <span class="sr-only">Espacement</span>
-  <span class="btn-label">Espaces</span>
-</button>
+      <button class="access-btn" data-action="spacing" aria-label="Activer ou désactiver l’espacement augmenté" title="Espacement (Alt + S)">
+        <span class="sr-only">Augmenter l’espacement</span>
+        <span class="btn-label">Espaces</span>
+      </button>
 
-<button class="access-btn" data-action="reset" aria-label="Réinitialiser les réglages" title="Réinitialiser (Alt + 0)">
-  <!-- SVG reset ici -->
-  <span class="sr-only">Réinitialiser</span>
-  <span class="btn-label">Reset</span>
-</button>
+      <button class="access-btn" data-action="reset" aria-label="Réinitialiser les réglages" title="Réinitialiser (Alt + 0)">
+        <span class="sr-only">Réinitialiser les préférences d’affichage</span>
+        <span class="btn-label">Reset</span>
+      </button>
 
       <!-- Lecture à voix haute (toggle barre TTS) -->
       <button class="btn-icon" id="tts-toggle" aria-pressed="false"
-              aria-label="Lire la page à voix haute" title="Lire la page">
+              aria-label="Afficher/masquer la barre de lecture à voix haute"
+              title="Lire la page">
         🔊
       </button>
     </div>
 
     <!-- Menu principal -->
-    <ul id="primary-nav" class="nav-links">
+    <ul id="primary-nav" class="nav-links" hidden>
       <li><a href="index.html">Accueil</a></li>
       <li><a href="about.html">À propos</a></li>
       <li><a href="formations.html">Formations</a></li>
