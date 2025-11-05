@@ -7,6 +7,13 @@
   <meta name="theme-color" content="#0b8457">
   <title>Élan pour tous — Formations</title>
 
+  <!-- CSS dynamique -->
+  <script>
+    (function(){const b="assets/css/", L=(location.hostname==="localhost"||location.protocol==="file:");
+      const l=document.createElement('link'); l.rel='stylesheet'; l.href=b+(L?'style.css':'style.min.css'); document.head.appendChild(l);
+    })();
+  </script>
+
   <!-- Canonical + Open Graph -->
   <link rel="canonical" href="https://elanpourtous.github.io/elan-pour-tous/formations.html">
   <meta property="og:type" content="website">
@@ -18,20 +25,15 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="assets/ima/logo.png" type="image/png">
-  <link rel="preload" as="image" href="assets/ima/baa.png">
-
-  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/tts.min.css">
+  <link rel="preload" as="image" href="assets/ima/baa.png">
 </head>
 <body>
-  <!-- Lien d’évitement -->
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
-  <!-- Header injecté -->
   <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
 
-  <!-- Contenu principal -->
   <main id="contenu" class="container hero" role="main" tabindex="-1" aria-labelledby="page-title">
     <h1 id="page-title">Formations</h1>
     <p class="lead">Des parcours adaptés, modulaires et accessibles — en individuel ou en petit groupe.</p>
@@ -89,52 +91,33 @@
       </ul>
     </section>
 
-    <!-- Tarifs & financement -->
     <section aria-labelledby="tarifs">
       <h2 id="tarifs">Tarifs & financement</h2>
       <p>
         Les formations se déroulent en journée (présentiel ou distanciel), sur des modules flexibles
         et accessibles à tous. Chaque parcours est ajusté selon vos besoins, vos objectifs et votre rythme.
       </p>
-
       <ul>
         <li><strong>Forfait découverte :</strong> 1 journée (6 h) — <strong>180 €</strong></li>
         <li><strong>Forfait progression :</strong> 3 journées (18 h) — <strong>480 €</strong></li>
         <li><strong>Forfait autonomie :</strong> 5 journées (30 h) — <strong>700 €</strong></li>
       </ul>
-
-      <p>
-        Ces tarifs comprennent les supports pédagogiques accessibles (documents HTML, transcription, audio),
-        les démonstrations en direct, ainsi qu’un suivi individualisé après la formation.
-      </p>
-
-      <p>
-        <strong>Horaires habituels :</strong> 9 h 30 – 12 h 30 / 14 h – 17 h  
-        (autres créneaux possibles selon vos contraintes ou besoins spécifiques).
-      </p>
-
-      <p>
-        <strong>Financements possibles :</strong> Pôle Emploi, CPF, OPCO, structures partenaires,
-        ou prise en charge par votre employeur.  
-        Un devis détaillé est fourni après un premier échange gratuit.
-      </p>
-
-      <p>
-        <a href="contact.html" class="btn btn-primary">Demander un devis personnalisé</a>
-      </p>
+      <p>Ces tarifs incluent les supports pédagogiques accessibles (HTML, transcription, audio) et un suivi individualisé.</p>
+      <p><strong>Horaires :</strong> 9 h 30 – 12 h 30 / 14 h – 17 h (autres créneaux possibles selon besoins).</p>
+      <p><strong>Financements :</strong> Pôle Emploi, CPF, OPCO, structures partenaires, prise en charge employeur. Devis après un premier échange gratuit.</p>
+      <p><a href="contact.html" class="btn btn-primary">Demander un devis personnalisé</a></p>
     </section>
   </main>
 
-  <!-- Footer injecté -->
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
 
-  <!-- JS dynamique -->
   <script>
-    (function(){async function inject(id,u){const host=document.getElementById(id);if(!host)return;const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error(u+' introuvable ('+r.status+')');host.innerHTML=await r.text();}
-      document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu');if(m)requestAnimationFrame(()=>m.focus());});
-      Promise.all([inject('header-placeholder','assets/header.html'),inject('footer-placeholder','assets/footer.html')])
-      .then(()=>['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{if(!document.querySelector(`script[src="${src}"]`)){const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s);}}))
-      .catch(err=>console.error('Inclusion échouée :',err));
+    (function(){async function into(id,u){const h=document.getElementById(id);if(!h)return;const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error(u+' introuvable ('+r.status+')');h.innerHTML=await r.text();}
+      document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu'); if(m) requestAnimationFrame(()=>m.focus());});
+      Promise.all([ into('header-placeholder','assets/header.html'), into('footer-placeholder','assets/footer.html') ])
+      .then(()=>{ const base="assets/js/", L=(location.hostname==="localhost"||location.protocol==="file:");
+        for (const f of [ L?'include.js':'include.min.js', L?'tts.js':'tts.min.js' ]) { const s=document.createElement('script'); s.src=base+f; s.defer=true; document.body.appendChild(s); }
+      }).catch(console.error);
     })();
   </script>
 </body>
