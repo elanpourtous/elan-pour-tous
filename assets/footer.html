@@ -59,4 +59,129 @@
 <!-- ==========================================================
      Script de lecture vocale (propre, sans double init)
      ========================================================== -->
-<
+<script>
+(function () {
+  if (window._ttsInit) return;
+  window._ttsInit = true;
+
+  const synth = window.speechSynthesis;
+  if (!('speechSynthesis' in window)) return;
+
+  const play = document.getElementById('tts-play'),
+        pause = document.getElementById('tts-pause'),
+        resume = document.getElementById('tts-resume'),
+        stop = document.getElementById('tts-stop'),
+        rate = document.getElementById('tts-rate'),
+        rateVal = document.getElementById('tts-rate-val'),
+        voiceSel = document.getElementById('tts-voice'),
+        live = document.getElementById('tts-live');
+
+  let utterance = null;
+
+  // -------- Charger les voix --------
+  function populateVoices() {
+    const voices = synth.getVoices();
+    voiceSel.innerHTML = '';
+    voices.filter(v => v.lang.startsWith('fr'))
+      .concat(voices)
+      .forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = v.name;
+        opt.textContent = `${v.name} (${v.lang})`;
+        voiceSel.appendChild(opt);
+      });
+  }
+  populateVoices();
+  if (typeof speechSynthesis.onvoiceschanged !== 'undefined') {
+    speechSynthesis.onvoiceschanged = populateVoices;
+  }
+
+  // -------- Lecture --------
+  function getText() {
+    const main = document.getElementById('contenu') || document.body;
+    return main.innerText.replace(/\s+/g, ' ').trim();
+  }
+
+  function speak(text) {
+    if (!text) return;
+    synth.cancel();
+    utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'fr-FR';
+    utterance.rate = parseFloat(rate.value);
+    const selected = Array.from(synth.getVoices()).find(v => v.name === voiceSel.value);
+    if (selected) utterance.voice = selected;
+    utterance.onstart = () => { live.textContent = 'Lecture en cours'; toggleState(true); };
+    utterance.onend = () => { live.textContent = 'Lecture terminée'; toggleState(false); };
+    utterance.onerror = () => { live.textContent = 'Erreur de lecture'; toggleState(false); };
+    synth.speak(utterance);
+  }
+
+  function toggleState(active) {
+    play.disabled = active;
+    pause.disabled = !active;
+    resume.disabled = !active;
+    stop.disabled = !active;
+  }
+
+  // -------- Contrôles --------
+  play.addEventListener('click', () => speak(getText()));
+  pause.addEventListener('click', () => { synth.pause(); live.textContent = 'Lecture en pause'; });
+  resume.addEventListener('click', () => { synth.resume(); live.textContent = 'Reprise'; });
+  stop.addEventListener('click', () => { synth.cancel(); toggleState(false); live.textContent = 'Lecture stoppée'; });
+  rate.addEventListener('input', () => { rateVal.textContent = rate.value + '×'; });
+
+  // -------- Raccourcis clavier --------
+  document.addEventListener('keydown', e => {
+    if (!e.altKey) return;
+    const k = e.key.toLowerCase();
+    if (k === 'l') { e.preventDefault(); speak(getText()); }
+    if (k === 'p') { e.preventDefault(); synth.pause(); }
+    if (k === 'r') { e.preventDefault(); synth.resume(); }
+    if (k === 's') { e.preventDefault(); synth.cancel(); toggleState(false); }
+  });
+})();
+</script>
+
+<style>
+  /* ==================== Footer compact ==================== */
+  .site-footer {
+    background: var(--card, #f8f8f8);
+    border-top: 1px solid var(--border, #ddd);
+    padding: 1rem;
+  }
+  .footer-inner {
+    display: grid;
+    gap: .75rem;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+  }
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .brand-name { font-weight: 700; }
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    text-decoration: none;
+  }
+  .footer-links a:hover,
+  .footer-links a:focus-visible {
+    text-decoration: underline;
+  }
+  .footer-copy {
+    margin: 0;
+    font-size: .9rem;
+    color: #555;
+  }
+</style>
