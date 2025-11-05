@@ -7,33 +7,32 @@
   <meta name="theme-color" content="#0b8457">
   <title>Élan pour tous — À propos</title>
 
-  <!-- Styles dynamiques : version minifiée en ligne -->
-<script>
-  (function() {
-    const cssBase = "assets/css/";
-    const isLocal = location.hostname === "localhost" || location.protocol === "file:";
-    const cssFile = isLocal ? "style.css" : "style.min.css";
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = cssBase + cssFile;
-    document.head.appendChild(link);
-  })();
-</script>
+  <!-- ✅ Styles dynamiques : version minifiée en ligne -->
+  <script>
+    (function() {
+      const cssBase = "assets/css/";
+      const isLocal = location.hostname === "localhost" || location.protocol === "file:";
+      const cssFile = isLocal ? "style.css" : "style.min.css";
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = cssBase + cssFile;
+      document.head.appendChild(link);
+    })();
+  </script>
 
   <!-- Canonical + partage -->
-  <link rel="canonical" href="https://ton-domaine.tld/about.html">
+  <link rel="canonical" href="https://elanpourtous.github.io/elan-pour-tous/about.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Élan pour tous — À propos">
   <meta property="og:description" content="Rendre l’apprentissage possible, agréable et utile — pour tout le monde. Mission, valeurs et approche.">
-  <meta property="og:image" content="https://ton-domaine.tld/assets/ima/baa.png">
+  <meta property="og:image" content="https://elanpourtous.github.io/elan-pour-tous/assets/ima/baa.png">
   <meta property="og:locale" content="fr_FR">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicon -->
   <link rel="icon" href="assets/ima/logo.png" type="image/png">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- ✅ CSS fixes (non dynamiques) -->
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/tts.min.css">
 
@@ -83,7 +82,7 @@
   <!-- Footer injecté -->
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
 
-  <!-- Loader fragments + JS (header/footer, access, TTS) -->
+  <!-- ✅ Scripts dynamiques (header/footer, accessibilité, TTS) -->
   <script>
     (function () {
       async function includeInto(id, url) {
@@ -93,24 +92,32 @@
         if (!r.ok) throw new Error(url + ' introuvable (' + r.status + ')');
         host.innerHTML = await r.text();
       }
-      // Skip-link => focus sur le main
+
+      // Skip-link => focus sur le contenu
       document.querySelector('.skip-link')?.addEventListener('click', () => {
         const m = document.getElementById('contenu');
         if (m) requestAnimationFrame(() => m.focus());
       });
-      // Injecte header/footer puis charge les scripts
+
+      // Charger header/footer puis scripts adaptés à l’environnement
       Promise.all([
         includeInto('header-placeholder', 'assets/header.html'),
         includeInto('footer-placeholder', 'assets/footer.html')
-      ]).then(() => {
-        ['assets/js/include.js', 'assets/js/tts.min.js'].forEach(src => {
-          if (!document.querySelector(`script[src="${src}"]`)) {
-            const s = document.createElement('script');
-            s.src = src; s.defer = true;
-            document.body.appendChild(s);
-          }
+      ])
+      .then(() => {
+        const jsBase = "assets/js/";
+        const isLocal = location.hostname === "localhost" || location.protocol === "file:";
+        const includeFile = isLocal ? "include.js" : "include.min.js";
+        const ttsFile = isLocal ? "tts.js" : "tts.min.js";
+
+        [includeFile, ttsFile].forEach(f => {
+          const s = document.createElement("script");
+          s.src = jsBase + f;
+          s.defer = true;
+          document.body.appendChild(s);
         });
-      }).catch(err => console.error('Inclusion échouée :', err));
+      })
+      .catch(err => console.error('Inclusion échouée :', err));
     })();
   </script>
 </body>
