@@ -3,142 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Élan pour tous - Formations</title>
-  <meta name="description" content="Formations inclusives proposées par Élan pour tous : initiation au numérique, compétences digitales avancées, communication inclusive et accessibilité.">
+  <meta name="description" content="Formations — Élan pour tous : catalogue, modalités, accessibilité.">
   <meta name="theme-color" content="#0b8457">
-  <link rel="icon" href="assets/ima/baa.png" type="image/png">
-
-  <!-- Styles globaux -->
+  <title>Élan pour tous — Formations</title>
+  <link rel="icon" href="assets/ima/logo.png" type="image/png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="stylesheet" href="assets/css/tts.min.css">
 </head>
-
 <body>
-  <!-- Lien d’évitement -->
-  <a href="#contenu" class="skip-link">Aller au contenu</a>
+  <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
-  <!-- HEADER inséré dynamiquement -->
-  <div id="header-placeholder"></div>
+  <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
 
-  <!-- Contenu principal -->
-  <main class="container hero" id="contenu">
-    <h1>Nos formations</h1>
-    <p class="tagline">Des programmes concrets, inclusifs et adaptés à tous niveaux — en présentiel ou à distance.</p>
+  <main id="contenu" class="container hero" role="main" tabindex="-1">
+    <h1>Formations</h1>
+    <p class="lead">Des parcours adaptés, modulaires et accessibles.</p>
 
-    <!-- Sommaire interne -->
-    <nav aria-label="Sommaire des formations" class="toc">
+    <section aria-labelledby="cat">
+      <h2 id="cat">Catalogue</h2>
       <ul>
-        <li><a href="#initiation">Initiation au numérique</a></li>
-        <li><a href="#competences">Compétences digitales avancées</a></li>
-        <li><a href="#inclusive">Communication inclusive</a></li>
-        <li><a href="#engagements">Nos engagements pédagogiques</a></li>
-        <li><a href="#modalites">Modalités & accessibilité</a></li>
-        <li><a href="#contact">Demander un devis</a></li>
-      </ul>
-    </nav>
-
-    <!-- Formation 1 -->
-    <section id="initiation" aria-labelledby="h-initiation">
-      <h2 id="h-initiation">Initiation au numérique</h2>
-      <p>Découvrir les bases et devenir autonome sur ordinateur et smartphone.</p>
-      <dl>
-        <dt>Objectifs</dt>
-        <dd>S’orienter dans un système (Windows/Android), naviguer sur le Web, gérer un e-mail, sécurité de base.</dd>
-
-        <dt>Public</dt>
-        <dd>Débutant·e·s, personnes éloignées du numérique, seniors.</dd>
-
-        <dt>Durée</dt>
-        <dd>6 heures (2 séances de 3 h).</dd>
-
-        <dt>Modalité</dt>
-        <dd>Présentiel à Saumur (49) ou distanciel.</dd>
-      </dl>
-      <figure>
-        <img src="assets/ima/formation-initiation.webp" alt="Atelier d’initiation : accompagnement pas à pas sur ordinateur" loading="lazy" width="800" height="500">
-        <figcaption>Atelier d’initiation — exercices guidés et supports clairs.</figcaption>
-      </figure>
-    </section>
-
-    <!-- Formation 2 -->
-    <section id="competences" aria-labelledby="h-competences">
-      <h2 id="h-competences">Compétences digitales avancées</h2>
-      <p>Utiliser efficacement les outils numériques pour gagner en productivité.</p>
-      <dl>
-        <dt>Objectifs</dt>
-        <dd>Bureautique (Docs/Sheets/Office), organisation (Drive/Cloud), collaboration (Mail/Agenda/Visio), bases de l’IA assistive.</dd>
-
-        <dt>Public</dt>
-        <dd>Porteurs de projets, associations, TPE/PME.</dd>
-
-        <dt>Durée</dt>
-        <dd>12 heures (4 séances de 3 h) — adaptable.</dd>
-
-        <dt>Modalité</dt>
-        <dd>Hybride présentiel/distanciel.</dd>
-      </dl>
-      <ul>
-        <li>Ateliers pas à pas avec cas concrets.</li>
-        <li>Modèles réutilisables (tableaux, trames de mails, checklists).</li>
-        <li>Support après formation (Q/R par e-mail pendant 7 jours).</li>
+        <li>Compétences numériques — initiation à avancé</li>
+        <li>Bureautique accessible (NVDA/JAWS, VoiceOver)</li>
+        <li>Communication écrite claire & FALC</li>
       </ul>
     </section>
 
-    <!-- Formation 3 -->
-    <section id="inclusive" aria-labelledby="h-inclusive">
-      <h2 id="h-inclusive">Communication inclusive</h2>
-      <p>Adopter des pratiques d’expression respectueuses et accessibles.</p>
-      <dl>
-        <dt>Objectifs</dt>
-        <dd>Écrire simplement et clairement, intégrer l’accessibilité (alt, contrastes, hiérarchie), travailler l’inclusivité du langage et des visuels.</dd>
-
-        <dt>Public</dt>
-        <dd>Associations, collectivités, établissements scolaires, structures d’insertion, petites entreprises.</dd>
-
-        <dt>Durée</dt>
-        <dd>1 journée (7 h).</dd>
-
-        <dt>Modalité</dt>
-        <dd>En présentiel — possible en distanciel sur demande.</dd>
-      </dl>
-      <p class="note">Inclut un mini-audit de 1 à 2 contenus existants (post, affiche, page Web) avec recommandations immédiates.</p>
-    </section>
-
-    <!-- Engagements pédagogiques -->
-    <section id="engagements" aria-labelledby="h-engagements">
-      <h2 id="h-engagements">Nos engagements pédagogiques</h2>
-      <ul>
-        <li>Supports clairs, lisibles et remis en fin de séance (PDF accessibles).</li>
-        <li>Progression par objectifs, avec exercices concrets.</li>
-        <li>Accessibilité numérique (RGAA) prise en compte dès la conception.</li>
-        <li>Posture bienveillante et adaptation aux besoins réels.</li>
-      </ul>
-    </section>
-
-    <!-- Modalités et accessibilité -->
-    <section id="modalites" aria-labelledby="h-modalites">
-      <h2 id="h-modalites">Modalités & accessibilité</h2>
-      <ul>
-        <li>Groupes de 8 à 12 personnes recommandés (selon niveaux).</li>
-        <li>Matériel : salle équipée ou visio (Zoom/Meet/Teams) — tests techniques possibles.</li>
-        <li>Accessibilité : prise en compte des besoins spécifiques (lecteur d’écran, police adaptée, contrastes, rythme).</li>
-        <li>Lieu : Saumur (49) et alentours — distanciel sur toute la France.</li>
-      </ul>
-      <p>Besoin d’un **programme sur mesure** (public, durée, objectifs) ? Nous adaptons le contenu à votre contexte.</p>
-    </section>
-
-    <!-- Contact / Devis -->
-    <section id="contact" aria-labelledby="h-contact">
-      <h2 id="h-contact">Demander un devis</h2>
-      <p>Expliquez vos besoins (public, objectifs, calendrier) : nous vous proposons un format adapté.</p>
-      <p><a class="btn" href="contact.html">Contactez-nous</a></p>
+    <section aria-labelledby="modalites">
+      <h2 id="modalites">Modalités & accessibilité</h2>
+      <p>Présentiel, distanciel, rythme flexible, supports accessibles (HTML sémantique, sous-titres, transcription).</p>
     </section>
   </main>
 
-  <!-- FOOTER inséré dynamiquement -->
-  <div id="footer-placeholder"></div>
+  <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
 
-  <!-- Injection header/footer + scripts (main, accessibilite, tts) -->
-  <script src="assets/js/include.js" defer></script>
+  <script>
+    (function(){async function i(id,u){const h=document.getElementById(id);if(!h)return;const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error(u+' introuvable');h.innerHTML=await r.text()}
+    document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu');if(m)requestAnimationFrame(()=>m.focus())});
+    Promise.all([i('header-placeholder','assets/header.html'),i('footer-placeholder','assets/footer.html')]).then(()=>{
+      ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{if(!document.querySelector(`script[src="${src}"]`)){const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s);}});
+    }).catch(console.error);})();
+  </script>
 </body>
 </html>
