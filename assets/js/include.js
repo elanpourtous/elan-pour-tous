@@ -176,3 +176,69 @@
 })();
 
 </script>
+
+  <script>
+(function(){
+  const toggle = document.getElementById('tts-toggle');
+  const bar = document.querySelector('.tts-bar');
+  const btns = document.querySelectorAll('.tts-btn');
+  if (!bar) return;
+
+  // ---- Apparition fluide + mémoire ----
+  bar.removeAttribute('hidden');
+  const saved = localStorage.getItem('ttsVisible');
+  const shouldShow = saved ? (saved === 'shown') : true;
+  if (shouldShow) {
+    bar.classList.add('is-visible');
+    bar.removeAttribute('aria-hidden');
+    toggle?.setAttribute('aria-pressed', 'true');
+  } else {
+    bar.classList.remove('is-visible');
+    bar.setAttribute('aria-hidden', 'true');
+    toggle?.setAttribute('aria-pressed', 'false');
+  }
+
+  function showBar(){
+    bar.classList.add('is-visible');
+    bar.removeAttribute('aria-hidden');
+    toggle?.setAttribute('aria-pressed','true');
+    localStorage.setItem('ttsVisible','shown');
+  }
+  function hideBar(){
+    bar.classList.remove('is-visible');
+    bar.setAttribute('aria-hidden','true');
+    toggle?.setAttribute('aria-pressed','false');
+    localStorage.setItem('ttsVisible','hidden');
+  }
+
+  toggle?.addEventListener('click',()=>{
+    const visible = bar.classList.contains('is-visible');
+    visible ? hideBar() : showBar();
+  });
+
+  // ---- Effet rebond ----
+  function bounce(el){
+    el.classList.remove('tts-animate');
+    void el.offsetWidth;
+    el.classList.add('tts-animate');
+    setTimeout(()=>el.classList.remove('tts-animate'),220);
+  }
+  btns.forEach(btn=>{
+    btn.addEventListener('click',()=>bounce(btn));
+    btn.addEventListener('keydown',e=>{
+      if(e.key===' '||e.key==='Enter') bounce(btn);
+    });
+  });
+
+  // ---- Halo vert actif ----
+  btns.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      btns.forEach(b=>b.classList.remove('tts-active'));
+      if(!btn.id.includes('stop')) btn.classList.add('tts-active');
+    });
+  });
+  document.getElementById('tts-stop')?.addEventListener('click',()=>{
+    btns.forEach(b=>b.classList.remove('tts-active'));
+  });
+})();
+</script>
