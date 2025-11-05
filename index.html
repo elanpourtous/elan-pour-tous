@@ -7,10 +7,15 @@
   <meta name="theme-color" content="#0b8457">
   <title>Élan pour tous - Accueil</title>
 
-  <!-- Feuilles de style -->
+  <!-- Favicon & préchargements utiles -->
+  <link rel="icon" href="assets/ima/logo.png" type="image/png">
+  <link rel="preload" as="image" href="assets/ima/baa.png" imagesrcset="assets/ima/baa.png">
+
+  <!-- Feuilles de style principales -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-  <link rel="icon" href="assets/ima/logo.png" type="image/png">
+  <!-- CSS de la barre TTS (évite le flash sans style) -->
+  <link rel="stylesheet" href="assets/css/tts.min.css"><!-- ou tts.dev.css en dev -->
 </head>
 
 <body>
@@ -18,49 +23,77 @@
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
   <!-- HEADER chargé dynamiquement -->
-  <div id="header-placeholder"></div>
+  <div id="header-placeholder" role="banner" aria-label="En-tête du site"></div>
 
   <!-- 🌟 Contenu principal -->
-  <main id="contenu" class="container hero" role="main">
-    <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo">
+  <main id="contenu" class="container hero" role="main" tabindex="-1">
+    <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo" width="180" height="180" decoding="async">
     <h1>Élan pour tous</h1>
     <p class="tagline">Micro-entreprise basée à Saumur (49) — formations et services inclusifs pour tous publics.</p>
     <p>Accompagner chacun·e dans son parcours d’apprentissage, de reconversion et d’épanouissement personnel ou professionnel.</p>
-    <a href="formations.html" class="btn">Découvrir nos formations</a>
+    <a href="formations.html" class="btn btn-primary">Découvrir nos formations</a>
   </main>
 
   <!-- FOOTER chargé dynamiquement -->
-  <div id="footer-placeholder"></div>
+  <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
+
+  <noscript>
+    <p role="alert">Le JavaScript est désactivé : l’en-tête et le pied de page dynamiques ne seront pas chargés.</p>
+  </noscript>
 
   <!-- ============================= -->
   <!-- 🔗 INJECTION HEADER + FOOTER + SCRIPTS -->
   <!-- ============================= -->
   <script>
-    function includeInto(id, url) {
-      return fetch(url, { cache: "no-store" })
-        .then(r => { if (!r.ok) throw new Error(url + " introuvable"); return r.text(); })
-        .then(html => { document.getElementById(id).innerHTML = html; });
-    }
+    (function () {
+      // utilitaire d’inclusion HTML
+      async function includeInto(id, url) {
+        const host = document.getElementById(id);
+        if (!host) throw new Error('Conteneur manquant : #' + id);
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error(url + ' introuvable (' + res.status + ')');
+        const html = await res.text();
+        host.innerHTML = html;
+      }
 
-    Promise.all([
-      includeInto("header-placeholder", "assets/header.html"),
-      includeInto("footer-placeholder", "assets/footer.html")
-    ])
-    .then(() => {
-      // Charger les scripts JS une fois les fragments insérés
-      const scripts = [
-        "assets/js/main.js",
-        "assets/js/accessibilite.js",
-        "assets/js/tts.js" // 🔊 Lecture vocale
-      ];
-      scripts.forEach(src => {
-        const s = document.createElement("script");
-        s.src = src;
-        s.defer = true;
-        document.body.appendChild(s);
+      // Assure le focus du skip-link sur #contenu
+      const skip = document.querySelector('.skip-link');
+      if (skip) {
+        skip.addEventListener('click', () => {
+          const main = document.getElementById('contenu');
+          if (main) requestAnimationFrame(() => main.focus());
+        });
+      }
+
+      // Charge header + footer, puis les scripts
+      Promise.all([
+        includeInto('header-placeholder', 'assets/header.html'),
+        includeInto('footer-placeholder', 'assets/footer.html')
+      ])
+      .then(() => {
+        // Scripts du site (déférés)
+        const scripts = [
+          'assets/js/include.js',       // ton “tout-en-un” (menu, thème, accessibilité, toggle TTS)
+          // 'assets/js/main.js',       // si tu en as besoin
+          // 'assets/js/accessibilite.js', // (déjà couvert par include.js si tu as suivi mon bundle)
+          'assets/js/tts.min.js'        // ou 'assets/js/tts.dev.js' en dev
+        ];
+        scripts.forEach(src => {
+          const s = document.createElement('script');
+          s.src = src;
+          s.defer = true;
+          document.body.appendChild(s);
+        });
+      })
+      .catch(err => {
+        console.error('Erreur d’inclusion :', err);
+        // Fallback minimal gracieux si le footer n’a pas pu être inclus
+        const fp = document.getElementById('footer-placeholder');
+        if (fp && !fp.innerHTML.trim()) {
+          fp.innerHTML = '<footer class="site-footer"><p style="padding:1rem">© Élan pour tous</p></footer>';
+        }
       });
-    })
-    .catch(err => console.error("Erreur d’inclusion :", err));
+    })();
   </script>
 </body>
 </html>
