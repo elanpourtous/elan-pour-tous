@@ -7,6 +7,19 @@
   <meta name="theme-color" content="#0b8457">
   <title>Élan pour tous — À propos</title>
 
+  <!-- Styles dynamiques : version minifiée en ligne -->
+<script>
+  (function() {
+    const cssBase = "assets/css/";
+    const isLocal = location.hostname === "localhost" || location.protocol === "file:";
+    const cssFile = isLocal ? "style.css" : "style.min.css";
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = cssBase + cssFile;
+    document.head.appendChild(link);
+  })();
+</script>
+
   <!-- Canonical + partage -->
   <link rel="canonical" href="https://ton-domaine.tld/about.html">
   <meta property="og:type" content="website">
