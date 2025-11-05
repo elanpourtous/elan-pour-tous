@@ -1,55 +1,168 @@
-<!-- FOOTER minimal + TTS (markup seul) -->
+<!-- ======================= -->
+<!-- FOOTER ACCESSIBLE + TTS -->
+<!-- ======================= -->
 <footer class="site-footer" role="contentinfo" aria-label="Pied de page">
   <div class="footer-inner container">
+    <!-- Logo + nom -->
     <a class="footer-brand" href="index.html">
-      <img src="assets/ima/baa.png" alt="Élan pour tous" width="40" height="40" />
+      <img src="assets/ima/baa.png" alt="Élan pour tous" width="40" height="40">
       <span class="brand-name">Élan pour tous</span>
     </a>
 
+    <!-- Navigation de pied de page -->
     <nav class="footer-nav" aria-label="Liens de pied de page">
       <ul class="footer-links">
         <li><a href="index.html">Accueil</a></li>
         <li><a href="about.html">À propos</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="rgaa.html">Accessibilité RGAA</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="mentions-legales.html">Mentions légales</a></li>
       </ul>
     </nav>
 
+    <!-- Mention légale -->
     <p class="footer-copy">© 2025 Élan pour tous — Tous droits réservés</p>
   </div>
 
-  <!-- 🎧 Barre TTS (boutons uniquement, le CSS/JS est déjà chargé via tts.min.css/js) -->
+  <!-- 🎧 Barre TTS (lecture à voix haute) -->
   <div class="tts-bar" role="region" aria-label="Lecture à voix haute">
     <div class="tts-row">
+      <!-- LIRE -->
       <button class="btn tts-btn" id="tts-play" title="Lire (Alt+L)" aria-label="Lire">
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+          <path fill="currentColor" d="M8 5v14l11-7z" />
+        </svg>
         <span class="btn-label">Lire</span>
       </button>
+
+      <!-- PAUSE -->
       <button class="btn tts-btn" id="tts-pause" title="Pause (Alt+P)" aria-label="Pause" disabled>
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+          <path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z" />
+        </svg>
         <span class="btn-label">Pause</span>
       </button>
+
+      <!-- REPRENDRE -->
       <button class="btn tts-btn" id="tts-resume" title="Reprendre (Alt+R)" aria-label="Reprendre" disabled>
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7zM5 5h2v14H5z"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+          <path fill="currentColor" d="M8 5v14l11-7zM5 5h2v14H5z" />
+        </svg>
         <span class="btn-label">Reprendre</span>
       </button>
+
+      <!-- STOP -->
       <button class="btn tts-btn" id="tts-stop" title="Stop (Alt+S)" aria-label="Stop" disabled>
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6 6h12v12H6z"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+          <path fill="currentColor" d="M6 6h12v12H6z" />
+        </svg>
         <span class="btn-label">Stop</span>
       </button>
     </div>
 
+    <!-- Vitesse -->
     <div class="tts-row">
       <label for="tts-rate">Vitesse :</label>
       <input id="tts-rate" type="range" min="0.7" max="1.6" step="0.1" value="1.0" />
       <span id="tts-rate-val" aria-live="polite">1.0×</span>
     </div>
 
+    <!-- Voix -->
     <div class="tts-row">
       <label for="tts-voice">Voix :</label>
       <select id="tts-voice" aria-label="Choisir la voix de synthèse"></select>
     </div>
 
+    <!-- Live region -->
     <p id="tts-live" class="sr-only" role="status" aria-live="polite"></p>
   </div>
 </footer>
+
+<!-- ======================= -->
+<!-- 🎨 STYLES DU FOOTER     -->
+<!-- ======================= -->
+<style>
+  /* ----- Mise en page ----- */
+  .site-footer {
+    background: var(--card, #f8f8f8);
+    border-top: 2px solid var(--border, #ccc);
+    padding: 1rem 0;
+  }
+  .footer-inner {
+    display: grid;
+    gap: 0.75rem;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+  }
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .footer-brand img {
+    display: block;
+    border-radius: 50%;
+  }
+  .brand-name {
+    font-weight: 700;
+  }
+
+  /* ----- Liens ----- */
+  .footer-links {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .footer-links li {
+    list-style: none !important;
+  }
+  .footer-links li::marker {
+    content: "";
+  }
+  .footer-links a {
+    text-decoration: none;
+    color: var(--text, #0366d6);
+  }
+  .footer-links a:hover,
+  .footer-links a:focus-visible {
+    text-decoration: underline;
+  }
+
+  /* ----- Copyright ----- */
+  .footer-copy {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted, #555);
+  }
+
+  /* ----- Fix séparation ou bordure ----- */
+  .container.hero,
+  .hero {
+    border-bottom: none !important;
+  }
+  hr:last-of-type {
+    border: 0 !important;
+    height: 0 !important;
+  }
+
+  /* ----- Adaptation thème sombre ----- */
+  [data-theme="dark"] .site-footer {
+    background: #111;
+    border-top-color: #333;
+  }
+  [data-theme="dark"] .footer-links a {
+    color: #4da3ff;
+  }
+  [data-theme="dark"] .footer-copy {
+    color: #aaa;
+  }
+</style>
