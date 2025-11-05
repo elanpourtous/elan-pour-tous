@@ -1,174 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Élan pour tous - Contact</title>
-  <meta name="description" content="Contactez Élan pour tous pour toute information, question ou inscription. Nous sommes à votre écoute.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact — Élan pour tous : questions, informations, inscriptions.">
   <meta name="theme-color" content="#0b8457">
-  <link rel="icon" href="assets/ima/baa.png" type="image/png">
-
+  <title>Élan pour tous — Contact</title>
+  <link rel="icon" href="assets/ima/logo.png" type="image/png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-
-  <style>
-    :root { --brand:#0b8457; --border:#dcdcdc; }
-    .field { margin-bottom: 1rem; }
-    .badge-req { color:#b00020; font-weight:700; }
-    .summary { border:1px solid #f2c4c4; background:#fff8f8; color:#7a0015; padding:.75rem; border-radius:10px; margin:.5rem 0 1rem; display:none; }
-    .summary[aria-hidden="false"] { display:block; }
-    .error { font-size:.9rem; color:#b00020; margin-top:.25rem; display:none; }
-    .error[aria-hidden="false"] { display:block; }
-    .form-status { margin:.75rem 0; }
-    input[aria-invalid="true"], textarea[aria-invalid="true"] { border-color:#b00020; box-shadow:0 0 0 3px rgba(176,0,32,.12); }
-    .btn { border: none; border-radius: .75rem; padding: .8rem 1.1rem; font-weight: 700; cursor: pointer; background: var(--brand); color: #fff; box-shadow: 0 8px 16px rgba(11,132,87,.25); }
-    .btn:focus-visible, :focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
-    .actions { margin-bottom: 1rem; }
-  </style>
+  <link rel="stylesheet" href="assets/css/tts.min.css">
 </head>
+<body>
+  <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
-<body class="page-contact">
-  <a href="#contenu" class="skip-link">Aller au contenu</a>
-
-  <div id="header-placeholder" role="banner"></div>
+  <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
 
   <main id="contenu" class="container hero" role="main" tabindex="-1">
     <h1>Contactez-nous</h1>
-    <p>Pour toute question, information ou demande d'inscription, n'hésitez pas à nous écrire. Réponse rapide garantie.</p>
+    <p>Réponse rapide garantie. Les champs marqués * sont requis.</p>
 
-    <div id="error-summary" class="summary" role="alert" aria-live="assertive" aria-hidden="true"></div>
     <p class="form-status" role="status" aria-live="polite" hidden></p>
 
-    <form
-      id="contact-form"
-      action="https://formspree.io/f/mzbldqre"
-      method="POST"
-      class="contact-form"
-      aria-label="Formulaire de contact"
-      novalidate>
-
-      <!-- Honeypot anti-spam -->
+    <form id="contact-form"
+          action="https://formspree.io/f/VOTRE_ID_FORM"
+          method="POST" class="contact-form" novalidate aria-label="Formulaire de contact">
+      <!-- honeypot -->
       <div class="visually-hidden" aria-hidden="true">
         <label for="company">Société</label>
         <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
       </div>
 
-      <input type="hidden" name="_subject"  value="Nouveau message – Élan pour tous">
+      <input type="hidden" name="_subject" value="Nouveau message — Élan pour tous">
       <input type="hidden" name="_language" value="fr">
 
-      <div class="field">
-        <label for="name">Nom <span class="badge-req" aria-hidden="true">*</span></label>
-        <input type="text" id="name" name="name" required aria-required="true" autocomplete="name" aria-describedby="hint-name">
-        <p id="hint-name" class="field-hint">Indiquez vos nom et prénom.</p>
-        <p id="err-name" class="error" aria-hidden="true">Merci d’indiquer votre nom.</p>
-      </div>
+      <label for="name">Nom *</label>
+      <input id="name" name="name" type="text" required aria-required="true" autocomplete="name">
 
-      <div class="field">
-        <label for="email">Email <span class="badge-req" aria-hidden="true">*</span></label>
-        <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" inputmode="email" aria-describedby="hint-email">
-        <p id="hint-email" class="field-hint">Nous ne partagerons pas votre adresse.</p>
-        <p id="err-email" class="error" aria-hidden="true">Renseignez une adresse email valide.</p>
-      </div>
+      <label for="email">Email *</label>
+      <input id="email" name="email" type="email" required aria-required="true" autocomplete="email">
 
-      <div class="field">
-        <label for="message">Message <span class="badge-req" aria-hidden="true">*</span></label>
-        <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="hint-message"></textarea>
-        <p id="hint-message" class="field-hint">Précisez votre demande (contexte, besoins, dates…)</p>
-        <p id="err-message" class="error" aria-hidden="true">Votre message est requis.</p>
-      </div>
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
 
-      <div class="actions">
-        <button type="submit" class="btn">Envoyer</button>
-      </div>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
     </form>
 
     <section class="contact-info" aria-labelledby="infos">
       <h2 id="infos">Nos coordonnées</h2>
       <p><strong>Email :</strong> <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a></p>
       <p><strong>Téléphone :</strong> <a href="tel:+33783336757">07 83 33 67 57</a></p>
-      <p><strong>Adresse :</strong> 18 rue des Menhirs - 49400 BAGNEUX - France</p>
+      <p><strong>Adresse :</strong> 18 rue des Menhirs — 49400 Bagneux (France)</p>
     </section>
-
-    <noscript><p role="alert">Le JavaScript est désactivé : l’envoi asynchrone ne fonctionnera pas.</p></noscript>
   </main>
 
-  <div id="footer-placeholder" role="contentinfo"></div>
-  <script src="assets/js/include.js" defer></script>
+  <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
 
   <script>
     (function(){
+      async function inc(id,u){const h=document.getElementById(id);if(!h)return;const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error(u+' introuvable');h.innerHTML=await r.text()}
+      document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu');if(m)requestAnimationFrame(()=>m.focus())});
+      Promise.all([inc('header-placeholder','assets/header.html'),inc('footer-placeholder','assets/footer.html')]).then(()=>{
+        ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{if(!document.querySelector(`script[src="${src}"]`)){const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s);}});
+      }).catch(console.error);
+
+      // Envoi AJAX Formspree (status accessible)
       document.addEventListener('DOMContentLoaded', function(){
-        const form    = document.getElementById('contact-form');
-        const status  = document.querySelector('.form-status');
-        const summary = document.getElementById('error-summary');
-        if(!form || !status || !summary) return;
-
-        const fields = [
-          { id:'name',    err:'Merci d\\'indiquer votre nom.' },
-          { id:'email',   err:'Renseignez une adresse email valide.' },
-          { id:'message', err:'Votre message est requis.' }
-        ];
-
-        function showError(input, msg){
-          input.setAttribute('aria-invalid','true');
-          const err = document.getElementById('err-' + input.id);
-          if (err) { err.textContent = msg; err.setAttribute('aria-hidden','false'); }
-        }
-        function clearError(input){
-          input.removeAttribute('aria-invalid');
-          const err = document.getElementById('err-' + input.id);
-          if (err) err.setAttribute('aria-hidden','true');
-        }
-        function validateField(input){
-          if (input.validity.valid) { clearError(input); return true; }
-          showError(input, input.validationMessage || 'Champ invalide.'); return false;
-        }
-
-        fields.forEach(({id}) => {
-          const el = document.getElementById(id);
-          if (!el) return;
-          el.addEventListener('input', () => validateField(el));
-          el.addEventListener('blur',  () => validateField(el));
-        });
-
-        form.addEventListener('submit', async (e) => {
+        const form = document.getElementById('contact-form');
+        const status = document.querySelector('.form-status');
+        if(!form || !status) return;
+        form.addEventListener('submit', async (e)=>{
           e.preventDefault();
           const data = new FormData(form);
-
-          if ((data.get('company')||'').trim() !== '') return;
-
-          summary.setAttribute('aria-hidden','true');
-          summary.textContent = '';
-
-          let ok = true, firstInvalid = null, problems = [];
-          for (const {id, err} of fields){
-            const el = document.getElementById(id);
-            if (!validateField(el)){ ok = false; problems.push(err); if(!firstInvalid) firstInvalid = el; }
-          }
-          if (!ok){
-            summary.innerHTML = '<strong>Veuillez corriger les éléments suivants :</strong><ul>' +
-              problems.map(p => `<li>${p}</li>`).join('') + '</ul>';
-            summary.setAttribute('aria-hidden','false');
-            if (firstInvalid) firstInvalid.focus();
-            return;
-          }
-
-          status.hidden = false;
-          status.textContent = 'Envoi en cours…';
-
+          if ((data.get('company')||'').trim() !== '') return; // honeypot
+          status.hidden = false; status.textContent = 'Envoi en cours…';
           try {
-            const res = await fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' }});
-            if (res.ok) {
-              status.textContent = 'Votre message a bien été envoyé. Merci !';
-              form.reset();
-            } else {
-              let msg = 'Oups, un souci est survenu. Réessayez ou écrivez à elanpourtous49@gmail.com';
-              try { const j = await res.json(); if (j && j.errors && j.errors.length) msg = j.errors.map(e=>e.message).join(', '); } catch {}
-              status.textContent = msg;
-            }
-          } catch(err) {
-            status.textContent = 'Connexion impossible. Vérifiez votre réseau, puis réessayez.';
-          }
+            const res = await fetch(form.action, {method:'POST', body:data, headers:{'Accept':'application/json'}});
+            if(res.ok){ status.textContent = 'Merci, votre message a bien été envoyé.'; form.reset(); }
+            else { status.textContent = 'Oups, un souci est survenu. Réessayez ou écrivez à elanpourtous49@gmail.com'; }
+          } catch(err){ status.textContent = 'Connexion impossible. Réessayez plus tard.'; }
         });
       });
     })();
