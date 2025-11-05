@@ -3,83 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Contact — Élan pour tous : questions, informations, inscriptions.">
+  <meta name="description" content="Contact — Élan pour tous : questions, informations, devis. Réponse rapide.">
   <meta name="theme-color" content="#0b8457">
   <title>Élan pour tous — Contact</title>
+
+  <!-- CSS dynamique -->
+  <script>
+    (function(){const b="assets/css/", L=(location.hostname==="localhost"||location.protocol==="file:");
+      const l=document.createElement('link'); l.rel='stylesheet'; l.href=b+(L?'style.css':'style.min.css'); document.head.appendChild(l);
+    })();
+  </script>
+
+  <!-- Canonical + Open Graph -->
+  <link rel="canonical" href="https://elanpourtous.github.io/elan-pour-tous/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Élan pour tous — Contact">
+  <meta property="og:description" content="Formulaire accessible. Réponse rapide.">
+  <meta property="og:image" content="https://elanpourtous.github.io/elan-pour-tous/assets/ima/baa.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="icon" href="assets/ima/logo.png" type="image/png">
-  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/tts.min.css">
+  <link rel="preload" as="image" href="assets/ima/baa.png">
 </head>
 <body>
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
   <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
 
-  <main id="contenu" class="container hero" role="main" tabindex="-1">
-    <h1>Contactez-nous</h1>
-    <p>Réponse rapide garantie. Les champs marqués * sont requis.</p>
+  <main id="contenu" class="container hero" role="main" tabindex="-1" aria-labelledby="page-title">
+    <h1 id="page-title">Contact</h1>
+    <p>Questions, informations, devis : dites-nous ce dont vous avez besoin. Réponse rapide.</p>
 
     <p class="form-status" role="status" aria-live="polite" hidden></p>
 
     <form id="contact-form"
-          action="https://formspree.io/f/VOTRE_ID_FORM"
-          method="POST" class="contact-form" novalidate aria-label="Formulaire de contact">
-      <!-- honeypot -->
+          action="https://formspree.io/f/VOTRE_ID_FORM"  method="POST"
+          class="contact-form" aria-label="Formulaire de contact" novalidate>
+
+      <!-- Honeypot anti-spam -->
       <div class="visually-hidden" aria-hidden="true">
         <label for="company">Société</label>
         <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
       </div>
 
-      <input type="hidden" name="_subject" value="Nouveau message — Élan pour tous">
+      <input type="hidden" name="_subject"  value="Nouveau message – Élan pour tous">
       <input type="hidden" name="_language" value="fr">
 
-      <label for="name">Nom *</label>
-      <input id="name" name="name" type="text" required aria-required="true" autocomplete="name">
+      <label for="name">Nom <span class="badge-req" aria-hidden="true">*</span></label>
+      <input type="text" id="name" name="name" required aria-required="true" autocomplete="name" aria-describedby="hint-name">
+      <p id="hint-name" class="field-hint">Indiquez vos nom et prénom.</p>
 
-      <label for="email">Email *</label>
-      <input id="email" name="email" type="email" required aria-required="true" autocomplete="email">
+      <label for="email">Email <span class="badge-req" aria-hidden="true">*</span></label>
+      <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" aria-describedby="hint-email">
+      <p id="hint-email" class="field-hint">Nous ne partagerons pas votre adresse.</p>
 
-      <label for="message">Message *</label>
-      <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+      <label for="message">Message <span class="badge-req" aria-hidden="true">*</span></label>
+      <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="hint-message"></textarea>
+      <p id="hint-message" class="field-hint">Précisez votre demande (contexte, besoins, dates…).</p>
 
-      <button type="submit" class="btn btn-primary">Envoyer</button>
+      <button type="submit" class="btn">Envoyer</button>
     </form>
 
     <section class="contact-info" aria-labelledby="infos">
       <h2 id="infos">Nos coordonnées</h2>
       <p><strong>Email :</strong> <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a></p>
       <p><strong>Téléphone :</strong> <a href="tel:+33783336757">07 83 33 67 57</a></p>
-      <p><strong>Adresse :</strong> 18 rue des Menhirs — 49400 Bagneux (France)</p>
+      <p><strong>Adresse :</strong> 18 rue des Menhirs — 49400 BAGNEUX — France</p>
     </section>
   </main>
 
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
 
   <script>
-    (function(){
-      async function inc(id,u){const h=document.getElementById(id);if(!h)return;const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error(u+' introuvable');h.innerHTML=await r.text()}
-      document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu');if(m)requestAnimationFrame(()=>m.focus())});
-      Promise.all([inc('header-placeholder','assets/header.html'),inc('footer-placeholder','assets/footer.html')]).then(()=>{
-        ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{if(!document.querySelector(`script[src="${src}"]`)){const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s);}});
+    (function () {
+      async function into(id,u){const h=document.getElementById(id);if(!h)return;const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error(u+' introuvable ('+r.status+')');h.innerHTML=await r.text();}
+      document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu'); if(m) requestAnimationFrame(()=>m.focus());});
+      Promise.all([ into('header-placeholder','assets/header.html'), into('footer-placeholder','assets/footer.html') ])
+      .then(()=>{ const base="assets/js/", L=(location.hostname==="localhost"||location.protocol==="file:");
+        for (const f of [ L?'include.js':'include.min.js', L?'tts.js':'tts.min.js' ]) { const s=document.createElement('script'); s.src=base+f; s.defer=true; document.body.appendChild(s); }
       }).catch(console.error);
 
-      // Envoi AJAX Formspree (status accessible)
-      document.addEventListener('DOMContentLoaded', function(){
-        const form = document.getElementById('contact-form');
-        const status = document.querySelector('.form-status');
-        if(!form || !status) return;
-        form.addEventListener('submit', async (e)=>{
-          e.preventDefault();
-          const data = new FormData(form);
-          if ((data.get('company')||'').trim() !== '') return; // honeypot
-          status.hidden = false; status.textContent = 'Envoi en cours…';
-          try {
-            const res = await fetch(form.action, {method:'POST', body:data, headers:{'Accept':'application/json'}});
-            if(res.ok){ status.textContent = 'Merci, votre message a bien été envoyé.'; form.reset(); }
-            else { status.textContent = 'Oups, un souci est survenu. Réessayez ou écrivez à elanpourtous49@gmail.com'; }
-          } catch(err){ status.textContent = 'Connexion impossible. Réessayez plus tard.'; }
-        });
+      // Envoi accessible Formspree
+      const form=document.getElementById('contact-form'); const status=document.querySelector('.form-status');
+      if(!form||!status) return;
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const data=new FormData(form);
+        if((data.get('company')||'').trim()!=='') return; // honeypot
+        status.hidden=false; status.textContent='Envoi en cours…';
+        try{
+          const res=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+          if(res.ok){ status.textContent='Votre message a bien été envoyé. Merci !'; form.reset(); }
+          else { status.textContent='Oups, un souci est survenu. Réessayez ou écrivez à elanpourtous49@gmail.com'; }
+        }catch(err){ status.textContent='Connexion impossible. Vérifiez votre réseau, puis réessayez.'; }
       });
     })();
   </script>
