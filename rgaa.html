@@ -2,198 +2,41 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Élan pour tous – Accessibilité RGAA</title>
-  <meta name="description" content="Engagement d’Élan pour tous en matière d’accessibilité numérique (RGAA) : moyens, ressources, plan d’action et contacts.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Accessibilité RGAA — engagements, moyens mis en œuvre et contact accessibilité.">
   <meta name="theme-color" content="#0b8457">
-  <link rel="icon" href="assets/ima/baa.png" type="image/png">
+  <title>Élan pour tous — Accessibilité RGAA</title>
+  <link rel="icon" href="assets/ima/logo.png" type="image/png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="stylesheet" href="assets/css/tts.min.css">
 </head>
-
 <body>
-  <!-- Lien d’évitement -->
-  <a href="#contenu" class="skip-link">Aller au contenu</a>
+  <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
-  <!-- HEADER dynamique -->
-  <div id="header-placeholder" role="banner"></div>
+  <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
 
-  <main id="contenu" class="container hero" role="main">
+  <main id="contenu" class="container hero" role="main" tabindex="-1">
     <h1>Accessibilité RGAA</h1>
-
-    <!-- Bannière / badge -->
-    <div class="rgaa-banner" role="complementary" aria-label="Engagement accessibilité du site">
-      <img src="assets/ima/accessibility.svg" alt="" class="rgaa-icon" width="24" height="24" aria-hidden="true">
-      <p>
-        <strong>Accessibilité RGAA démontrée ✅</strong> — site conçu pour être inclusif et utilisable par tous.
-        <a href="declaration-accessibilite.html">Lire la déclaration</a>
-      </p>
-    </div>
-
-    <!-- Sommaire -->
-    <nav aria-label="Sommaire accessibilité" class="toc">
-      <ul>
-        <li><a href="#engagement">Notre engagement</a></li>
-        <li><a href="#moyens">Moyens mis en œuvre</a></li>
-        <li><a href="#ressources">Ressources utiles</a></li>
-        <li><a href="#plan">Plan d’action / Checklist</a></li>
-        <li><a href="#contact-acces">Contact accessibilité</a></li>
-      </ul>
-    </nav>
-
-    <section id="engagement" aria-labelledby="h-eng">
-      <h2 id="h-eng">Notre engagement</h2>
-      <p>
-        Élan pour tous applique les recommandations du <strong>RGAA 4.1</strong> et des <strong>WCAG</strong>.
-        Les évolutions du site incluent des vérifications systématiques (clavier, lecteurs d’écran, contrastes, multimédia).
-      </p>
+    <section aria-labelledby="engagements">
+      <h2 id="engagements">Nos engagements</h2>
+      <p>Conformité progressive RGAA 4.1 / WCAG 2.2 — audit, corrections, formation.</p>
     </section>
 
-    <section id="moyens" aria-labelledby="h-moyens">
-      <h2 id="h-moyens">Moyens mis en œuvre</h2>
-      <ul>
-        <li>Structure sémantique (titres hiérarchisés, listes, régions ARIA).</li>
-        <li>Navigation clavier complète, <em>skip-link</em> et focus visible renforcé.</li>
-        <li>Contrastes conformes (AA), thèmes clair/sombre et respect de <em>prefers-reduced-motion</em>.</li>
-        <li>Alternatives textuelles pour les images ; médias sous-titrés quand nécessaire.</li>
-        <li>Formulaires : labels, indications, erreurs annoncées, <em>honeypot</em> anti-spam.</li>
-      </ul>
-    </section>
-
-    <section id="ressources" aria-labelledby="h-ress">
-      <h2 id="h-ress">Ressources utiles</h2>
-      <ul>
-        <li><a href="https://accessibilite.numerique.gouv.fr/" target="_blank" rel="noopener">Site officiel RGAA</a></li>
-        <li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener">WCAG (W3C)</a></li>
-        <li><a href="declaration-accessibilite.html">Déclaration d’accessibilité</a></li>
-        <li><a href="rgaa-checklist.html">Checklist d’auto-évaluation (statique)</a></li>
-      </ul>
-    </section>
-
-    <section id="plan" aria-labelledby="h-plan">
-      <h2 id="h-plan">Plan d’action / Checklist</h2>
-      <p>
-        Utilisez notre plan d’action pour suivre vos corrections RGAA. Version interactive disponible
-        (sauvegarde locale, filtres, export JSON).
-      </p>
-
-      <!-- ✅ Version statique minimale (toujours visible) -->
-      <ul>
-        <li><strong>1.1</strong> — Images porteuses d’info : alternatives textuelles pertinentes.</li>
-        <li><strong>3.2</strong> — Contrastes conformes (AA) pour textes/éléments interactifs.</li>
-        <li><strong>4.1</strong> — Navigation clavier + ordre logique + focus visible.</li>
-        <li><strong>8.x</strong> — Formulaires : labels, indications, messages d’erreur.</li>
-      </ul>
-
-      <!-- 🔧 Option : intégrer la checklist interactive (si tu as créé assets/js/rgaa-plan.js) -->
-      <!--
-      <div id="rgaa-plan-mount">
-        <section id="rgaa-plan" aria-labelledby="plan-rgaa">
-          <h3 id="plan-rgaa">Checklist interactive</h3>
-          <div class="rgaa-controls" role="group" aria-label="Contrôles du plan d’action">
-            <label>Filtrer :
-              <select id="rgaa-filter">
-                <option value="all">Tout</option>
-                <option value="todo">À corriger</option>
-                <option value="done">OK</option>
-              </select>
-            </label>
-            <button type="button" id="rgaa-export" class="btn">Exporter JSON</button>
-            <button type="button" id="rgaa-reset" class="btn">Réinitialiser</button>
-          </div>
-          <div class="rgaa-progresswrap" aria-live="polite">
-            <progress id="rgaa-progress" value="0" max="100"></progress>
-            <span id="rgaa-progress-label">0% complété</span>
-          </div>
-          <ul id="rgaa-checklist" class="rgaa-list" data-key="rgaa-plan-v1">
-            <li class="rgaa-item" data-id="1.1">
-              <div class="rgaa-head">
-                <label><input type="checkbox" class="rgaa-check"><strong>1.1</strong> — Images porteuses d’info : alternatives textuelles</label>
-                <span class="rgaa-badge" aria-hidden="true">À corriger</span>
-              </div>
-              <details><summary>Détails / Notes</summary>
-                <p class="hint">Alt descriptif, images décoratives ignorées (alt="" / role="presentation").</p>
-                <textarea class="rgaa-note" rows="3" placeholder="Notes / actions…"></textarea>
-              </details>
-            </li>
-            <li class="rgaa-item" data-id="3.2">
-              <div class="rgaa-head">
-                <label><input type="checkbox" class="rgaa-check"><strong>3.2</strong> — Contrastes (AA)</label>
-                <span class="rgaa-badge" aria-hidden="true">À corriger</span>
-              </div>
-              <details><summary>Détails / Notes</summary>
-                <p class="hint">États hover/focus, placeholders, boutons désactivés.</p>
-                <textarea class="rgaa-note" rows="3" placeholder="Notes / actions…"></textarea>
-              </details>
-            </li>
-            <li class="rgaa-item" data-id="4.1">
-              <div class="rgaa-head">
-                <label><input type="checkbox" class="rgaa-check"><strong>4.1</strong> — Clavier + focus</label>
-                <span class="rgaa-badge" aria-hidden="true">À corriger</span>
-              </div>
-              <details><summary>Détails / Notes</summary>
-                <p class="hint">Ordre logique, skip-link, pas de piège clavier.</p>
-                <textarea class="rgaa-note" rows="3" placeholder="Notes / actions…"></textarea>
-              </details>
-            </li>
-          </ul>
-        </section>
-      </div>
-      -->
-    </section>
-
-    <section id="contact-acces" aria-labelledby="h-contact">
-      <h2 id="h-contact">Contact accessibilité</h2>
-      <p>Vous avez identifié un problème d’accessibilité ou besoin d’une alternative ?</p>
-      <ul>
-        <li>📧 <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a></li>
-        <li>📞 <a href="tel:+33783336757">07 83 33 67 57</a></li>
-      </ul>
-      <p>Nous vous répondons et mettons en place une solution adaptée.</p>
+    <section aria-labelledby="contact-a11y">
+      <h2 id="contact-a11y">Contact accessibilité</h2>
+      <p>Un contenu inaccessible ? Écrivez-nous : <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a></p>
     </section>
   </main>
 
-  <!-- FOOTER dynamique -->
-  <div id="footer-placeholder" role="contentinfo"></div>
+  <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
 
-  <!-- Inclusion des fragments + scripts après injection -->
   <script>
-    function includeInto(id, url) {
-      return fetch(url, { cache: "no-store" })
-        .then(r => { if (!r.ok) throw new Error(url + " introuvable"); return r.text(); })
-        .then(html => { document.getElementById(id).innerHTML = html; });
-    }
-
-    Promise.all([
-      includeInto("header-placeholder", "assets/header.html"),
-      includeInto("footer-placeholder", "assets/footer.html")
-    ])
-    .then(() => {
-      // Surligner l’onglet courant automatiquement
-      (function () {
-        const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-        document.querySelectorAll('.nav-links a').forEach(a => {
-          if ((a.getAttribute('href')||'').toLowerCase() === current) {
-            a.setAttribute('aria-current', 'page'); a.classList.add('active');
-          }
-        });
-      })();
-
-      const s1 = document.createElement('script'); s1.src = 'assets/js/main.js'; s1.defer = true; document.body.appendChild(s1);
-      const s2 = document.createElement('script'); s2.src = 'assets/js/accessibilite.js'; s2.defer = true; document.body.appendChild(s2);
-
-      // ⬇️ Dé-commente si tu as créé assets/js/rgaa-plan.js (version interactive)
-      // const s3 = document.createElement('script'); s3.src = 'assets/js/rgaa-plan.js'; s3.defer = true; document.body.appendChild(s3);
-    })
-    .catch(err => console.error('Erreur d’inclusion :', err));
+    (function(){async function i(id,u){const h=document.getElementById(id);if(!h)return;const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error(u+' introuvable');h.innerHTML=await r.text()}
+    document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu');if(m)requestAnimationFrame(()=>m.focus())});
+    Promise.all([i('header-placeholder','assets/header.html'),i('footer-placeholder','assets/footer.html')]).then(()=>{
+      ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{if(!document.querySelector(`script[src="${src}"]`)){const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s);}});
+    }).catch(console.error);})();
   </script>
-
-  <style>
-    /* Petit style local pour le sommaire */
-    .toc { margin: 1rem 0 2rem; }
-    .toc ul { display:flex; flex-wrap:wrap; gap:.75rem 1rem; padding:0; list-style:none; }
-    .toc a { display:inline-block; padding:.4rem .7rem; border:1px solid var(--border); border-radius:.5rem; text-decoration:none; color:var(--fg); background:var(--card); }
-    .toc a:hover { filter: brightness(1.05); }
-  </style>
 </body>
 </html>
