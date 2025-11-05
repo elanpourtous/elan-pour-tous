@@ -2,97 +2,67 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Élan pour tous — micro-entreprise à Saumur (49) proposant des formations et services accessibles à tous publics.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Élan pour tous — micro-entreprise basée à Saumur (49). Formations inclusives, accessibilité, accompagnement.">
   <meta name="theme-color" content="#0b8457">
-  <title>Élan pour tous - Accueil</title>
+  <title>Élan pour tous — Accueil</title>
 
-  <!-- Favicon & préchargements utiles -->
+  <!-- CSS dynamique (minifié en ligne, lisible en local) -->
+  <script>
+    (function() {
+      const base="assets/css/", local=(location.hostname==="localhost"||location.protocol==="file:");
+      const el=document.createElement("link"); el.rel="stylesheet"; el.href=base+(local?"style.css":"style.min.css");
+      document.head.appendChild(el);
+    })();
+  </script>
+
+  <!-- Canonical + Open Graph -->
+  <link rel="canonical" href="https://elanpourtous.github.io/elan-pour-tous/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Élan pour tous — Accueil">
+  <meta property="og:description" content="Formations accessibles, accompagnement et sensibilisation.">
+  <meta property="og:image" content="https://elanpourtous.github.io/elan-pour-tous/assets/ima/baa.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="icon" href="assets/ima/logo.png" type="image/png">
-  <link rel="preload" as="image" href="assets/ima/baa.png" imagesrcset="assets/ima/baa.png">
-
-  <!-- Feuilles de style principales -->
-  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-  <!-- CSS de la barre TTS (évite le flash sans style) -->
-  <link rel="stylesheet" href="assets/css/tts.min.css"><!-- ou tts.dev.css en dev -->
+  <link rel="stylesheet" href="assets/css/tts.min.css">
+  <link rel="preload" as="image" href="assets/ima/baa.png">
 </head>
-
 <body>
-  <!-- Lien d’évitement pour navigation clavier -->
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
-  <!-- HEADER chargé dynamiquement -->
-  <div id="header-placeholder" role="banner" aria-label="En-tête du site"></div>
+  <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
 
-  <!-- 🌟 Contenu principal -->
-    <main id="contenu" class="container hero" role="main" tabindex="-1">
-    <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo" width="180" height="180" decoding="async">
-    <h1>Élan pour tous</h1>
-    <p class="tagline">Micro-entreprise basée à Saumur (49) — formations et services inclusifs pour tous publics.</p>
-    <p>Accompagner chacun·e dans son parcours d’apprentissage, de reconversion et d’épanouissement personnel ou professionnel.</p>
-    <a href="formations.html" class="btn btn-primary">Découvrir nos formations</a>
+  <main id="contenu" class="container hero" role="main" tabindex="-1" aria-labelledby="page-title">
+    <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo" width="120" height="120">
+    <h1 id="page-title">Élan pour tous</h1>
+    <p class="tagline">Formations & services inclusifs — Saumur (49) et distanciel.</p>
+    <p>Accompagner chacun·e dans son parcours d’apprentissage et d’autonomie numérique, avec des méthodes simples, concrètes et accessibles.</p>
+    <p>
+      <a href="formations.html" class="btn btn-primary">Découvrir les formations</a>
+      <a href="services.html" class="btn">Nos services</a>
+    </p>
   </main>
 
-  <!-- FOOTER chargé dynamiquement -->
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
 
-  <noscript>
-    <p role="alert">Le JavaScript est désactivé : l’en-tête et le pied de page dynamiques ne seront pas chargés.</p>
-  </noscript>
-
-  <!-- ============================= -->
-  <!-- 🔗 INJECTION HEADER + FOOTER + SCRIPTS -->
-  <!-- ============================= -->
+  <!-- JS : header/footer puis scripts (minifiés en prod) -->
   <script>
     (function () {
-      // utilitaire d’inclusion HTML
-      async function includeInto(id, url) {
-        const host = document.getElementById(id);
-        if (!host) throw new Error('Conteneur manquant : #' + id);
-        const res = await fetch(url, { cache: 'no-store' });
-        if (!res.ok) throw new Error(url + ' introuvable (' + res.status + ')');
-        const html = await res.text();
-        host.innerHTML = html;
+      async function into(id, url) {
+        const host = document.getElementById(id); if (!host) return;
+        const r = await fetch(url, { cache: 'no-store' }); if (!r.ok) throw new Error(url+' introuvable ('+r.status+')');
+        host.innerHTML = await r.text();
       }
-
-      // Assure le focus du skip-link sur #contenu
-      const skip = document.querySelector('.skip-link');
-      if (skip) {
-        skip.addEventListener('click', () => {
-          const main = document.getElementById('contenu');
-          if (main) requestAnimationFrame(() => main.focus());
-        });
-      }
-
-      // Charge header + footer, puis les scripts
-      Promise.all([
-        includeInto('header-placeholder', 'assets/header.html'),
-        includeInto('footer-placeholder', 'assets/footer.html')
-      ])
-      .then(() => {
-        // Scripts du site (déférés)
-        const scripts = [
-          'assets/js/include.js',       // “tout-en-un” (menu, thème, accessibilité, toggle TTS)
-          // 'assets/js/main.js',       // si nécessaire
-          // 'assets/js/accessibilite.js', // superflu si include.js regroupe déjà
-          'assets/js/tts.min.js'        // ou 'assets/js/tts.dev.js' en dev
-        ];
-        scripts.forEach(src => {
-          const s = document.createElement('script');
-          s.src = src;
-          s.defer = true;
-          document.body.appendChild(s);
-        });
-      })
-      .catch(err => {
-        console.error('Erreur d’inclusion :', err);
-        // Fallback minimal si le footer ne charge pas
-        const fp = document.getElementById('footer-placeholder');
-        if (fp && !fp.innerHTML.trim()) {
-          fp.innerHTML = '<footer class="site-footer"><p style="padding:1rem">© Élan pour tous</p></footer>';
+      document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu'); if(m) requestAnimationFrame(()=>m.focus());});
+      Promise.all([ into('header-placeholder','assets/header.html'), into('footer-placeholder','assets/footer.html') ])
+      .then(()=>{ const base="assets/js/", local=(location.hostname==="localhost"||location.protocol==="file:");
+        for (const f of [ local?'include.js':'include.min.js', local?'tts.js':'tts.min.js' ]) {
+          const s=document.createElement('script'); s.src=base+f; s.defer=true; document.body.appendChild(s);
         }
-      });
+      }).catch(console.error);
     })();
   </script>
 </body>
