@@ -132,3 +132,21 @@
     transform: none !important;
   }
 }
+
+/* Footer – reset robuste */
+.site-footer { background: var(--card,#f7f7f7); border-top: 1px solid var(--border,#d6d6d6); padding: 1rem; }
+.footer-inner { display: grid; gap: .75rem; align-items: center; justify-items: center; text-align: center; }
+
+.footer-brand { display: inline-flex; align-items: center; gap: .5rem; text-decoration: none; color: inherit; }
+.brand-name { font-weight: 700; }
+
+.footer-links { list-style: none !important; padding: 0 !important; margin: 0 !important;
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.footer-links li { list-style: none !important; }
+.footer-links a { text-decoration: none; }
+.footer-links a:hover, .footer-links a:focus-visible { text-decoration: underline; }
+
+.footer-copy { margin: 0; font-size: .9rem; color: #555; }
+
+/* Sécurité : enlève tout marqueur résiduel provenant d’un user-agent style */
+.footer-links li::marker { content: ""; }
