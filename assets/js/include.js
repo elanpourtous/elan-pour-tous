@@ -134,15 +134,45 @@
     }
   });
 
-  /* ========== TOGGLE BARRE TTS (footer) ========== */
-  const ttsToggle = document.getElementById('tts-toggle');
-  const ttsBar = document.querySelector('.tts-bar');
-  if (ttsToggle && ttsBar) {
-    ttsToggle.addEventListener('click', () => {
-      const willShow = ttsBar.hasAttribute('hidden');
-      ttsBar.toggleAttribute('hidden');
-      ttsToggle.setAttribute('aria-pressed', String(willShow));
-    });
+/* =========================
+   TOGGLE BARRE TTS (avec transition)
+========================= */
+(function ttsToggleAnimated(){
+  const toggle = document.getElementById('tts-toggle');
+  const bar = document.querySelector('.tts-bar');
+  if (!toggle || !bar) return;
+
+  // État initial selon la mémoire utilisateur (localStorage)
+  const saved = localStorage.getItem('ttsVisible'); // 'shown' | 'hidden' | null
+  const shouldShow = saved ? (saved === 'shown') : true; // visible par défaut
+  // On enlève l'attribut hidden pour permettre la transition CSS, puis on applique l'état visuel
+  bar.removeAttribute('hidden');
+  if (shouldShow) {
+    bar.classList.add('is-visible');
+    toggle.setAttribute('aria-pressed', 'true');
+  } else {
+    bar.classList.remove('is-visible');
+    toggle.setAttribute('aria-pressed', 'false');
   }
+
+  function showBar() {
+    // s’assure que l’élément est affichable
+    bar.classList.add('is-visible');
+    toggle.setAttribute('aria-pressed', 'true');
+    localStorage.setItem('ttsVisible', 'shown');
+  }
+
+  function hideBar() {
+    // lance l’animation de sortie puis, après transition, rend l’élément “vraiment” caché pour SR si tu veux
+    bar.classList.remove('is-visible');
+    toggle.setAttribute('aria-pressed', 'false');
+    localStorage.setItem('ttsVisible', 'hidden');
+  }
+
+  toggle.addEventListener('click', () => {
+    const visible = bar.classList.contains('is-visible');
+    if (visible) hideBar(); else showBar();
+  });
 })();
+
 </script>
