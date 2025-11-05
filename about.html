@@ -3,50 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Élan pour tous — micro-entreprise à Saumur, engagée pour la formation, l’accessibilité et l’égalité des chances.">
-  <title>Élan pour tous - À propos</title>
+  <meta name="description" content="À propos — Élan pour tous : mission, valeurs, engagements et parcours.">
   <meta name="theme-color" content="#0b8457">
-  <link rel="icon" href="assets/ima/baa.png" type="image/png">
-
-  <!-- Feuilles de style -->
+  <title>Élan pour tous — À propos</title>
+  <link rel="icon" href="assets/ima/logo.png" type="image/png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="stylesheet" href="assets/css/tts.min.css">
 </head>
-
 <body>
-  <!-- Lien d’évitement pour lecteurs d’écran -->
-  <a href="#contenu" class="skip-link">Aller au contenu</a>
+  <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
-  <!-- HEADER chargé automatiquement -->
-  <div id="header-placeholder" role="banner"></div>
+  <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
 
-  <!-- Contenu principal -->
-  <main class="container hero" id="contenu" role="main">
-    <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo">
-    <h1>À propos de nous</h1>
+  <main id="contenu" class="container hero" role="main" tabindex="-1">
+    <h1>À propos</h1>
+    <p class="lead">Nous rendons l’apprentissage accessible à toutes et tous.</p>
 
-    <p>
-      <strong>Élan pour tous</strong> est une micro-entreprise basée à Saumur (49),
-      engagée pour l’accès à la connaissance, l’inclusion et l’égalité des chances.
-      Nous accompagnons chaque personne dans son parcours de formation, d’apprentissage et d’épanouissement.
-    </p>
+    <section aria-labelledby="mission">
+      <h2 id="mission">Notre mission</h2>
+      <p>Accompagner chaque personne, quels que soient ses besoins, vers l’autonomie et la réussite.</p>
+    </section>
 
-    <p>
-      Nos formateur·rice·s passionné·e·s s’adaptent à chaque besoin, convaincu·e·s que 
-      chaque parcours est unique et mérite d’être valorisé.
-      Notre mission : permettre à chacun·e de développer ses compétences et de construire un avenir serein.
-    </p>
-
-    <p>
-      Nous œuvrons pour un monde où la diversité est une richesse, 
-      et où les apprentissages sont accessibles à tous, quelles que soient les différences.
-    </p>
+    <section aria-labelledby="valeurs">
+      <h2 id="valeurs">Nos valeurs</h2>
+      <ul>
+        <li>Inclusion & accessibilité</li>
+        <li>Exigence pédagogique</li>
+        <li>Respect des rythmes et des différences</li>
+      </ul>
+    </section>
   </main>
 
-  <!-- FOOTER chargé automatiquement -->
-  <div id="footer-placeholder" role="contentinfo"></div>
+  <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
 
-  <!-- ✅ Inclusion du header, footer et des scripts (main, accessibilité, TTS) -->
-  <script src="assets/js/include.js" defer></script>
+  <script>
+    (function () {
+      async function includeInto(id, url) {
+        const host = document.getElementById(id);
+        if (!host) return;
+        const r = await fetch(url, {cache:'no-store'});
+        if (!r.ok) throw new Error(url+' introuvable');
+        host.innerHTML = await r.text();
+      }
+      document.querySelector('.skip-link')?.addEventListener('click', () => {
+        const m = document.getElementById('contenu'); if (m) requestAnimationFrame(() => m.focus());
+      });
+      Promise.all([
+        includeInto('header-placeholder', 'assets/header.html'),
+        includeInto('footer-placeholder', 'assets/footer.html')
+      ]).then(() => {
+        ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{
+          if (!document.querySelector(`script[src="${src}"]`)) {
+            const s=document.createElement('script'); s.src=src; s.defer=true; document.body.appendChild(s);
+          }
+        });
+      }).catch(console.error);
+    })();
+  </script>
 </body>
 </html>
