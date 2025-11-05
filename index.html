@@ -73,9 +73,9 @@
       .then(() => {
         // Scripts du site (déférés)
         const scripts = [
-          'assets/js/include.js',       // ton “tout-en-un” (menu, thème, accessibilité, toggle TTS)
-          // 'assets/js/main.js',       // si tu en as besoin
-          // 'assets/js/accessibilite.js', // (déjà couvert par include.js si tu as suivi mon bundle)
+          'assets/js/include.js',       // “tout-en-un” (menu, thème, accessibilité, toggle TTS)
+          // 'assets/js/main.js',       // si nécessaire
+          // 'assets/js/accessibilite.js', // superflu si include.js regroupe déjà
           'assets/js/tts.min.js'        // ou 'assets/js/tts.dev.js' en dev
         ];
         scripts.forEach(src => {
@@ -87,7 +87,7 @@
       })
       .catch(err => {
         console.error('Erreur d’inclusion :', err);
-        // Fallback minimal gracieux si le footer n’a pas pu être inclus
+        // Fallback minimal si le footer ne charge pas
         const fp = document.getElementById('footer-placeholder');
         if (fp && !fp.innerHTML.trim()) {
           fp.innerHTML = '<footer class="site-footer"><p style="padding:1rem">© Élan pour tous</p></footer>';
