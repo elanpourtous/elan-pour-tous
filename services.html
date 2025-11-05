@@ -3,40 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Services — Élan pour tous : accompagnement, audit accessibilité, adaptation de supports.">
+  <meta name="description" content="Services — accompagnement individuel, audits d’accessibilité, adaptation de supports, ateliers sensibilisation RGAA/WCAG.">
   <meta name="theme-color" content="#0b8457">
   <title>Élan pour tous — Services</title>
+
+  <!-- Canonical + Open Graph -->
+  <link rel="canonical" href="https://ton-domaine.tld/services.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Élan pour tous — Services">
+  <meta property="og:description" content="Accompagnement, audit d’accessibilité, adaptation de supports, ateliers. Concrets, priorisés, mesurables.">
+  <meta property="og:image" content="https://ton-domaine.tld/assets/ima/baa.png">
+  <meta property="og:image:alt" content="Logo Élan pour tous">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="icon" href="assets/ima/logo.png" type="image/png">
+  <link rel="preload" as="image" href="assets/ima/baa.png">
+
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/tts.min.css">
 </head>
 <body>
+  <!-- Lien d’évitement -->
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
+  <!-- Header injecté -->
   <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
 
-  <main id="contenu" class="container hero" role="main" tabindex="-1">
-    <h1>Services</h1>
+  <!-- Contenu principal -->
+  <main id="contenu" class="container hero" role="main" tabindex="-1" aria-labelledby="page-title">
+    <h1 id="page-title">Services</h1>
+
     <section aria-labelledby="accomp">
-      <h2 id="accomp">Accompagnement</h2>
-      <p>Bilan de besoins, plan d’action individualisé, suivi et évaluation.</p>
+      <h2 id="accomp">Accompagnement individuel</h2>
+      <p>
+        Coaching numérique, remise à niveau, méthodologie d’apprentissage, communication écrite/orale.
+        On s’aligne sur votre objectif et votre rythme, avec des exercices concrets et réutilisables.
+      </p>
+      <ul>
+        <li>Organisation personnelle : agenda, rappels, outils de suivi</li>
+        <li>Communication pro : mails, documents, présentation orale</li>
+        <li>Autonomie numérique : sécurité de base, démarches en ligne</li>
+      </ul>
     </section>
 
-    <section aria-labelledby="audit">
-      <h2 id="audit">Audit & conseil accessibilité</h2>
-      <p>RGAA/WCAG, corrections prioritaires, formation des équipes, attestation.</p>
+    <section aria-labelledby="orga">
+      <h2 id="orga">Pour les organisations</h2>
+
+      <article aria-labelledby="audit">
+        <h3 id="audit">Audit d’accessibilité</h3>
+        <p>Diagnostic priorisé (RGAA 4.1 / WCAG 2.2), restitution claire, plan d’action pragmatique.</p>
+        <ul>
+          <li>Échantillon représentatif, tests clavier/lecteur d’écran</li>
+          <li>Rapport actionnable : correctifs rapides + feuille de route</li>
+          <li>Transfert de compétences à l’équipe</li>
+        </ul>
+      </article>
+
+      <article aria-labelledby="adapt">
+        <h3 id="adapt">Adaptation de supports</h3>
+        <p>Documents, slides, vidéos : mise en forme accessible, sous-titres, transcription, descriptions.</p>
+      </article>
+
+      <article aria-labelledby="sens">
+        <h3 id="sens">Ateliers & sensibilisation</h3>
+        <p>Ateliers concrets pour intégrer les bons réflexes d’accessibilité dès la conception.</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="resultats">
+      <h2 id="resultats">Résultats attendus</h2>
+      <ul>
+        <li>Des outils utilisés pour de vrai (et pas juste installés)</li>
+        <li>Des contenus compris du premier coup</li>
+        <li>Des pratiques durables, mesurables, et partagées</li>
+      </ul>
+      <p>
+        <a href="contact.html" class="btn btn-primary">Parler de votre besoin</a>
+        <a href="rgaa.html" class="btn">Voir notre démarche RGAA</a>
+      </p>
     </section>
   </main>
 
+  <!-- Footer injecté -->
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
 
+  <!-- Loader fragments + scripts -->
   <script>
-    (function(){async function i(id,u){const h=document.getElementById(id);if(!h)return;const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error(u+' introuvable');h.innerHTML=await r.text()}
-    document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu');if(m)requestAnimationFrame(()=>m.focus())});
-    Promise.all([i('header-placeholder','assets/header.html'),i('footer-placeholder','assets/footer.html')]).then(()=>{
-      ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{if(!document.querySelector(`script[src="${src}"]`)){const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s);}});
-    }).catch(console.error);})();
+    (function(){async function inject(id,u){const host=document.getElementById(id);if(!host)return;const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error(u+' introuvable ('+r.status+')');host.innerHTML=await r.text();}
+      document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu');if(m)requestAnimationFrame(()=>m.focus());});
+      Promise.all([inject('header-placeholder','assets/header.html'),inject('footer-placeholder','assets/footer.html')])
+      .then(()=>['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{if(!document.querySelector(`script[src="${src}"]`)){const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s);}}))
+      .catch(err=>console.error('Inclusion échouée :',err));
+    })();
   </script>
 </body>
 </html>
