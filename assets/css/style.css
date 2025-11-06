@@ -278,3 +278,54 @@ a:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
+
+/* ===== Header mobile avec logo visible ===== */
+header[role="banner"] {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg, #fff);
+  border-bottom: 1px solid var(--border, #e5e5e5);
+}
+
+header .container {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .75rem; padding: .6rem 1rem;
+}
+
+/* Logo — taille mobile lisible, non déformée */
+.logo-img {
+  display: block;
+  height: 40px;           /* taille mobile */
+  width: auto;            /* respecte le ratio */
+  object-fit: contain;
+}
+
+/* Bouton burger bien cliquable */
+.menu-toggle.btn-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: .5rem;
+  border: 1px solid var(--border, #d0d0d0); background: var(--card, #fafafa);
+}
+.menu-toggle .burger {
+  width: 20px; height: 2px; background: currentColor; position: relative;
+}
+.menu-toggle .burger::before,
+.menu-toggle .burger::after {
+  content: ""; position: absolute; left: 0; width: 20px; height: 2px; background: currentColor;
+}
+.menu-toggle .burger::before { top: -6px; }
+.menu-toggle .burger::after  { top:  6px; }
+
+/* Navigation mobile repliée par défaut (gérée aussi par JS via [hidden]) */
+#primary-nav[hidden] { display: none !important; }
+#primary-nav {
+  display: grid; gap: .25rem; padding: .5rem 1rem 1rem;
+}
+
+/* ===== Desktop : logo un peu plus grand, menu horizontal ===== */
+@media (min-width: 780px) {
+  .logo-img { height: 56px; }
+  #primary-nav {
+    display: flex !important; gap: 1rem; padding: 0; align-items: center;
+  }
+  .menu-toggle.btn-icon { display: none; }
+}
