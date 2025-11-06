@@ -76,6 +76,40 @@
         Tous nos supports sont accessibles&nbsp;: textes clairs, vidéos sous-titrées, transcription automatique et lecture vocale intégrée.
       </p>
     </aside>
+    <section id="prise-contact" aria-labelledby="pc-title" class="contact-cta">
+  <h2 id="pc-title">Prendre contact rapidement</h2>
+  <p class="lead">Dites-nous qui vous êtes et on vous oriente vers le bon formulaire.</p>
+
+  <form id="pc-form" class="pc-form" action="contact.html" method="get" aria-describedby="pc-hint">
+    <p id="pc-hint" class="field-hint">Choisissez votre profil et cliquez sur “Continuer”.</p>
+
+    <fieldset class="pc-fieldset">
+      <legend class="sr-only">Votre profil</legend>
+
+      <div class="pc-option">
+        <input type="radio" id="pc-demandeur" name="profil" value="demandeur" required>
+        <label for="pc-demandeur"><strong>Demandeur d’emploi</strong> — tests de compétences, bilan, recommandations</label>
+      </div>
+
+      <div class="pc-option">
+        <input type="radio" id="pc-entreprise" name="profil" value="entreprise">
+        <label for="pc-entreprise"><strong>Entreprise</strong> — formations, suivi des salariés en situation de handicap, coordination</label>
+      </div>
+    </fieldset>
+
+    <!-- Optionnel : préciser le besoin (restera dans l’URL, utile pour préremplir) -->
+    <label for="pc-note" class="pc-label">Votre besoin en 1 phrase (optionnel)</label>
+    <input type="text" id="pc-note" name="note" maxlength="140" placeholder="Ex. : test bureautique + dictée vocale">
+
+    <!-- Le sujet sera construit côté JS, sinon fallback via value par défaut -->
+    <input type="hidden" id="pc-subject" name="subject" value="Prise de contact — orientation">
+
+    <div class="pc-actions">
+      <button type="submit" class="btn btn-primary">Continuer vers le contact</button>
+    </div>
+  </form>
+</section>
+
   </main>
 
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
