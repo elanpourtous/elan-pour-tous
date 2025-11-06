@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tests de compétences et accompagnement des entreprises — Élan pour tous aide à révéler le potentiel et favorise l’emploi inclusif.">
+  <meta name="theme-color" content="#0b8457">
+  <title>Élan pour tous — Tests & accompagnement</title>
+
+  <link rel="icon" href="assets/ima/logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="stylesheet" href="assets/css/tts.min.css">
+</head>
+<body>
+  <a href="#contenu" class="skip-link">Aller directement au contenu</a>
+
+  <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
+
+  <main id="contenu" class="container hero" role="main" tabindex="-1">
+    <h1>Tests de compétences & accompagnement</h1>
+    <p class="lead">
+      Valoriser les compétences, ouvrir les perspectives — pour les demandeurs d’emploi comme pour les entreprises engagées.
+    </p>
+
+    <section aria-labelledby="demandeur">
+      <h2 id="demandeur">Pour les demandeurs d’emploi</h2>
+      <p>
+        Vous cherchez à mieux comprendre vos points forts et vos axes de progression&nbsp;?  
+        Élan pour tous propose des <strong>tests de compétences accessibles</strong> pour identifier vos savoir-faire numériques, bureautiques ou communicationnels.
+      </p>
+      <ul>
+        <li>Bilan initial et entretien individuel</li>
+        <li>Tests numériques adaptés (avec aides techniques si besoin)</li>
+        <li>Restitution claire, accompagnée de recommandations de formation</li>
+      </ul>
+      <p>
+        Ces tests servent de base à un parcours personnalisé vers plus d’autonomie et d’inclusion professionnelle.
+      </p>
+      <p>
+        <a href="contact.html" class="btn btn-primary">Demander un test de compétences</a>
+      </p>
+    </section>
+
+    <section aria-labelledby="entreprises">
+      <h2 id="entreprises">Pour les entreprises</h2>
+      <p>
+        Vous souhaitez <strong>accompagner vos salariés en situation de handicap</strong> ou renforcer vos pratiques inclusives&nbsp;?
+        Nous intervenons sur trois volets complémentaires :
+      </p>
+      <ol>
+        <li><strong>Formation</strong> — ateliers pratiques sur l’accessibilité numérique, la communication inclusive, et l’adaptation des postes de travail.</li>
+        <li><strong>Suivi personnalisé</strong> — observation sur site, conseils d’aménagement, suivi des acquis après formation.</li>
+        <li><strong>Coordination</strong> — lien avec les référents handicap, organismes partenaires et services RH.</li>
+      </ol>
+      <p>
+        Chaque action est <strong>co-construite</strong> avec votre structure selon les besoins réels des équipes, et peut se dérouler sur un trimestre ou un semestre.
+      </p>
+      <p>
+        <a href="contact.html" class="btn">Demander une présentation détaillée</a>
+      </p>
+    </section>
+
+    <section aria-labelledby="objectifs">
+      <h2 id="objectifs">Nos objectifs</h2>
+      <ul>
+        <li>Faciliter la mise en emploi durable de personnes en situation de handicap</li>
+        <li>Valoriser les compétences existantes avant tout</li>
+        <li>Créer un environnement professionnel plus équitable et bienveillant</li>
+      </ul>
+    </section>
+
+    <aside class="info-note" role="note">
+      <h3>Bon à savoir</h3>
+      <p>
+        Tous nos supports sont accessibles&nbsp;: textes clairs, vidéos sous-titrées, transcription automatique et lecture vocale intégrée.
+      </p>
+    </aside>
+  </main>
+
+  <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
+
+  <script>
+    (function(){
+      async function include(id,url){
+        const el=document.getElementById(id);
+        if(!el)return;
+        const res=await fetch(url,{cache:'no-store'});
+        if(!res.ok)throw new Error(url+' introuvable');
+        el.innerHTML=await res.text();
+      }
+      document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu');if(m)requestAnimationFrame(()=>m.focus());});
+      Promise.all([
+        include('header-placeholder','assets/header.html'),
+        include('footer-placeholder','assets/footer.html')
+      ]).then(()=>{
+        ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{
+          if(!document.querySelector(`script[src="${src}"]`)){
+            const s=document.createElement('script');
+            s.src=src;s.defer=true;document.body.appendChild(s);
+          }
+        });
+      }).catch(console.error);
+    })();
+  </script>
+</body>
+</html>
