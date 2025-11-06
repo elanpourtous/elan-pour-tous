@@ -73,7 +73,47 @@
       <p><strong>Téléphone :</strong> <a href="tel:+33783336757">07 83 33 67 57</a></p>
       <p><strong>Adresse :</strong> 18 rue des Menhirs — 49400 BAGNEUX — France</p>
     </section>
+  <!-- ton formulaire de contact -->
   </main>
+
+  <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
+
+  <!-- Scripts principaux -->
+  <script src="assets/js/include.js" defer></script>
+  <script src="assets/js/tts.min.js" defer></script>
+
+  <!-- Script pour préremplir le formulaire -->
+  <script>
+  (function(){
+    const qs = new URLSearchParams(location.search);
+    const subject = (qs.get('subject') || sessionStorage.getItem('prefill_subject') || '').trim();
+    const note    = (qs.get('note')    || sessionStorage.getItem('prefill_note')    || '').trim();
+
+    const subjEl = document.getElementById('subject'); // <select> ou <input>
+    const msgEl  = document.getElementById('message');
+
+    if (subjEl) {
+      if (subjEl.tagName === 'SELECT') {
+        const wanted = subject.toLowerCase();
+        let match = Array.from(subjEl.options).find(o => wanted.includes(o.textContent.toLowerCase()));
+        if (!match) match = Array.from(subjEl.options).find(o => /autre/.test(o.textContent.toLowerCase()));
+        if (match) match.selected = true;
+      } else {
+        subjEl.value = subject || subjEl.value;
+      }
+    }
+
+    if (msgEl) {
+      const injected = [
+        subject && `Sujet : ${subject}`,
+        note && `Besoin : ${note}`
+      ].filter(Boolean).join('\n');
+      if (injected) msgEl.value = [injected, msgEl.value.trim()].filter(Boolean).join('\n\n');
+    }
+  })();
+  </script>
+</body>
+</html>
 
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
 
