@@ -159,3 +159,7 @@
   border-radius: .35rem;
   transition: background .2s ease;
 }
+:root { --font-scale: 1; }
+html { font-size: calc(100% * var(--font-scale)); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+.nav-links[hidden] { display: none !important; } /* support natif du [hidden] */
