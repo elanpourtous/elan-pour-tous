@@ -163,3 +163,15 @@
 html { font-size: calc(100% * var(--font-scale)); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 .nav-links[hidden] { display: none !important; } /* support natif du [hidden] */
+
+:root { --font-scale: 1; }
+
+/* Forcer l’échelle, même si un autre style fixe 16px plus bas */
+html {
+  font-size: calc(100% * var(--font-scale)) !important;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Si ton menu est masqué par [hidden] */
+.nav-links[hidden] { display: none !important; }
