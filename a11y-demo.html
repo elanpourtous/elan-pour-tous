@@ -1,0 +1,97 @@
+!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Démo RGAA — a11y-tools.js</title>
+  <style>
+    :root { --brand:#0b8457; --text:#222; --card:#f7f7fb; --border:#ddd; --focus:#94c5ff; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; background: var(--card); color: var(--text); }
+    .container { width: min(1000px, 92%); margin: 0 auto; padding: 1rem; }
+    a { color: var(--brand); }
+    .btn { display:inline-block; padding:.5rem .8rem; border-radius:.5rem; background:var(--brand); color:#fff; text-decoration:none; border:none; cursor:pointer; }
+    .skip-link { position:absolute; left:-9999px; top:1rem; background:#000; color:#fff; padding:.4rem .6rem; }
+    .skip-link:focus{ left:1rem; }
+    :focus-visible { outline:3px solid var(--focus); outline-offset: 2px; }
+    .box { background:#fff; border:1px solid var(--border); border-radius:12px; padding:1rem; margin:1rem 0; }
+    .error-summary { border:2px solid #b00020; background:#fff5f6; color:#6b0017; padding:.75rem 1rem; border-radius:.5rem; margin:.75rem 0 1rem; }
+    .error-summary[hidden] { display:none; }
+    .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+    .tabs [role="tab"]{ border:1px solid var(--border); padding:.4rem .6rem; border-radius:.5rem .5rem 0 0; }
+    .tabs [role="tab"][aria-selected="true"]{ background:var(--card); font-weight:700; }
+    [role="tabpanel"]{ border:1px solid var(--border); border-top:none; padding:1rem; border-radius:0 .5rem .5rem .5rem; }
+    .modal[hidden]{display:none;}
+    .modal-backdrop{position:fixed; inset:0; background:rgba(0,0,0,.5); display:flex; align-items:center; justify-content:center; z-index:9999;}
+    .modal-dialog{background:#fff; color:#222; border-radius:12px; padding:1rem; width:min(640px,92vw); position:relative;}
+    .modal-close{position:absolute; top:.5rem; right:.5rem;}
+  </style>
+</head>
+<body>
+  <a href="#contenu" class="skip-link">Aller au contenu</a>
+
+  <main id="contenu" class="container" tabindex="-1">
+    <h1>Démo RGAA — a11y-tools.js</h1>
+
+    <section class="box">
+      <h2>Liens externes sécurisés</h2>
+      <p><a href="https://www.example.com" target="_blank">Ouvre dans un nouvel onglet</a></p>
+    </section>
+
+    <section class="box">
+      <h2>Formulaire avec résumé d’erreurs</h2>
+      <form id="demo-form">
+        <label for="fn">Prénom</label>
+        <input id="fn" name="fn" required />
+
+        <label for="em">Email</label>
+        <input id="em" name="em" type="email" required />
+
+        <button type="submit" class="btn">Envoyer</button>
+      </form>
+    </section>
+
+    <section class="box">
+      <h2>Accordéon</h2>
+      <div class="accordion">
+        <h3>
+          <button class="acc-btn" aria-expanded="false" aria-controls="acc1" id="acc-btn-1">Question fréquente</button>
+        </h3>
+        <div id="acc1" class="acc-panel" role="region" aria-labelledby="acc-btn-1" hidden>
+          <p>Réponse détaillée, compréhensible et accessible.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="box">
+      <h2>Onglets</h2>
+      <div class="tabs" role="tablist" aria-label="Exemple d’onglets">
+        <button role="tab" aria-selected="true" aria-controls="t1" id="tab1">Onglet 1</button>
+        <button role="tab" aria-selected="false" aria-controls="t2" id="tab2">Onglet 2</button>
+      </div>
+      <section role="tabpanel" id="t1" aria-labelledby="tab1">
+        <p>Contenu de l’onglet 1…</p>
+      </section>
+      <section role="tabpanel" id="t2" aria-labelledby="tab2" hidden>
+        <p>Contenu de l’onglet 2…</p>
+      </section>
+    </section>
+
+    <section class="box">
+      <h2>Modale accessible</h2>
+      <button class="btn" data-a11y-modal-open="#modal-ex">Ouvrir la modale</button>
+      <div class="modal" id="modal-ex" hidden>
+        <div class="modal-backdrop" data-a11y-modal-backdrop>
+          <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal-close" data-a11y-modal-close aria-label="Fermer">✕</button>
+            <h3 id="modal-title">Mentions importantes</h3>
+            <p>Texte d’information dans la fenêtre modale.</p>
+            <p><button class="btn" data-a11y-modal-close>J’ai compris</button></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="a11y-tools.js" defer></script>
+</body>
+</html>
