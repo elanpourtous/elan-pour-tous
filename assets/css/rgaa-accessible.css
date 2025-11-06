@@ -150,3 +150,12 @@
 
 /* Sécurité : enlève tout marqueur résiduel provenant d’un user-agent style */
 .footer-links li::marker { content: ""; }
+
+/* Surlignage du bloc en cours de lecture (TTS) */
+.tts-current {
+  outline: 3px solid var(--focus, #94c5ff);
+  outline-offset: 2px;
+  background: rgba(148, 197, 255, .15);
+  border-radius: .35rem;
+  transition: background .2s ease;
+}
