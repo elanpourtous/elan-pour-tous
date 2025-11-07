@@ -1,0 +1,6 @@
+/* backtop.min.css – Élan pour tous */
+.back-top-fab{position:fixed;right:1rem;bottom:5.5rem;z-index:1100;width:2.75rem;height:2.75rem;display:grid;place-items:center;border:1px solid var(--border,#aaa);border-radius:999px;background:var(--brand,#0b8457);color:#fff;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.15);opacity:0;transform:translateY(8px);pointer-events:none;visibility:hidden;transition:opacity .22s ease,transform .22s ease,visibility 0s linear .22s}
+.back-top-fab.show{opacity:1;transform:translateY(0);pointer-events:auto;visibility:visible;transition:opacity .22s ease,transform .22s ease}
+.back-top-fab:focus-visible{outline:3px solid var(--focus,#94c5ff);outline-offset:2px}
+.tts-bar:not(.is-visible)~.back-top-fab,.site-footer .back-top-fab{bottom:1.25rem}
+@media(prefers-reduced-motion:reduce){.back-top-fab,.back-top-fab.show{transition:none!important;transform:none!important}}
