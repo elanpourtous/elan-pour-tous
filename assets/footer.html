@@ -16,6 +16,7 @@
         <li><a href="about.html">À propos</a></li>
         <li><a href="formations.html">Formations</a></li>
         <li><a href="services.html">Services</a></li>
+        <li><a href="orientations.html">Orientation & tests</a></li>
         <li><a href="rgaa.html">Accessibilité RGAA</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="mentions-legales.html">Mentions légales</a></li>
@@ -27,49 +28,26 @@
   </div>
 
   <!-- 🎧 Barre TTS (lecture à voix haute) -->
-  <div class="tts-bar" role="region" aria-label="Lecture à voix haute" aria-live="polite">
+  <div class="tts-bar" role="region" aria-label="Lecture à voix haute">
     <div class="tts-row">
-      <!-- LIRE -->
-      <button type="button" class="btn tts-btn" id="tts-play"
-              title="Lire (Alt+L)" aria-label="Lire" aria-controls="contenu">
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
-          <path fill="currentColor" d="M8 5v14l11-7z" />
-        </svg>
-        <span class="btn-label">Lire</span>
+      <button class="btn tts-btn" id="tts-play" title="Lire (Alt+L)" aria-label="Lire">
+        ▶️ <span class="btn-label">Lire</span>
       </button>
-
-      <!-- PAUSE -->
-      <button type="button" class="btn tts-btn" id="tts-pause"
-              title="Pause (Alt+P)" aria-label="Pause" aria-controls="contenu" disabled>
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
-          <path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z" />
-        </svg>
-        <span class="btn-label">Pause</span>
+      <button class="btn tts-btn" id="tts-pause" title="Pause (Alt+P)" aria-label="Pause" disabled>
+        ⏸️ <span class="btn-label">Pause</span>
       </button>
-
-      <!-- REPRENDRE -->
-      <button type="button" class="btn tts-btn" id="tts-resume"
-              title="Reprendre (Alt+R)" aria-label="Reprendre" aria-controls="contenu" disabled>
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
-          <path fill="currentColor" d="M8 5v14l11-7zM5 5h2v14H5z" />
-        </svg>
-        <span class="btn-label">Reprendre</span>
+      <button class="btn tts-btn" id="tts-resume" title="Reprendre (Alt+R)" aria-label="Reprendre" disabled>
+        🔁 <span class="btn-label">Reprendre</span>
       </button>
-
-      <!-- STOP -->
-      <button type="button" class="btn tts-btn" id="tts-stop"
-              title="Stop (Alt+S)" aria-label="Stop" aria-controls="contenu" disabled>
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
-          <path fill="currentColor" d="M6 6h12v12H6z" />
-        </svg>
-        <span class="btn-label">Stop</span>
+      <button class="btn tts-btn" id="tts-stop" title="Stop (Alt+S)" aria-label="Stop" disabled>
+        ⏹️ <span class="btn-label">Stop</span>
       </button>
     </div>
 
     <!-- Vitesse -->
     <div class="tts-row">
       <label for="tts-rate">Vitesse :</label>
-      <input id="tts-rate" type="range" min="0.7" max="1.6" step="0.1" value="1.0" />
+      <input id="tts-rate" type="range" min="0.7" max="1.6" step="0.1" value="1.0">
       <span id="tts-rate-val" aria-live="polite">1.0×</span>
     </div>
 
@@ -79,7 +57,7 @@
       <select id="tts-voice" aria-label="Choisir la voix de synthèse"></select>
     </div>
 
-    <!-- Live region -->
+    <!-- Zone d’état (lecture vocale) -->
     <p id="tts-live" class="sr-only" role="status" aria-live="polite"></p>
   </div>
 </footer>
@@ -88,12 +66,12 @@
 <!-- 🎨 STYLES DU FOOTER     -->
 <!-- ======================= -->
 <style>
-  /* ----- Mise en page ----- */
   .site-footer {
     background: var(--card, #f8f8f8);
     border-top: 2px solid var(--border, #ccc);
     padding: 1rem 0;
   }
+
   .footer-inner {
     display: grid;
     gap: 0.75rem;
@@ -101,6 +79,7 @@
     justify-items: center;
     text-align: center;
   }
+
   .footer-brand {
     display: inline-flex;
     align-items: center;
@@ -108,10 +87,12 @@
     text-decoration: none;
     color: inherit;
   }
-  .footer-brand img { display: block; border-radius: 50%; }
-  .brand-name { font-weight: 700; }
+  .footer-brand img { border-radius: 50%; }
 
-  /* ----- Liens ----- */
+  .brand-name {
+    font-weight: 700;
+  }
+
   .footer-links {
     list-style: none !important;
     padding: 0 !important;
@@ -121,24 +102,76 @@
     justify-content: center;
     gap: 1rem;
   }
-  .footer-links li { list-style: none !important; }
-  .footer-links li::marker { content: ""; }
   .footer-links a {
     text-decoration: none;
     color: var(--text, #0366d6);
   }
   .footer-links a:hover,
-  .footer-links a:focus-visible { text-decoration: underline; }
+  .footer-links a:focus-visible {
+    text-decoration: underline;
+  }
 
-  /* ----- Copyright ----- */
-  .footer-copy { margin: 0; font-size: 0.9rem; color: var(--text-muted, #555); }
+  .footer-copy {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted, #555);
+  }
 
-  /* ----- Fix séparation ou bordure ----- */
-  .container.hero, .hero { border-bottom: none !important; }
-  hr:last-of-type { border: 0 !important; height: 0 !important; }
+  /* Thème sombre */
+  [data-theme="dark"] .site-footer {
+    background: #111;
+    border-top-color: #333;
+  }
+  [data-theme="dark"] .footer-links a {
+    color: #4da3ff;
+  }
+  [data-theme="dark"] .footer-copy {
+    color: #aaa;
+  }
 
-  /* ----- Adaptation thème sombre ----- */
-  [data-theme="dark"] .site-footer { background: #111; border-top-color: #333; }
-  [data-theme="dark"] .footer-links a { color: #4da3ff; }
-  [data-theme="dark"] .footer-copy { color: #aaa; }
+  /* Barre TTS */
+  .tts-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    background: var(--card, #f8f8f8);
+    border-top: 2px solid var(--border, #ccc);
+    padding: .5rem 1rem;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+  }
+  .tts-bar.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .tts-row {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .tts-btn {
+    font-size: .9rem;
+    padding: .4rem .8rem;
+    border-radius: .4rem;
+    border: 1px solid var(--border, #999);
+    background: var(--brand, #0b8457);
+    color: #fff;
+    cursor: pointer;
+  }
+  .tts-btn[disabled] {
+    opacity: .5;
+    cursor: not-allowed;
+  }
 </style>
