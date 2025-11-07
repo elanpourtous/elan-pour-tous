@@ -175,3 +175,62 @@ html {
 
 /* Si ton menu est masqué par [hidden] */
 .nav-links[hidden] { display: none !important; }
+/* Bouton flottant "Haut de page" — animation améliorée */
+.back-top-fab{
+  position: fixed;
+  right: 1rem;
+  bottom: 5.5rem;                 /* remonte pour ne pas heurter la barre TTS */
+  z-index: 1100;
+  width: 2.75rem; height: 2.75rem;
+  display: grid; place-items: center;
+  border: 1px solid var(--border,#aaa);
+  border-radius: 999px;
+  background: var(--brand,#0b8457);
+  color: #fff; cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+
+  /* état caché par défaut */
+  opacity: 0;
+  transform: translateY(8px) scale(.94);
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    opacity .22s ease,
+    transform .22s ease,
+    visibility 0s linear .22s;
+}
+.back-top-fab.show{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  visibility: visible;
+  transition:
+    opacity .22s ease,
+    transform .22s ease;
+}
+/* Petit feedback de survol / clic */
+.back-top-fab:hover{ transform: translateY(0) scale(1.04); }
+.back-top-fab:active{ transform: translateY(1px) scale(.98); }
+/* Focus accessible */
+.back-top-fab:focus-visible{
+  outline: 3px solid var(--focus,#94c5ff);
+  outline-offset: 2px;
+}
+
+/* Si la barre TTS est cachée, rapproche le bouton du bas */
+.tts-bar:not(.is-visible) ~ .back-top-fab,
+.site-footer .back-top-fab { bottom: 1.25rem; }
+
+/* Thème sombre : adoucir le halo */
+[data-theme="dark"] .back-top-fab{
+  box-shadow: 0 6px 16px rgba(0,0,0,.35);
+}
+
+/* Respect de prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce){
+  .back-top-fab,
+  .back-top-fab.show{
+    transition: none !important;
+    transform: none !important;
+  }
+}
