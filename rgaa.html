@@ -3,94 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Accessibilité RGAA — engagements, démarche concrète, corrections prioritaires et contact accessibilité.">
+  <meta name="description" content="Accessibilité RGAA — Engagements, moyens mis en œuvre, ressources et contact accessibilité.">
   <meta name="theme-color" content="#0b8457">
   <title>Élan pour tous — Accessibilité RGAA</title>
-
-  <!-- CSS dynamique -->
-  <script>
-    (function(){const b="assets/css/", L=(location.hostname==="localhost"||location.protocol==="file:");
-      const l=document.createElement('link'); l.rel='stylesheet'; l.href=b+(L?'style.css':'style.min.css'); document.head.appendChild(l);
-    })();
-  </script>
-
-  <!-- Canonical + Open Graph -->
-  <link rel="canonical" href="https://elanpourtous.github.io/elan-pour-tous/rgaa.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Élan pour tous — Accessibilité RGAA">
-  <meta property="og:description" content="Conformité progressive RGAA 4.1 / WCAG 2.2, plan d’action pragmatique, transfert de compétences.">
-  <meta property="og:image" content="https://elanpourtous.github.io/elan-pour-tous/assets/ima/baa.png">
-  <meta property="og:image:alt" content="Logo Élan pour tous">
-  <meta property="og:locale" content="fr_FR">
-  <meta name="twitter:card" content="summary_large_image">
-
   <link rel="icon" href="assets/ima/logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/tts.min.css">
-  <link rel="preload" as="image" href="assets/ima/baa.png">
 </head>
 <body>
-  <!-- Lien d’évitement -->
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
-
-  <!-- Header injecté -->
   <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
 
-  <!-- Contenu principal -->
-  <main id="contenu" class="container hero" role="main" tabindex="-1" aria-labelledby="page-title">
-    <h1 id="page-title">Accessibilité RGAA</h1>
-    <p class="lead">L’accessibilité n’est pas un “plus” : c’est le droit d’accéder à l’information et aux services.</p>
+  <main id="contenu" class="container hero" role="main" tabindex="-1" aria-labelledby="title">
+    <h1 id="title">Accessibilité RGAA</h1>
+    <p class="lead">Un site pensé pour être utilisable par le plus grand nombre.</p>
 
-    <section aria-labelledby="engagements">
-      <h2 id="engagements">Nos engagements</h2>
-      <ul>
-        <li>Conformité progressive RGAA 4.1 / WCAG 2.2</li>
-        <li>Contrastes, navigation clavier, alternatives (textes, sous-titres, descriptions)</li>
-        <li>Livrables clairs : priorités, responsables, échéances, critères de réussite</li>
-      </ul>
+    <section aria-labelledby="engagement">
+      <h2 id="engagement">Notre engagement</h2>
+      <p>Conformité progressive au RGAA 4.1 / WCAG 2.1 AA. Contrôles réguliers, corrections en continu, retours utilisateurs pris en compte.</p>
     </section>
 
-    <section aria-labelledby="demarche">
-      <h2 id="demarche">Notre démarche</h2>
-      <ol>
-        <li><strong>Audit express</strong> — repérer ce qui bloque vraiment pour l’usage</li>
-        <li><strong>Correctifs prioritaires</strong> — rapides, visibles, mesurables</li>
-        <li><strong>Montée en compétences</strong> — équipe outillée, référentiel compris</li>
-      </ol>
-      <p>
-        <a href="services.html" class="btn">Ateliers & accompagnement</a>
-        <a href="contact.html" class="btn btn-primary">Demander un audit</a>
-      </p>
-    </section>
-
-    <section aria-labelledby="preuve">
-      <h2 id="preuve">Ce que vous gagnez</h2>
+    <section aria-labelledby="moyens">
+      <h2 id="moyens">Moyens mis en œuvre</h2>
       <ul>
-        <li>Un site utilisable au clavier et au lecteur d’écran</li>
-        <li>Des contenus compréhensibles (langage clair, structure sémantique)</li>
-        <li>Une conformité qui progresse réellement, au-delà de la case à cocher</li>
+        <li>Structure sémantique (titres, listes, régions ARIA)</li>
+        <li>Navigation clavier complète & focus visible renforcé</li>
+        <li>Contrastes conformes, thèmes clair/sombre</li>
+        <li>Médias : sous-titres, transcription, lecture vocale</li>
       </ul>
     </section>
 
     <section aria-labelledby="contact-a11y">
-      <h2 id="contact-a11y">Signalement accessibilité</h2>
-      <p>
-        Un contenu inaccessible ? Écrivez-nous :
-        <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a>
-      </p>
+      <h2 id="contact-a11y">Contact accessibilité</h2>
+      <p>Vous rencontrez un obstacle ? Dites-nous où et comment : <a href="contact.html">nous écrire</a>. Nous répondons et corrigeons.</p>
     </section>
   </main>
 
-  <!-- Footer injecté -->
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
 
-  <!-- JS dynamique -->
   <script>
-    (function(){async function into(id,u){const h=document.getElementById(id);if(!h)return;const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error(u+' introuvable ('+r.status+')');h.innerHTML=await r.text();}
+    (function(){
+      async function inc(id, url){const host=document.getElementById(id); if(!host) return; const r=await fetch(url,{cache:'no-store'}); if(!r.ok) throw new Error(url+' introuvable'); host.innerHTML=await r.text();}
       document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu'); if(m) requestAnimationFrame(()=>m.focus());});
-      Promise.all([ into('header-placeholder','assets/header.html'), into('footer-placeholder','assets/footer.html') ])
-      .then(()=>{ const base="assets/js/", L=(location.hostname==="localhost"||location.protocol==="file:");
-        for (const f of [ L?'include.js':'include.min.js', L?'tts.js':'tts.min.js' ]) { const s=document.createElement('script'); s.src=base+f; s.defer=true; document.body.appendChild(s); }
+      Promise.all([inc('header-placeholder','assets/header.html'), inc('footer-placeholder','assets/footer.html')]).then(()=>{
+        ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{ if(!document.querySelector(`script[src="${src}"]`)){ const s=document.createElement('script'); s.src=src; s.defer=true; document.body.appendChild(s);} });
       }).catch(console.error);
     })();
   </script>
