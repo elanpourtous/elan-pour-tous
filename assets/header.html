@@ -20,40 +20,30 @@
       <li><a href="about.html">À propos</a></li>
       <li><a href="formations.html">Formations</a></li>
       <li><a href="services.html">Services</a></li>
-      <li><a href="orientation.html">Tests & accompagnement</a></li>
+      <li><a href="orientations.html">Orientation & tests</a></li>
       <li><a href="rgaa.html">Accessibilité RGAA</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
-    <!-- Actions d’accessibilité/affichage -->
-    <div class="nav-actions" aria-label="Réglages d’affichage et d’accessibilité">
-      <button type="button" class="theme-toggle btn-icon" id="theme-toggle" data-theme-toggle
-              aria-pressed="false" aria-label="Activer le mode sombre" title="Activer le mode sombre">
-        <span aria-hidden="true">🌓</span><span class="sr-only">Basculer le thème</span>
+    <!-- Actions d’accessibilité et affichage -->
+    <div class="nav-actions" aria-label="Réglages d’accessibilité et affichage">
+      <!-- Thème clair/sombre -->
+      <button type="button" class="theme-toggle btn-icon" id="theme-toggle"
+              aria-pressed="false" aria-label="Basculer le thème clair/sombre" title="Changer le thème">
+        🌓
       </button>
 
-      <div class="a11y-group" role="group" aria-label="Contrôles d’accessibilité">
-        <button type="button" class="access-btn" data-action="font-" aria-label="Réduire la taille du texte" title="Réduire la taille (Alt + -)">
-          <span class="sr-only">Réduire la taille</span><span aria-hidden="true">A−</span>
-        </button>
-        <button type="button" class="access-btn" data-action="font+" aria-label="Augmenter la taille du texte" title="Augmenter la taille (Alt + =)">
-          <span class="sr-only">Augmenter la taille</span><span aria-hidden="true">A+</span>
-        </button>
-        <button type="button" class="access-btn" data-action="contrast" aria-label="Activer ou désactiver le contraste élevé" title="Contraste élevé (Alt + C)">
-          <span class="sr-only">Contraste élevé</span><span aria-hidden="true">◐</span>
-        </button>
-        <button type="button" class="access-btn" data-action="spacing" aria-label="Activer ou désactiver l’espacement augmenté" title="Espacement (Alt + S)">
-          <span class="sr-only">Espacement augmenté</span><span aria-hidden="true">↕︎</span>
-        </button>
-        <button type="button" class="access-btn" data-action="reset" aria-label="Réinitialiser les réglages" title="Réinitialiser (Alt + 0)">
-          <span class="sr-only">Réinitialiser</span><span aria-hidden="true">⟲</span>
-        </button>
-      </div>
+      <!-- Accessibilité (taille, contraste, espacement, reset) -->
+      <button type="button" class="access-btn" data-action="font-" aria-label="Réduire la taille du texte" title="A− (Alt + -)">A−</button>
+      <button type="button" class="access-btn" data-action="font+" aria-label="Augmenter la taille du texte" title="A+ (Alt + =)">A+</button>
+      <button type="button" class="access-btn" data-action="contrast" aria-label="Basculer le contraste élevé" title="Contraste élevé (Alt + C)">◐</button>
+      <button type="button" class="access-btn" data-action="spacing" aria-label="Augmenter l’espacement du texte" title="Espacement (Alt + S)">↕︎</button>
+      <button type="button" class="access-btn" data-action="reset" aria-label="Réinitialiser les réglages d’accessibilité" title="Réinitialiser (Alt + 0)">⟲</button>
 
-      <!-- Lecture à voix haute : toggle barre TTS -->
+      <!-- Lecture vocale -->
       <button type="button" class="btn-icon" id="tts-toggle" aria-pressed="false"
-              aria-label="Lire la page à voix haute" title="Lire la page">
-        🔊<span class="sr-only">Lecture à voix haute</span>
+              aria-label="Activer la lecture à voix haute" title="Lire la page">
+        🔊
       </button>
     </div>
   </nav>
