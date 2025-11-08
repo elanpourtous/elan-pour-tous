@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#0b8457">
   <title>Élan pour tous — Accueil</title>
 
-  <!-- CSS dynamique (minifié en ligne, lisible en local) -->
+  <!-- CSS dynamique (minifié en prod, lisible en local) -->
   <script>
     (function() {
       const base="assets/css/", local=(location.hostname==="localhost"||location.protocol==="file:");
@@ -15,6 +15,7 @@
       document.head.appendChild(el);
     })();
   </script>
+  <noscript><link rel="stylesheet" href="assets/css/style.min.css"></noscript>
 
   <!-- Canonical + Open Graph -->
   <link rel="canonical" href="https://elanpourtous.github.io/elan-pour-tous/">
@@ -29,6 +30,25 @@
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/tts.min.css">
   <link rel="preload" as="image" href="assets/ima/baa.png">
+
+  <!-- Petites aides d’accessibilité immédiates -->
+  <style>
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{position:static;width:auto;height:auto;padding:.5rem .75rem;background:#0b8457;color:#fff;border-radius:.5rem}
+    .hero{ text-align:center; padding-block:clamp(1rem,3vw,2.5rem); }
+    .hero-logo{ display:block; margin-inline:auto; }
+    .btn{ border:1px solid #0b8457; padding:.55rem .9rem; border-radius:.6rem; text-decoration:none; color:#0b8457; }
+    .btn-primary{ background:#0b8457; color:#fff; }
+    .btn:focus-visible{ outline:3px solid #1fb980; outline-offset:2px; }
+    .grid-pres{ display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin:2rem auto; max-width:1100px; padding-inline:1rem; }
+    .card{ border:1px solid #e5e5e5; border-radius:1rem; overflow:hidden; background:#fff; display:flex; flex-direction:column; }
+    .card figure{ margin:0; }
+    .card img{ width:100%; height:auto; display:block; }
+    .card .body{ padding:1rem; text-align:left; }
+    .card h3{ margin:.2rem 0 .4rem; font-size:1.05rem; }
+    .muted{ color:#444; margin:0 0 .8rem; }
+    .actions{ display:flex; gap:.5rem; flex-wrap:wrap; }
+  </style>
 </head>
 <body>
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
@@ -36,14 +56,79 @@
   <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
 
   <main id="contenu" class="container hero" role="main" tabindex="-1" aria-labelledby="page-title">
-    <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo" width="120" height="120">
+    <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo" width="120" height="120" decoding="async">
     <h1 id="page-title">Élan pour tous</h1>
-    <p class="tagline">Formations & services inclusifs — Saumur (49) et distanciel.</p>
+    <p class="tagline">Formations &amp; services inclusifs — Saumur (49) et distanciel.</p>
     <p>Accompagner chacun·e dans son parcours d’apprentissage et d’autonomie numérique, avec des méthodes simples, concrètes et accessibles.</p>
     <p>
       <a href="formations.html" class="btn btn-primary">Découvrir les formations</a>
       <a href="services.html" class="btn">Nos services</a>
     </p>
+
+    <!-- Présentations (images sans texte + liens PDF si disponibles) -->
+    <section class="container" role="region" aria-labelledby="pres-title">
+      <h2 id="pres-title">Présentations « Élan pour tous »</h2>
+      <p class="sr-only" id="pres-desc">Trois présentations illustrées. Chaque carte propose l’image et un lien de téléchargement PDF si disponible.</p>
+
+      <ul class="grid-pres" aria-describedby="pres-desc">
+        <li class="card">
+          <figure>
+            <img
+              src="assets/ima/atelier_numerique.jpg"
+              alt="Atelier numérique en petit groupe, ambiance conviviale"
+              width="1600" height="900"
+              loading="lazy" decoding="async"
+              sizes="(max-width:640px) 100vw, 33vw">
+          </figure>
+          <div class="body">
+            <h3>Atelier numérique en petit groupe</h3>
+            <p class="muted">Des ateliers concrets, adaptés au rythme de chacun·e.</p>
+            <div class="actions">
+              <a class="btn" href="assets/docs/Slide1_Atelier_numerique.pdf">Voir le PDF</a>
+              <a class="btn" href="assets/ima/atelier_numerique.jpg" download>Télécharger l’image</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <figure>
+            <img
+              src="assets/ima/accessibilite_numerique.jpg"
+              alt="Accessibilité numérique : démonstration de lecteur d’écran et dictée vocale"
+              width="1600" height="900"
+              loading="lazy" decoding="async"
+              sizes="(max-width:640px) 100vw, 33vw">
+          </figure>
+          <div class="body">
+            <h3>Accessibilité numérique</h3>
+            <p class="muted">Lecteurs d’écran, dictée vocale, sous-titres… on vous montre.</p>
+            <div class="actions">
+              <a class="btn" href="assets/docs/Slide2_Accessibilite.pdf">Voir le PDF</a>
+              <a class="btn" href="assets/ima/accessibilite_numerique.jpg" download>Télécharger l’image</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <figure>
+            <img
+              src="assets/ima/echange_formatrice_apprenant.jpg"
+              alt="Échange entre formatrice et apprenant devant des objectifs affichés"
+              width="1600" height="900"
+              loading="lazy" decoding="async"
+              sizes="(max-width:640px) 100vw, 33vw">
+          </figure>
+          <div class="body">
+            <h3>Échange formatrice / apprenant</h3>
+            <p class="muted">Objectifs clairs, petites victoires — moins de stress, plus d’autonomie.</p>
+            <div class="actions">
+              <a class="btn" href="assets/docs/Slide3_Echange_formateur.pdf">Voir le PDF</a>
+              <a class="btn" href="assets/ima/echange_formatrice_apprenant.jpg" download>Télécharger l’image</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
   </main>
 
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
@@ -53,16 +138,27 @@
     (function () {
       async function into(id, url) {
         const host = document.getElementById(id); if (!host) return;
-        const r = await fetch(url, { cache: 'no-store' }); if (!r.ok) throw new Error(url+' introuvable ('+r.status+')');
-        host.innerHTML = await r.text();
+        try{
+          const r = await fetch(url, { cache: 'no-store' });
+          if (!r.ok) throw new Error(url+' introuvable ('+r.status+')');
+          host.innerHTML = await r.text();
+        }catch(err){
+          console.error(err);
+          host.innerHTML = '<div role="note" aria-live="polite" style="padding:1rem;color:#b02a37;border:1px solid #f1c0c4;border-radius:.5rem;background:#fff5f6">Le contenu n’a pas pu être chargé.</div>';
+        }
       }
-      document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu'); if(m) requestAnimationFrame(()=>m.focus());});
-      Promise.all([ into('header-placeholder','assets/header.html'), into('footer-placeholder','assets/footer.html') ])
-      .then(()=>{ const base="assets/js/", local=(location.hostname==="localhost"||location.protocol==="file:");
+      document.querySelector('.skip-link')?.addEventListener('click',()=>{
+        const m=document.getElementById('contenu'); if(m) requestAnimationFrame(()=>m.focus());
+      });
+      Promise.all([
+        into('header-placeholder','assets/header.html'),
+        into('footer-placeholder','assets/footer.html')
+      ]).then(()=>{
+        const base="assets/js/", local=(location.hostname==="localhost"||location.protocol==="file:");
         for (const f of [ local?'include.js':'include.min.js', local?'tts.js':'tts.min.js' ]) {
           const s=document.createElement('script'); s.src=base+f; s.defer=true; document.body.appendChild(s);
         }
-      }).catch(console.error);
+      });
     })();
   </script>
 </body>
