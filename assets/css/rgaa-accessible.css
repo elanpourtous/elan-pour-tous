@@ -248,3 +248,24 @@ html {
 [data-theme="dark"] .nav-links a[aria-current="page"] {
   border-bottom: 2px solid #4da3ff;
 }
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-img {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px; /* facultatif : arrondi doux */
+  vertical-align: middle;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--brand, #0b8457);
+}
