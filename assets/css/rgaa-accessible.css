@@ -234,3 +234,17 @@ html {
     transform: none !important;
   }
 }
+.nav-links a {
+  color: #0b8457; /* vert marque, lisible */
+  font-weight: 600;
+}
+.nav-links a[aria-current="page"] {
+  border-bottom: 2px solid #0b8457;
+  color: #0b8457;
+}
+[data-theme="dark"] .nav-links a {
+  color: #e6e6e6;
+}
+[data-theme="dark"] .nav-links a[aria-current="page"] {
+  border-bottom: 2px solid #4da3ff;
+}
