@@ -1,165 +1,186 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Élan pour tous — micro-entreprise basée à Saumur (49). Formations inclusives, accessibilité, accompagnement.">
-  <meta name="theme-color" content="#0b8457">
-  <title>Élan pour tous — Accueil</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Élan pour tous — formations et accompagnement pour une inclusion numérique accessible à tous." />
+  <meta name="theme-color" content="#0b8457" />
+  <title>Élan pour tous - Accueil</title>
 
-  <!-- CSS dynamique (minifié en prod, lisible en local) -->
-  <script>
-    (function() {
-      const base="assets/css/", local=(location.hostname==="localhost"||location.protocol==="file:");
-      const el=document.createElement("link"); el.rel="stylesheet"; el.href=base+(local?"style.css":"style.min.css");
-      document.head.appendChild(el);
-    })();
-  </script>
-  <noscript><link rel="stylesheet" href="assets/css/style.min.css"></noscript>
-
-  <!-- Canonical + Open Graph -->
-  <link rel="canonical" href="https://elanpourtous.github.io/elan-pour-tous/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Élan pour tous — Accueil">
-  <meta property="og:description" content="Formations accessibles, accompagnement et sensibilisation.">
-  <meta property="og:image" content="https://elanpourtous.github.io/elan-pour-tous/assets/ima/baa.png">
-  <meta property="og:locale" content="fr_FR">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="icon" href="assets/ima/logo.png" type="image/png">
-  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-  <link rel="stylesheet" href="assets/css/tts.min.css">
-  <link rel="preload" as="image" href="assets/ima/baa.png">
-
-  <!-- Petites aides d’accessibilité immédiates -->
-  <style>
-    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{position:static;width:auto;height:auto;padding:.5rem .75rem;background:#0b8457;color:#fff;border-radius:.5rem}
-    .hero{ text-align:center; padding-block:clamp(1rem,3vw,2.5rem); }
-    .hero-logo{ display:block; margin-inline:auto; }
-    .btn{ border:1px solid #0b8457; padding:.55rem .9rem; border-radius:.6rem; text-decoration:none; color:#0b8457; }
-    .btn-primary{ background:#0b8457; color:#fff; }
-    .btn:focus-visible{ outline:3px solid #1fb980; outline-offset:2px; }
-    .grid-pres{ display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin:2rem auto; max-width:1100px; padding-inline:1rem; }
-    .card{ border:1px solid #e5e5e5; border-radius:1rem; overflow:hidden; background:#fff; display:flex; flex-direction:column; }
-    .card figure{ margin:0; }
-    .card img{ width:100%; height:auto; display:block; }
-    .card .body{ padding:1rem; text-align:left; }
-    .card h3{ margin:.2rem 0 .4rem; font-size:1.05rem; }
-    .muted{ color:#444; margin:0 0 .8rem; }
-    .actions{ display:flex; gap:.5rem; flex-wrap:wrap; }
-  </style>
+  <link rel="icon" href="assets/ima/logo.png" type="image/png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css" />
+  <link rel="stylesheet" href="assets/css/tts.min.css" />
 </head>
+
 <body>
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
-  <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
+  <!-- ===================== -->
+  <!-- 🔝 HEADER ACCESSIBLE -->
+  <!-- ===================== -->
+  <header role="banner">
+    <nav class="site-nav container" role="navigation" aria-label="Menu principal">
+      <a href="index.html" class="logo" aria-label="Accueil Élan pour tous">
+        <img src="assets/ima/logo.png" alt="Élan pour tous" width="44" height="44" class="logo-img" />
+        <span class="sr-only">Retour à l’accueil</span>
+      </a>
 
-  <main id="contenu" class="container hero" role="main" tabindex="-1" aria-labelledby="page-title">
-    <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo" width="120" height="120" decoding="async">
-    <h1 id="page-title">Élan pour tous</h1>
-    <p class="tagline">Formations &amp; services inclusifs — Saumur (49) et distanciel.</p>
-    <p>Accompagner chacun·e dans son parcours d’apprentissage et d’autonomie numérique, avec des méthodes simples, concrètes et accessibles.</p>
+      <button type="button" class="menu-toggle btn-icon" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="burger" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+
+      <ul id="primary-nav" class="nav-links" hidden>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="orientation.html">Orientation</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="rgaa.html">Accessibilité RGAA</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions" aria-label="Réglages d’affichage et d’accessibilité">
+        <button type="button" class="theme-toggle btn-icon" id="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Activer le mode sombre" title="Activer le mode sombre">🌓</button>
+
+        <div class="a11y-group" role="group" aria-label="Contrôles d’accessibilité">
+          <button type="button" class="access-btn" data-action="font-" title="Réduire la taille (Alt + -)">A−</button>
+          <button type="button" class="access-btn" data-action="font+" title="Augmenter la taille (Alt + =)">A+</button>
+          <button type="button" class="access-btn" data-action="contrast" title="Contraste élevé (Alt + C)">◐</button>
+          <button type="button" class="access-btn" data-action="spacing" title="Espacement (Alt + S)">↕︎</button>
+          <button type="button" class="access-btn" data-action="reset" title="Réinitialiser (Alt + 0)">⟲</button>
+        </div>
+
+        <button type="button" class="btn-icon" id="tts-toggle" aria-pressed="false" aria-label="Lire la page à voix haute" title="Lire la page">🔊</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===================== -->
+  <!-- 🧭 CONTENU PRINCIPAL -->
+  <!-- ===================== -->
+  <main id="contenu" class="container hero" role="main" tabindex="-1">
+    <img src="assets/ima/baa.png" alt="Logo Élan pour tous" class="hero-logo" />
+    <h1>Élan pour tous</h1>
+    <p class="tagline">Formations, accompagnement et inclusion numérique — à Saumur et en ligne.</p>
+
     <p>
-      <a href="formations.html" class="btn btn-primary">Découvrir les formations</a>
-      <a href="services.html" class="btn">Nos services</a>
+      <a href="formations.html" class="btn btn-primary">Découvrir nos formations</a>
+      <a href="orientation.html" class="btn">Faire un test de compétences</a>
     </p>
 
-    <!-- Présentations (images sans texte + liens PDF si disponibles) -->
-    <section class="container" role="region" aria-labelledby="pres-title">
-      <h2 id="pres-title">Présentations « Élan pour tous »</h2>
-      <p class="sr-only" id="pres-desc">Trois présentations illustrées. Chaque carte propose l’image et un lien de téléchargement PDF si disponible.</p>
+    <!-- =============================== -->
+    <!-- 🧭 Ateliers numériques petit groupe -->
+    <!-- =============================== -->
+    <section id="atelier-accueil" aria-labelledby="atelier-accueil-title" class="atelier-section">
+      <h2 id="atelier-accueil-title">Ateliers numériques en petit groupe</h2>
+      <p>Des sessions adaptées pour progresser à votre rythme, en toute confiance.</p>
 
-      <ul class="grid-pres" aria-describedby="pres-desc">
-        <li class="card">
-          <figure>
-            <img
-              src="assets/ima/atelier_numerique.jpg"
-              alt="Atelier numérique en petit groupe, ambiance conviviale"
-              width="1600" height="900"
-              loading="lazy" decoding="async"
-              sizes="(max-width:640px) 100vw, 33vw">
-          </figure>
-          <div class="body">
-            <h3>Atelier numérique en petit groupe</h3>
-            <p class="muted">Des ateliers concrets, adaptés au rythme de chacun·e.</p>
-            <div class="actions">
-              <a class="btn" href="assets/docs/Slide1_Atelier_numerique.pdf">Voir le PDF</a>
-              <a class="btn" href="assets/ima/atelier_numerique.jpg" download>Télécharger l’image</a>
-            </div>
-          </div>
+      <div class="atelier-grid">
+        <article>
+          <h3>Initiation numérique</h3>
+          <p>Apprenez les bases : e-mails, navigation, sécurité, traitement de texte.</p>
+          <p><strong>Durée :</strong> 2 demi-journées — <strong>Forfait :</strong> 60 €</p>
+        </article>
+
+        <article>
+          <h3>Bureautique pro</h3>
+          <p>Maîtrisez Word et Excel. Idéal pour reprendre confiance avant une reprise d’emploi.</p>
+          <p><strong>Durée :</strong> 1 journée — <strong>Forfait :</strong> 120 €</p>
+        </article>
+
+        <article>
+          <h3>Numérique accessible</h3>
+          <p>Lecteurs d’écran, dictée vocale, contrastes — adaptez votre environnement de travail.</p>
+          <p><strong>Durée :</strong> 1 journée — <strong>Forfait :</strong> 100 €</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- 📄 DOCUMENTATION À TÉLÉCHARGER -->
+    <!-- =============================== -->
+    <section id="documents" class="docs-section" aria-labelledby="docs-title">
+      <h2 id="docs-title">Documents à consulter</h2>
+      <p class="lead">Découvrez en détail nos actions et supports de formation.</p>
+
+      <ul class="docs-list" role="list">
+        <li>
+          <a href="assets/docs/Slide1_Atelier_numerique_detail.pdf" target="_blank" rel="noopener" class="btn btn-secondary">
+            📄 Atelier numérique — Détail (PDF)
+          </a>
+          <span class="doc-meta">1 page — accessible et imprimable</span>
         </li>
 
-        <li class="card">
-          <figure>
-            <img
-              src="assets/ima/accessibilite_numerique.jpg"
-              alt="Accessibilité numérique : démonstration de lecteur d’écran et dictée vocale"
-              width="1600" height="900"
-              loading="lazy" decoding="async"
-              sizes="(max-width:640px) 100vw, 33vw">
-          </figure>
-          <div class="body">
-            <h3>Accessibilité numérique</h3>
-            <p class="muted">Lecteurs d’écran, dictée vocale, sous-titres… on vous montre.</p>
-            <div class="actions">
-              <a class="btn" href="assets/docs/Slide2_Accessibilite.pdf">Voir le PDF</a>
-              <a class="btn" href="assets/ima/accessibilite_numerique.jpg" download>Télécharger l’image</a>
-            </div>
-          </div>
+        <li>
+          <a href="assets/docs/Slide2_Accessibilite_detail.pdf" target="_blank" rel="noopener" class="btn btn-secondary">
+            ♿ Accessibilité — Bonnes pratiques (PDF)
+          </a>
+          <span class="doc-meta">2 pages — exemples concrets d’adaptation</span>
         </li>
 
-        <li class="card">
-          <figure>
-            <img
-              src="assets/ima/echange_formatrice_apprenant.jpg"
-              alt="Échange entre formatrice et apprenant devant des objectifs affichés"
-              width="1600" height="900"
-              loading="lazy" decoding="async"
-              sizes="(max-width:640px) 100vw, 33vw">
-          </figure>
-          <div class="body">
-            <h3>Échange formatrice / apprenant</h3>
-            <p class="muted">Objectifs clairs, petites victoires — moins de stress, plus d’autonomie.</p>
-            <div class="actions">
-              <a class="btn" href="assets/docs/Slide3_Echange_formateur.pdf">Voir le PDF</a>
-              <a class="btn" href="assets/ima/echange_formatrice_apprenant.jpg" download>Télécharger l’image</a>
-            </div>
-          </div>
+        <li>
+          <a href="assets/docs/Slide3_Echange_formateur_image.pdf" target="_blank" rel="noopener" class="btn btn-secondary">
+            👩‍🏫 Échanges avec les formateurs — en images (PDF)
+          </a>
+          <span class="doc-meta">3 pages — visuels pédagogiques</span>
         </li>
       </ul>
     </section>
   </main>
 
-  <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
+  <!-- ===================== -->
+  <!-- 🦶 FOOTER ACCESSIBLE -->
+  <!-- ===================== -->
+  <footer class="site-footer" role="contentinfo" aria-label="Pied de page">
+    <div class="footer-inner container">
+      <a class="footer-brand" href="index.html">
+        <img src="assets/ima/logo.png" alt="Élan pour tous" width="40" height="40" />
+        <span class="brand-name">Élan pour tous</span>
+      </a>
 
-  <!-- JS : header/footer puis scripts (minifiés en prod) -->
-  <script>
-    (function () {
-      async function into(id, url) {
-        const host = document.getElementById(id); if (!host) return;
-        try{
-          const r = await fetch(url, { cache: 'no-store' });
-          if (!r.ok) throw new Error(url+' introuvable ('+r.status+')');
-          host.innerHTML = await r.text();
-        }catch(err){
-          console.error(err);
-          host.innerHTML = '<div role="note" aria-live="polite" style="padding:1rem;color:#b02a37;border:1px solid #f1c0c4;border-radius:.5rem;background:#fff5f6">Le contenu n’a pas pu être chargé.</div>';
-        }
-      }
-      document.querySelector('.skip-link')?.addEventListener('click',()=>{
-        const m=document.getElementById('contenu'); if(m) requestAnimationFrame(()=>m.focus());
-      });
-      Promise.all([
-        into('header-placeholder','assets/header.html'),
-        into('footer-placeholder','assets/footer.html')
-      ]).then(()=>{
-        const base="assets/js/", local=(location.hostname==="localhost"||location.protocol==="file:");
-        for (const f of [ local?'include.js':'include.min.js', local?'tts.js':'tts.min.js' ]) {
-          const s=document.createElement('script'); s.src=base+f; s.defer=true; document.body.appendChild(s);
-        }
-      });
-    })();
-  </script>
+      <nav aria-label="Liens de pied de page">
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="formations.html">Formations</a></li>
+          <li><a href="orientation.html">Orientation</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="rgaa.html">Accessibilité RGAA</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </nav>
+
+      <p class="footer-copy">© 2025 Élan pour tous — Tous droits réservés</p>
+    </div>
+
+    <!-- 🎧 Barre de lecture TTS -->
+    <div class="tts-bar is-visible" role="region" aria-label="Lecture à voix haute">
+      <div class="tts-row">
+        <button id="tts-play" class="btn">▶ Lire</button>
+        <button id="tts-pause" class="btn" disabled>⏸ Pause</button>
+        <button id="tts-resume" class="btn" disabled>⏵ Reprendre</button>
+        <button id="tts-stop" class="btn" disabled>⏹ Stop</button>
+      </div>
+      <div class="tts-row">
+        <label for="tts-rate">Vitesse :</label>
+        <input id="tts-rate" type="range" min="0.7" max="1.6" step="0.1" value="1.0" />
+        <span id="tts-rate-val">1.0×</span>
+      </div>
+      <div class="tts-row">
+        <label for="tts-voice">Voix :</label>
+        <select id="tts-voice"></select>
+      </div>
+      <p id="tts-live" class="sr-only" role="status" aria-live="polite"></p>
+    </div>
+  </footer>
+
+  <!-- ===================== -->
+  <!-- SCRIPTS -->
+  <!-- ===================== -->
+  <script src="assets/js/include.js" defer></script>
+  <script src="assets/js/tts.min.js" defer></script>
 </body>
 </html>
