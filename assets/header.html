@@ -3,7 +3,56 @@
   <nav class="site-nav container" role="navigation" aria-label="Menu principal">
     <!-- Logo -->
     <a href="index.html" class="logo" aria-label="Accueil Élan pour tous">
-      <img src="assets/ima/logo.png" alt="Élan pour tous" class="logo-img" width="auto" height="44" style="max-height:44px;">
+      <!-- 🔝 HEADER ACCESSIBLE — Élan pour tous -->
+<header role="banner">
+  <nav class="site-nav container" role="navigation" aria-label="Menu principal">
+    <!-- Logo -->
+    <a href="index.html" class="logo" aria-label="Accueil Élan pour tous">
+      <img src="assets/ima/logo-elan.png" alt="Élan pour tous" class="logo-img">
+      <span class="sr-only">Retour à l’accueil</span>
+    </a>
+
+    <!-- Bouton menu mobile -->
+    <button type="button" class="menu-toggle btn-icon" id="menu-toggle"
+            aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
+      <span class="sr-only">Menu</span>
+      <span class="burger" aria-hidden="true"></span>
+    </button>
+
+    <!-- Liens principaux -->
+    <ul id="primary-nav" class="nav-links" hidden>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="formations.html">Formations</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="orientations.html">Orientation & tests</a></li>
+      <li><a href="rgaa.html">Accessibilité RGAA</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <!-- Actions d’accessibilité et affichage -->
+    <div class="nav-actions" aria-label="Réglages d’accessibilité et affichage">
+      <!-- Thème clair/sombre -->
+      <button type="button" class="theme-toggle btn-icon" id="theme-toggle"
+              aria-pressed="false" aria-label="Basculer le thème clair/sombre" title="Changer le thème">
+        🌓
+      </button>
+
+      <!-- Accessibilité (taille, contraste, espacement, reset) -->
+      <button type="button" class="access-btn" data-action="font-" aria-label="Réduire la taille du texte" title="A− (Alt + -)">A−</button>
+      <button type="button" class="access-btn" data-action="font+" aria-label="Augmenter la taille du texte" title="A+ (Alt + =)">A+</button>
+      <button type="button" class="access-btn" data-action="contrast" aria-label="Basculer le contraste élevé" title="Contraste élevé (Alt + C)">◐</button>
+      <button type="button" class="access-btn" data-action="spacing" aria-label="Augmenter l’espacement du texte" title="Espacement (Alt + S)">↕︎</button>
+      <button type="button" class="access-btn" data-action="reset" aria-label="Réinitialiser les réglages d’accessibilité" title="Réinitialiser (Alt + 0)">⟲</button>
+
+      <!-- Lecture vocale -->
+      <button type="button" class="btn-icon" id="tts-toggle" aria-pressed="false"
+              aria-label="Activer la lecture à voix haute" title="Lire la page">
+        🔊
+      </button>
+    </div>
+  </nav>
+</header>
       <span class="sr-only">Retour à l’accueil</span>
     </a>
 
