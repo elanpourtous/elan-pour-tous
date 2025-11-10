@@ -182,7 +182,53 @@
   <!-- ===================== -->
   <script src="assets/js/include.js" defer></script>
   <script src="assets/js/tts.min.js" defer></script>
-  <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
+ <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
+
+<!-- 💬 Chatbot IA – Élan pour tous -->
+<div id="ept-chat" class="ept-chat" aria-live="polite">
+  <button id="ept-chat-toggle"
+          class="ept-chat__fab"
+          type="button"
+          aria-haspopup="dialog"
+          aria-controls="ept-chat-dialog"
+          aria-expanded="false"
+          title="Ouvrir le chat (Alt+M)">
+    💬
+    <span class="sr-only">Ouvrir le chat</span>
+  </button>
+
+  <div id="ept-chat-dialog"
+       class="ept-chat__dialog"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="ept-chat-title"
+       hidden>
+    <header class="ept-chat__header">
+      <h2 id="ept-chat-title">Assistant Élan pour tous</h2>
+      <button id="ept-chat-close" class="ept-chat__close" type="button" aria-label="Fermer le chat">✕</button>
+    </header>
+
+    <div id="ept-chat-log" class="ept-chat__log" aria-live="polite"></div>
+
+    <form id="ept-chat-form" class="ept-chat__form" autocomplete="off">
+      <label for="ept-chat-input" class="sr-only">Votre message</label>
+      <input id="ept-chat-input"
+             name="message"
+             type="text"
+             placeholder="Posez votre question…"
+             required
+             maxlength="500" />
+      <button type="submit" class="ept-chat__send" aria-label="Envoyer">Envoyer</button>
+    </form>
+
+    <p class="ept-chat__hint">Raccourci : <kbd>Alt</kbd>+<kbd>M</kbd> (ouvrir/fermer)</p>
+  </div>
+</div>
+
+<!-- Liens vers les fichiers du chatbot -->
+<link rel="stylesheet" href="assets/css/chatbot.css">
+<script src="assets/js/chatbot.js" defer></script>
+
 
 <!-- 💬 Chatbot IA – Élan pour tous -->
 <div id="ept-chat" class="ept-chat" aria-live="polite">
