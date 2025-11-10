@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="À propos — Élan pour tous : mission, valeurs et approche pédagogique inclusive à Saumur et en distanciel.">
   <meta name="theme-color" content="#0b8457">
-  
   <title>Élan pour tous — À propos</title>
+
   <link rel="icon" href="assets/ima/logo.png" type="image/png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
@@ -14,6 +14,7 @@
 </head>
 <body>
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
+
   <div id="header-placeholder" role="banner" aria-label="En-tête"></div>
 
   <main id="contenu" class="container hero" role="main" tabindex="-1" aria-labelledby="title">
@@ -47,13 +48,39 @@
   </main>
 
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
+  <!-- 👇 Placeholder pour le chatbot -->
+  <div id="chat-placeholder"></div>
 
   <script>
     (function(){
-      async function inc(id, url){const host=document.getElementById(id); if(!host) return; const r=await fetch(url,{cache:'no-store'}); if(!r.ok) throw new Error(url+' introuvable'); host.innerHTML=await r.text();}
-      document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu'); if(m) requestAnimationFrame(()=>m.focus());});
-      Promise.all([inc('header-placeholder','assets/header.html'), inc('footer-placeholder','assets/footer.html')]).then(()=>{
-        ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{ if(!document.querySelector(`script[src="${src}"]`)){ const s=document.createElement('script'); s.src=src; s.defer=true; document.body.appendChild(s);} });
+      async function inc(id, url){
+        const host = document.getElementById(id);
+        if(!host) return;
+        const r = await fetch(url,{cache:'no-store'});
+        if(!r.ok) throw new Error(url+' introuvable');
+        host.innerHTML = await r.text();
+      }
+
+      // Skip-link => focus main
+      document.querySelector('.skip-link')?.addEventListener('click',()=>{
+        const m = document.getElementById('contenu');
+        if(m) requestAnimationFrame(()=>m.focus());
+      });
+
+      // Injecte header + footer, puis scripts globaux, puis le widget chat
+      Promise.all([
+        inc('header-placeholder','assets/header.html'),
+        inc('footer-placeholder','assets/footer.html')
+      ]).then(async ()=>{
+        // Charge include.js + TTS (une seule fois)
+        ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{
+          if(!document.querySelector(`script[src="${src}"]`)){
+            const s=document.createElement('script'); s.src=src; s.defer=true; document.body.appendChild(s);
+          }
+        });
+
+        // 👉 Injecte le fragment du chatbot (évite de dupliquer le HTML sur chaque page)
+        await inc('chat-placeholder','assets/chat.html');
       }).catch(console.error);
     })();
   </script>
