@@ -7,17 +7,23 @@
   <meta name="theme-color" content="#0b8457" />
   <title>Élan pour tous - Accueil</title>
 
+  <!-- Icône -->
   <link rel="icon" href="assets/ima/logo.png" type="image/png" />
+
+  <!-- CSS principaux -->
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css" />
   <link rel="stylesheet" href="assets/css/tts.min.css" />
+  <!-- CSS du chatbot -->
+  <link rel="stylesheet" href="assets/css/chat.css" />
 </head>
 
 <body>
+  <!-- Lien d’évitement -->
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
 
   <!-- ===================== -->
-  <!-- 🔝 HEADER ACCESSIBLE -->
+  <!-- 🔝 HEADER -->
   <!-- ===================== -->
   <header role="banner">
     <nav class="site-nav container" role="navigation" aria-label="Menu principal">
@@ -26,7 +32,12 @@
         <span class="sr-only">Retour à l’accueil</span>
       </a>
 
-      <button type="button" class="menu-toggle btn-icon" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
+      <button type="button"
+              class="menu-toggle btn-icon"
+              id="menu-toggle"
+              aria-label="Ouvrir le menu"
+              aria-expanded="false"
+              aria-controls="primary-nav">
         <span class="burger" aria-hidden="true"></span>
         <span class="sr-only">Menu</span>
       </button>
@@ -42,7 +53,15 @@
       </ul>
 
       <div class="nav-actions" aria-label="Réglages d’affichage et d’accessibilité">
-        <button type="button" class="theme-toggle btn-icon" id="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Activer le mode sombre" title="Activer le mode sombre">🌓</button>
+        <button type="button"
+                class="theme-toggle btn-icon"
+                id="theme-toggle"
+                data-theme-toggle
+                aria-pressed="false"
+                aria-label="Activer le mode sombre"
+                title="Activer le mode sombre">
+          🌓
+        </button>
 
         <div class="a11y-group" role="group" aria-label="Contrôles d’accessibilité">
           <button type="button" class="access-btn" data-action="font-" title="Réduire la taille (Alt + -)">A−</button>
@@ -52,7 +71,14 @@
           <button type="button" class="access-btn" data-action="reset" title="Réinitialiser (Alt + 0)">⟲</button>
         </div>
 
-        <button type="button" class="btn-icon" id="tts-toggle" aria-pressed="false" aria-label="Lire la page à voix haute" title="Lire la page">🔊</button>
+        <button type="button"
+                class="btn-icon"
+                id="tts-toggle"
+                aria-pressed="false"
+                aria-label="Lire la page à voix haute"
+                title="Lire la page">
+          🔊
+        </button>
       </div>
     </nav>
   </header>
@@ -70,9 +96,7 @@
       <a href="orientations.html" class="btn">Faire un test de compétences</a>
     </p>
 
-    <!-- =============================== -->
-    <!-- 🧭 Ateliers numériques petit groupe -->
-    <!-- =============================== -->
+    <!-- Ateliers numériques -->
     <section id="atelier-accueil" aria-labelledby="atelier-accueil-title" class="atelier-section">
       <h2 id="atelier-accueil-title">Ateliers numériques en petit groupe</h2>
       <p>Des sessions adaptées pour progresser à votre rythme, en toute confiance.</p>
@@ -98,9 +122,7 @@
       </div>
     </section>
 
-    <!-- =============================== -->
-    <!-- 📄 DOCUMENTATION À TÉLÉCHARGER -->
-    <!-- =============================== -->
+    <!-- Docs PDF -->
     <section id="documents" class="docs-section" aria-labelledby="docs-title">
       <h2 id="docs-title">Documents à consulter</h2>
       <p class="lead">Découvrez en détail nos actions et supports de formation.</p>
@@ -112,14 +134,12 @@
           </a>
           <span class="doc-meta">1 page — accessible et imprimable</span>
         </li>
-
         <li>
           <a href="assets/docs/Slide2_Accessibilite_detail.pdf" target="_blank" rel="noopener" class="btn btn-secondary">
             ♿ Accessibilité — Bonnes pratiques (PDF)
           </a>
           <span class="doc-meta">2 pages — exemples concrets d’adaptation</span>
         </li>
-
         <li>
           <a href="assets/docs/Slide3_Echange_formateur_image.pdf" target="_blank" rel="noopener" class="btn btn-secondary">
             👩‍🏫 Échanges avec les formateurs — en images (PDF)
@@ -131,7 +151,7 @@
   </main>
 
   <!-- ===================== -->
-  <!-- 🦶 FOOTER ACCESSIBLE -->
+  <!-- 🦶 FOOTER -->
   <!-- ===================== -->
   <footer class="site-footer" role="contentinfo" aria-label="Pied de page">
     <div class="footer-inner container">
@@ -178,102 +198,68 @@
   </footer>
 
   <!-- ===================== -->
+  <!-- 💬 CHATBOT TOM ÉLAN  -->
+  <!-- ===================== -->
+  <div id="ept-chat" class="ept-chat" aria-live="polite">
+    <!-- Bouton flottant -->
+    <button id="ept-chat-toggle"
+            class="ept-chat__fab"
+            type="button"
+            aria-haspopup="dialog"
+            aria-controls="ept-chat-dialog"
+            aria-expanded="false"
+            title="Ouvrir le chat (Alt+M)">
+      💬
+      <span class="sr-only">Ouvrir le chat</span>
+    </button>
+
+    <!-- Fenêtre du chat -->
+    <div id="ept-chat-dialog"
+         class="ept-chat__dialog"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="ept-chat-title"
+         hidden>
+      <header class="ept-chat__header">
+        <img class="ept-chat__avatar"
+             src="assets/ima/tom_avatar.png"
+             alt="Portrait de Tom Élan"
+             width="32"
+             height="32" />
+        <div class="ept-chat__title-block">
+          <h2 id="ept-chat-title">Assistant Élan pour tous</h2>
+          <p class="ept-chat__subtitle">Tom Élan — accompagnement accessible</p>
+        </div>
+        <button id="ept-chat-close"
+                class="ept-chat__close"
+                type="button"
+                aria-label="Fermer le chat">
+          ✕
+        </button>
+      </header>
+
+      <div id="ept-chat-log" class="ept-chat__log" aria-live="polite"></div>
+
+      <form id="ept-chat-form" class="ept-chat__form" autocomplete="off">
+        <label for="ept-chat-input" class="sr-only">Votre message</label>
+        <input id="ept-chat-input"
+               name="message"
+               type="text"
+               placeholder="Posez votre question…"
+               required
+               maxlength="500" />
+        <button type="submit" class="ept-chat__send" aria-label="Envoyer">Envoyer</button>
+      </form>
+
+      <p class="ept-chat__hint">Raccourci : <kbd>Alt</kbd>+<kbd>M</kbd> pour ouvrir/fermer le chat.</p>
+    </div>
+  </div>
+
+  <!-- ===================== -->
   <!-- SCRIPTS -->
   <!-- ===================== -->
   <script src="assets/js/include.js" defer></script>
   <script src="assets/js/tts.min.js" defer></script>
- <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
-
-<!-- 💬 Chatbot IA – Élan pour tous -->
-<div id="ept-chat" class="ept-chat" aria-live="polite">
-  <button id="ept-chat-toggle"
-          class="ept-chat__fab"
-          type="button"
-          aria-haspopup="dialog"
-          aria-controls="ept-chat-dialog"
-          aria-expanded="false"
-          title="Ouvrir le chat (Alt+M)">
-    💬
-    <span class="sr-only">Ouvrir le chat</span>
-  </button>
-
-  <div id="ept-chat-dialog"
-       class="ept-chat__dialog"
-       role="dialog"
-       aria-modal="true"
-       aria-labelledby="ept-chat-title"
-       hidden>
-    <header class="ept-chat__header">
-      <h2 id="ept-chat-title">Assistant Élan pour tous</h2>
-      <button id="ept-chat-close" class="ept-chat__close" type="button" aria-label="Fermer le chat">✕</button>
-    </header>
-
-    <div id="ept-chat-log" class="ept-chat__log" aria-live="polite"></div>
-
-    <form id="ept-chat-form" class="ept-chat__form" autocomplete="off">
-      <label for="ept-chat-input" class="sr-only">Votre message</label>
-      <input id="ept-chat-input"
-             name="message"
-             type="text"
-             placeholder="Posez votre question…"
-             required
-             maxlength="500" />
-      <button type="submit" class="ept-chat__send" aria-label="Envoyer">Envoyer</button>
-    </form>
-
-    <p class="ept-chat__hint">Raccourci : <kbd>Alt</kbd>+<kbd>M</kbd> (ouvrir/fermer)</p>
-  </div>
-</div>
-
-<!-- Liens vers les fichiers du chatbot -->
-<link rel="stylesheet" href="assets/css/chatbot.css">
-<script src="assets/js/chatbot.js" defer></script>
-
-
-<!-- 💬 Chatbot IA – Élan pour tous -->
-<div id="ept-chat" class="ept-chat" aria-live="polite">
-  <button id="ept-chat-toggle"
-          class="ept-chat__fab"
-          type="button"
-          aria-haspopup="dialog"
-          aria-controls="ept-chat-dialog"
-          aria-expanded="false"
-          title="Ouvrir le chat (Alt+M)">
-    💬
-    <span class="sr-only">Ouvrir le chat</span>
-  </button>
-
-  <div id="ept-chat-dialog"
-       class="ept-chat__dialog"
-       role="dialog"
-       aria-modal="true"
-       aria-labelledby="ept-chat-title"
-       hidden>
-    <header class="ept-chat__header">
-      <h2 id="ept-chat-title">Assistant Élan pour tous</h2>
-      <button id="ept-chat-close" class="ept-chat__close" type="button" aria-label="Fermer le chat">✕</button>
-    </header>
-
-    <div id="ept-chat-log" class="ept-chat__log" aria-live="polite"></div>
-
-    <form id="ept-chat-form" class="ept-chat__form" autocomplete="off">
-      <label for="ept-chat-input" class="sr-only">Votre message</label>
-      <input id="ept-chat-input"
-             name="message"
-             type="text"
-             placeholder="Posez votre question…"
-             required
-             maxlength="500" />
-      <button type="submit" class="ept-chat__send" aria-label="Envoyer">Envoyer</button>
-    </form>
-
-    <p class="ept-chat__hint">Raccourci : <kbd>Alt</kbd>+<kbd>M</kbd> (ouvrir/fermer)</p>
-  </div>
-</div>
-
-<!-- Liens vers les fichiers du chatbot -->
-<link rel="stylesheet" href="assets/css/chatbot.css">
-<script src="assets/js/chatbot.js" defer></script>
-
+  <script src="assets/js/chatbot.js" defer></script>
 </body>
 </html>
