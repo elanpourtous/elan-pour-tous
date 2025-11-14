@@ -261,7 +261,8 @@
   <script src="assets/js/include.js" defer></script>
   <script src="assets/js/tts.min.js" defer></script>
   <script src="assets/js/chatbot.js" defer></script>
-  <!-- Widget de chat Tom Élan -->
+  
+<!-- Widget de chat Tom Élan -->
 <div class="chat-widget" aria-live="polite">
   <!-- Bouton flottant -->
   <button class="chat-toggle"
@@ -276,5 +277,56 @@
       <strong>Tom Élan</strong><br>
       <span style="font-size: 0.8em;">Besoin d’un coup de pouce&nbsp;?</span>
     </span>
+  </button>
+
+  <!-- Fenêtre de chat -->
+  <section class="chat-panel"
+           id="chat-panel"
+           role="dialog"
+           aria-modal="true"
+           aria-labelledby="chat-title"
+           hidden>
+    <header class="chat-header">
+      <div class="chat-header-main">
+        <img src="assets/ima/tom_avatar.png"
+             alt=""
+             class="chat-header-avatar">
+        <div>
+          <div class="chat-header-title" id="chat-title">Tom Élan</div>
+          <div class="chat-header-status">Assistant personnel</div>
+        </div>
+      </div>
+      <button type="button"
+              class="chat-header-close"
+              id="chat-close"
+              aria-label="Fermer le chat">
+        ×
+      </button>
+    </header>
+
+    <div class="chat-body">
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-message chat-message--bot">
+          Bonjour, je suis Tom. Dis-moi ce que tu veux faire et on s’y met.
+        </div>
+      </div>
+
+      <form class="chat-input" id="chat-form">
+        <label for="chat-input-text" class="sr-only">Votre message</label>
+        <textarea id="chat-input-text"
+                  rows="1"
+                  placeholder="Écrire un message…"
+                  required></textarea>
+        <button type="submit" class="chat-send-btn" id="chat-send-btn">
+          Envoyer
+        </button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- JS du chat -->
+<script src="assets/js/chat.js" defer></script>
+
 </body>
 </html>
