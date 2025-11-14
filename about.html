@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/tts.min.css">
+  <!-- CSS du chatbot (widget Tom) -->
+  <link rel="stylesheet" href="assets/css/chat.css">
 </head>
 <body>
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
@@ -48,6 +50,7 @@
   </main>
 
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
+
   <!-- 👇 Placeholder pour le chatbot -->
   <div id="chat-placeholder"></div>
 
@@ -72,15 +75,26 @@
         inc('header-placeholder','assets/header.html'),
         inc('footer-placeholder','assets/footer.html')
       ]).then(async ()=>{
-        // Charge include.js + TTS (une seule fois)
+        // Scripts globaux (une seule fois)
         ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{
           if(!document.querySelector(`script[src="${src}"]`)){
-            const s=document.createElement('script'); s.src=src; s.defer=true; document.body.appendChild(s);
+            const s = document.createElement('script');
+            s.src = src;
+            s.defer = true;
+            document.body.appendChild(s);
           }
         });
 
-        // 👉 Injecte le fragment du chatbot (évite de dupliquer le HTML sur chaque page)
+        // 👉 Injecte le fragment du chatbot
         await inc('chat-placeholder','assets/chat.html');
+
+        // 👉 Charge le JS du chatbot si pas déjà présent
+        if(!document.querySelector('script[src="assets/js/chat.js"]')){
+          const s = document.createElement('script');
+          s.src = 'assets/js/chat.js';
+          s.defer = true;
+          document.body.appendChild(s);
+        }
       }).catch(console.error);
     })();
   </script>
