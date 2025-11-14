@@ -1,43 +1,279 @@
-<!-- 💬 Chatbot IA – Élan pour tous -->
-<div id="ept-chat" class="ept-chat" aria-live="polite">
-  <button id="ept-chat-toggle"
-          class="ept-chat__fab"
-          type="button"
-          aria-haspopup="dialog"
-          aria-controls="ept-chat-dialog"
-          aria-expanded="false"
-          title="Ouvrir le chat (Alt+M)">
-    💬
-    <span class="sr-only">Ouvrir le chat</span>
-  </button>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat — Tom Élan</title>
 
-  <div id="ept-chat-dialog"
-       class="ept-chat__dialog"
-       role="dialog"
-       aria-modal="true"
-       aria-labelledby="ept-chat-title"
-       hidden>
-    <header class="ept-chat__header">
-      <h2 id="ept-chat-title">Assistant Élan pour tous</h2>
-      <button id="ept-chat-close" class="ept-chat__close" type="button" aria-label="Fermer le chat">✕</button>
-    </header>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    <div id="ept-chat-log" class="ept-chat__log" aria-live="polite"></div>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #F5F7FC;
+        }
 
-    <form id="ept-chat-form" class="ept-chat__form" autocomplete="off">
-      <label for="ept-chat-input" class="sr-only">Votre message</label>
-      <input id="ept-chat-input"
-             name="message"
-             type="text"
-             placeholder="Posez votre question…"
-             required
-             maxlength="500" />
-      <button type="submit" class="ept-chat__send" aria-label="Envoyer">Envoyer</button>
-    </form>
+        /* Conteneur global */
+        .chat-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+        }
 
-    <p class="ept-chat__hint">Raccourci : <kbd>Alt</kbd>+<kbd>M</kbd> (ouvrir/fermer)</p>
-  </div>
+        /* Header Tom */
+        .chat-header {
+            width: 80%;
+            max-width: 950px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            padding: 15px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 6px #00000010;
+        }
+
+        .chat-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+
+        .chat-header .name {
+            font-weight: bold;
+        }
+
+        .chat-header .status {
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* Zone messages */
+        .messages {
+            width: 80%;
+            max-width: 950px;
+            margin-top: 25px;
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .bubble-left,
+        .bubble-right {
+            max-width: 65%;
+            padding: 13px 16px;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .bubble-left {
+            background: #EAF1FF;
+        }
+
+        .bubble-right {
+            background: #097E4F;
+            color: #ffffff;
+            margin-left: auto;
+        }
+
+        /* Bulle "Tom écrit..." */
+        .typing-bubble {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            width: 56px;
+            padding: 10px 12px;
+            background: #EAF1FF;
+            border-radius: 16px;
+            margin-bottom: 16px;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #6E7A91;
+            opacity: 0.25;
+            animation: typing-bounce 1.2s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes typing-bounce {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.25;
+            }
+            30% {
+                transform: translateY(-3px);
+                opacity: 1;
+            }
+        }
+
+        /* Barre de saisie */
+        .inputbar {
+            width: 80%;
+            max-width: 950px;
+            background: #ffffff;
+            padding: 10px 14px;
+            margin: 10px 0 30px;
+            border-radius: 20px;
+            box-shadow: 0 2px 6px #00000010;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .inputbar input {
+            flex: 1;
+            border: none;
+            font-size: 15px;
+            outline: none;
+            padding: 8px 4px;
+            background: transparent;
+        }
+
+        .send-btn {
+            border: none;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #097E4F;
+            color: #ffffff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="chat-container">
+
+    <!-- HEADER -->
+    <div class="chat-header">
+        <img class="avatar" src="ima/tom_avatar.png" alt="Portrait de Tom Élan">
+        <div>
+            <div class="name">Tom Élan</div>
+            <div class="status">Assistant personnel</div>
+        </div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="messages" id="messages" aria-live="polite">
+        <div class="bubble-left">
+            Bonjour, je suis Tom. Dites-moi ce que vous souhaitez accomplir.
+        </div>
+
+        <div class="bubble-right">
+            Aide-moi à planifier demain matin.
+        </div>
+
+        <!-- Bulle de frappe (cachée au départ) -->
+        <div id="typing" style="display:none;">
+            <div class="typing-bubble" aria-hidden="true">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INPUT BAR -->
+    <div class="inputbar">
+        <input
+            id="userInput"
+            type="text"
+            placeholder="Écrire un message…"
+            autocomplete="off"
+        >
+        <button class="send-btn" id="sendBtn">Envoyer</button>
+    </div>
+
 </div>
 
-<link rel="stylesheet" href="assets/css/chatbot.css">
-<script src="assets/js/chatbot.js" defer></script>
+<script>
+    (function () {
+        const messagesEl = document.getElementById('messages');
+        const inputEl = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const typingEl = document.getElementById('typing');
+
+        function scrollToBottom() {
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function addBubble(text, side) {
+            const div = document.createElement('div');
+            div.className = side === 'right' ? 'bubble-right' : 'bubble-left';
+            div.textContent = text;
+            messagesEl.insertBefore(div, typingEl); // toujours avant la zone "typing"
+            scrollToBottom();
+        }
+
+        function setTyping(visible) {
+            typingEl.style.display = visible ? 'block' : 'none';
+            scrollToBottom();
+        }
+
+        function sendUserMessage() {
+            const text = inputEl.value.trim();
+            if (!text) return;
+
+            // Ajout message utilisateur
+            addBubble(text, 'right');
+            inputEl.value = '';
+            inputEl.focus();
+
+            // Simule la réponse de Tom
+            setTyping(true);
+            sendBtn.disabled = true;
+
+            setTimeout(function () {
+                setTyping(false);
+                sendBtn.disabled = false;
+
+                const reply = "D'accord, on va organiser ça étape par étape. " +
+                    "Je peux t’aider à répartir les tâches, choisir un horaire et préparer un rappel.";
+                addBubble(reply, 'left');
+            }, 1200);
+        }
+
+        // Clic sur "Envoyer"
+        sendBtn.addEventListener('click', sendUserMessage);
+
+        // Touche Entrée
+        inputEl.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendUserMessage();
+            }
+        });
+
+        // Scroll initial
+        scrollToBottom();
+    })();
+</script>
+
+</body>
+</html>
