@@ -244,3 +244,26 @@
     max-height: 80vh;
   }
 }
+.ept-chat__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ept-chat__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ept-chat__title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.ept-chat__subtitle {
+  font-size: 0.8rem;
+  color: #6e7a8f;
+  margin: 0;
+}
