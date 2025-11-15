@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/tts.min.css">
+  <!-- CSS du chatbot -->
+  <link rel="stylesheet" href="assets/css/chat.css">
 </head>
 <body>
   <a href="#contenu" class="skip-link">Aller directement au contenu</a>
@@ -21,7 +23,12 @@
 
     <p class="form-status" role="status" aria-live="polite" hidden></p>
 
-    <form id="contact-form" class="contact-form" action="https://formspree.io/f/VOTRE_ID_FORM" method="POST" aria-label="Formulaire de contact" novalidate>
+    <form id="contact-form"
+          class="contact-form"
+          action="https://formspree.io/f/VOTRE_ID_FORM"
+          method="POST"
+          aria-label="Formulaire de contact"
+          novalidate>
       <!-- Honeypot -->
       <div class="visually-hidden" aria-hidden="true">
         <label for="company">Société</label>
@@ -59,15 +66,50 @@
   </main>
 
   <div id="footer-placeholder" role="contentinfo" aria-label="Pied de page"></div>
+  <!-- Placeholder pour le chatbot -->
+  <div id="chat-placeholder"></div>
 
   <script>
     (function(){
-      async function inc(id, url){const host=document.getElementById(id); if(!host) return; const r=await fetch(url,{cache:'no-store'}); if(!r.ok) throw new Error(url+' introuvable'); host.innerHTML=await r.text();}
-      document.querySelector('.skip-link')?.addEventListener('click',()=>{const m=document.getElementById('contenu'); if(m) requestAnimationFrame(()=>m.focus());});
+      async function inc(id, url){
+        const host = document.getElementById(id);
+        if(!host) return;
+        const r = await fetch(url,{cache:'no-store'});
+        if(!r.ok) throw new Error(url+' introuvable');
+        host.innerHTML = await r.text();
+      }
 
-      // Inject header/footer puis scripts
-      Promise.all([inc('header-placeholder','assets/header.html'), inc('footer-placeholder','assets/footer.html')]).then(()=>{
-        ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{ if(!document.querySelector(`script[src="${src}"]`)){ const s=document.createElement('script'); s.src=src; s.defer=true; document.body.appendChild(s);} });
+      // Skip-link => focus main
+      document.querySelector('.skip-link')?.addEventListener('click',()=>{
+        const m = document.getElementById('contenu');
+        if(m) requestAnimationFrame(()=>m.focus());
+      });
+
+      // Inject header/footer puis scripts globaux + chat
+      Promise.all([
+        inc('header-placeholder','assets/header.html'),
+        inc('footer-placeholder','assets/footer.html')
+      ]).then(async ()=>{
+        // Scripts globaux (une seule fois)
+        ['assets/js/include.js','assets/js/tts.min.js'].forEach(src=>{
+          if(!document.querySelector(`script[src="${src}"]`)){
+            const s = document.createElement('script');
+            s.src = src;
+            s.defer = true;
+            document.body.appendChild(s);
+          }
+        });
+
+        // Injecte le fragment du chatbot
+        await inc('chat-placeholder','assets/chat.html');
+
+        // Charge le JS du chatbot si pas déjà présent
+        if(!document.querySelector('script[src="assets/js/chat.js"]')){
+          const s = document.createElement('script');
+          s.src = 'assets/js/chat.js';
+          s.defer = true;
+          document.body.appendChild(s);
+        }
       }).catch(console.error);
 
       // Pré-remplissage (depuis orientations.html)
@@ -76,24 +118,43 @@
           const s = sessionStorage.getItem('prefill_subject');
           const n = sessionStorage.getItem('prefill_note');
           if(s) document.getElementById('subject').value = s;
-          if(n){ const m=document.getElementById('message'); if(m && !m.value) m.value = 'Besoin : ' + n; }
+          if(n){
+            const m = document.getElementById('message');
+            if(m && !m.value) m.value = 'Besoin : ' + n;
+          }
         }catch(_){}
       })();
 
       // Envoi AJAX minimal (Formspree)
       document.addEventListener('DOMContentLoaded', function(){
-        const form=document.getElementById('contact-form'); const status=document.querySelector('.form-status');
+        const form = document.getElementById('contact-form');
+        const status = document.querySelector('.form-status');
         if(!form || !status) return;
+
         form.addEventListener('submit', async (e)=>{
           e.preventDefault();
-          const data=new FormData(form);
-          if((data.get('company')||'').trim()!=='') return; // honeypot
-          status.hidden=false; status.textContent='Envoi en cours…';
+          const data = new FormData(form);
+
+          // honeypot
+          if((data.get('company')||'').trim()!=='') return;
+
+          status.hidden = false;
+          status.textContent = 'Envoi en cours…';
           try{
-            const res=await fetch(form.action,{method:'POST', body:data, headers:{'Accept':'application/json'}});
-            if(res.ok){ status.textContent='Votre message a bien été envoyé. Merci !'; form.reset(); }
-            else { status.textContent='Un souci est survenu. Réessayez ou écrivez à elanpourtous49@gmail.com'; }
-          }catch{ status.textContent='Connexion impossible. Vérifiez votre réseau et réessayez.'; }
+            const res = await fetch(form.action,{
+              method:'POST',
+              body:data,
+              headers:{'Accept':'application/json'}
+            });
+            if(res.ok){
+              status.textContent='Votre message a bien été envoyé. Merci !';
+              form.reset();
+            } else {
+              status.textContent='Un souci est survenu. Réessayez ou écrivez à elanpourtous49@gmail.com';
+            }
+          }catch{
+            status.textContent='Connexion impossible. Vérifiez votre réseau et réessayez.';
+          }
         });
       });
     })();
